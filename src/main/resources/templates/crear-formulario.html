@@ -1,0 +1,55 @@
+<head th:replace="fragments/head-matches :: head"></head>
+
+<header th:replace="fragments/navbar-logueado :: header"></header>
+<html>
+<body>
+<div class="text-center mt-5">
+    <h2 >Que tienes para ofrecer?</h2>
+</div>
+
+<div class="tarjetas">
+    <a href="/formulario-propiedad.html" style="text-decoration:none">
+        <div class="card">
+            <div class="left-column background1-left-column">
+                <h6>Propiedad</h6>
+                <h2><i class="fa-solid fa-tree"></i></h2>
+                <i class="fa-solid fa-house"></i>
+            </div>
+
+            <div class="right-column">
+                <div>
+
+                </div>
+
+                <button class="button background1-left-column">Vuamooos</button>
+            </div>
+
+        </div>
+    </a>
+
+    <a href="/formulario-vehiculo.html" style="text-decoration:none">
+    <div class="card">
+        <div class="left-column background2-left-column">
+            <i class="fa-solid fa-car-side"></i>
+            <h2>Vehiculo</h2>
+            <i class="fa-solid fa-sailboat"></i>
+
+        </div>
+
+        <div class="right-column">
+            <div>
+
+            </div>
+            
+            <button class="button background2-left-column">A darle</button>
+        </div>
+
+    </div>
+    </a>
+</div>
+
+</body>
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://kit.fontawesome.com/c9ab963329.js" crossorigin="anonymous"></script>
+</html>
