@@ -1,33 +1,62 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:whgt@200,300,400,500,600,700,800,900&display=swap');
-*
-{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
 
 }
-section
-{
+
+section {
     position: relative;
     min-height: 100vh;
-    background: #404C58;
+    margin: 0;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+
 }
-section .container
-{
+
+body {
+    background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(255, 107, 8), rgb(255, 0, 0));
+    background-size: 500%;
+    animation: fanimado 10s infinite;
+}
+
+.texto {
+    color: white;
+    text-align: center;
+    margin: 300px 0;
+    font-size: 20px;
+}
+
+@keyframes fanimado {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0%, 50%;
+    }
+}
+
+section .container {
     position: relative;
     width: 800px;
     height: 500px;
     background: #fff;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
-section .container .user
-{
+
+section .container .user {
     position: absolute;
     top: 0;
     left: 0;
@@ -35,16 +64,16 @@ section .container .user
     height: 100%;
     display: flex;
 }
-section .container .user .imgBx
-{
-position: relative;
-width: 50%;
-height: 100%;
-background: #ff0;
-transition: 0.5s;
+
+section .container .user .imgBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background: #ff0;
+    transition: 0.5s;
 }
-section .container .user .imgBx img
-{
+
+section .container .user .imgBx img {
     position: absolute;
     top: 0;
     left: 0;
@@ -52,8 +81,8 @@ section .container .user .imgBx img
     height: 100%;
     object-fit: cover;
 }
-section .container .user .formBx
-{
+
+section .container .user .formBx {
     position: relative;
     width: 50%;
     height: 100%;
@@ -62,11 +91,11 @@ section .container .user .formBx
     justify-content: center;
     align-items: center;
     padding: 40px;
-    transition: 0,5%;
+    transition: 0, 5%;
 
 }
-section .container .user .formBx form h2
-{
+
+section .container .user .formBx form h2 {
     color: #000000;
     font-weight: 600;
     font-size: 18px;
@@ -79,42 +108,44 @@ section .container .user .formBx form h2
     letter-spacing: 2px;
 }
 
-section .container .user .formBx form input
-{
-    position: relative;
-    width: 100%;
-    padding: 10px;
-    background: #f5f5f5;
-    color: #333;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    margin: 8px 0;
-    font-size: 14px;
-    letter-spacing: 1px;
-    font-weight: 300;
+section .container .user .formBx form input {
+    margin-bottom: 20px;
+
 }
-section .container .user .formBx form input[type="submit"]
-{
-    max-width: 100px;
-    background: #fff023;
-    color:rgb(0, 0, 0);
-    cursor: pointer;
+section .container .user .formBx form input {
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 400;
+    border: 1px solid #000000;
     font-size: 16px;
-    font-weight: 600;
     letter-spacing: 1px;
-    transition: 0.5s;
+    color: #000000;
+    background: transparent;
+    border-radius: 30px;
 }
 
-section .contentBx .formBx .Recordar {
+section .container .user .formBx form input[type="submit"] {
+    background: #ffee00;
+    color: #000000;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+section .container .user .formBx form input[type="submit"]:hover {
+    background: rgb(184, 184, 16);
+}
+
+section .conteiner .formBx .Recordar {
     margin-bottom: 10px;
-    color: rgb(0, 0, 0);
+    color: rgb(236, 8, 8);
     font-weight: 400;
     font-size: 14px;
+    position: center;
 }
 
-section .container .user .formBx form .signup
-{
+section .container .user .formBx form .signup {
     position: relative;
     margin-top: 20px;
     font-size: 12px;
@@ -123,69 +154,66 @@ section .container .user .formBx form .signup
     text-transform: uppercase;
     font-weight: 300;
 }
-section .container .user .formBx form .signup a
-{
+
+section .container .user .formBx form .signup a {
     font-weight: 600;
     text-decoration: none;
     color: #333;
 }
-section .container .singupBx
-{
+
+section .container .singupBx {
     pointer-events: none;
 }
-section .container.active .singupBx
-{
+
+section .container.active .singupBx {
     pointer-events: initial;
 }
-section .container .singupBx .formBx
-{
+
+section .container .singupBx .formBx {
     left: 100%;
 }
-section .container.active .singupBx .formBx
-{
+
+section .container.active .singupBx .formBx {
     left: 0;
 }
-section .container .singupBx .imgBx
-{
+
+section .container .singupBx .imgBx {
     left: -100%;
 }
-section .container.active .singupBx .imgBx
-{
+
+section .container.active .singupBx .imgBx {
     left: 0;
 }
 
 
 
-section .container .singiBx .formBx
-{
+section .container .singiBx .formBx {
     left: 0;
 }
-section .container.active .singiBx .formBx
-{
+
+section .container.active .singiBx .formBx {
     left: 100%;
 }
-section .container .singiBx .imgBx
-{
+
+section .container .singiBx .imgBx {
     left: 0;
 }
-section .container.active .singiBx .imgBx
-{
+
+section .container.active .singiBx .imgBx {
     left: -100;
 }
 
-@media (max-width:991px)
-{
-section .container
-{
-    max-width: 400px;
-}
-section .container .imgBx
-{
-    display: none;
+@media (max-width:991px) {
+    section .container {
+        max-width: 400px;
+    }
 
-}
-section .container .user .formBx
-{
-    width: 100%;
-}
+    section .container .imgBx {
+        display: none;
+
+    }
+
+    section .container .user .formBx {
+        width: 100%;
+    }
 }

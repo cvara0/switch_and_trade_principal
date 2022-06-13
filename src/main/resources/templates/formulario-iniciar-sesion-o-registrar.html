@@ -10,7 +10,8 @@
         <div th:if="${error}" th:text="${error}" class="alert alert-danger shadow text-center"></div>
         <div th:if="${logout}" th:text="${logout}" class="alert alert-success shadow text-center"></div>
         <div class="user singiBx">
-            <div class="imgBx"><img src="/img/logodef.jpg"></div>
+
+            <div class="imgBx"><a th:href="@{/index}"> <img src="/img/bool.jpg"></a> </div>
             <div class="formBx">
                 <form th:action="@{/logincheck}" method="post" autocomplete="off" class="needs-validation mb-4"
                       novalidate >
@@ -93,7 +94,7 @@
 
                 </form>
             </div>
-            <div class="imgBx"><img src="/img/vector.jpg"></div>
+            <div class="imgBx"><a th:href="@{/}"> <img src="/img/bool.jpg"></a> </div>
 
 
         </div>

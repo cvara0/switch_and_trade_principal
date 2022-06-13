@@ -5,7 +5,7 @@
 <body>
 <!-- Header-->
 <header th:replace="fragments/navbar :: header"></header>
-<div class="container px-lg-5">
+<div class="px-lg-5">
     <div
             id="carouselExampleCaptions"
             class="carousel slide"
@@ -32,12 +32,6 @@
                     data-bs-slide-to="2"
                     aria-label="Slide 3"
             ></button>
-            <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="3"
-                    aria-label="Slide 4"
-            ></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active" style="background:#000">
@@ -45,7 +39,7 @@
                         src="/img/foto1.jpg"
                         class="d-block"
                         alt="..."
-                        width="1100"
+                        width="1400"
                         style="opacity: 0.5;"
 
                 />
@@ -62,7 +56,7 @@
                         src="/img/foto2.jpg"
                         class="d-block"
                         alt="..."
-                        width="1100"
+                        width="1400"
                         style="opacity: 0.5;"
                 />
                 <div class="carousel-caption d-none d-md-block">
@@ -77,23 +71,7 @@
                         src="/img/foto3.jpg"
                         class="d-block"
                         alt="..."
-                        width="1100"
-                        style="opacity: 0.5;"
-                />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>
-                        Si encuentras a alquien que quiera lo que ofreces podras comunicarte y cerrar el trato!!
-                    </p>
-                </div>
-            </div>
-            <div class="carousel-item" style="background:#000">
-                <img
-                        src="/img/logoportada.jpg"
-                        class="d-block"
-                        alt="..."
-                        width="1100"
-                        height="480"
+                        width="1400"
                         style="opacity: 0.5;"
                 />
                 <div class="carousel-caption d-none d-md-block">
@@ -104,26 +82,11 @@
                 </div>
             </div>
         </div>
-        <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev"
-        >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next"
-        >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+
     </div>
 </div>
+
+
 <section class="pt-4">
     <div class="container px-lg-5">
         <!-- Page Features-->

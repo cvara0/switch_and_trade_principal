@@ -11,10 +11,22 @@ h2 {
     font-style: italic;
 }
 body {
-background-image: url("/img/fondo7.png");
-background-attachment: fixed;
-background-size: cover;
-background-repeat: no-repeat;
+    background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+    background-size: 500%;
+    animation: fanimado 10s infinite;
+}
+@keyframes fanimado {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0%, 50%;
+    }
 }
 .card {
   color: rgb(182, 151, 12);

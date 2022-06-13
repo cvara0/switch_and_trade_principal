@@ -40,13 +40,15 @@ public class PerfilServicio implements UserDetailsService {
         perfil.setApellido(dto.getApellido());
         perfil.setTelefono(dto.getTelefono());
         //perfil.setFoto(dto.getFoto());
-        //perfil.setLocalidad(dto.getLocalidad());
+       // perfil.setLocalidad(dto.getLocalidad());
         perfil.setEmail(dto.getEmail());
         perfil.setRol(dto.getRol());
         perfil.setClave(encriptador.encode(dto.getClave()));//se encripta la constrasenia
 
-        if (perfilRepositorio.findAll().isEmpty()) perfil.setRol(Rol.ADMINISTRADOR);
-        else perfil.setRol(Rol.USUARIO);
+        if (perfilRepositorio.findAll().isEmpty())
+            perfil.setRol(Rol.ADMINISTRADOR);
+        else
+            perfil.setRol(Rol.USUARIO);
 
         //emailServicio.send(dto.getEmail());
         perfilRepositorio.save(perfil);

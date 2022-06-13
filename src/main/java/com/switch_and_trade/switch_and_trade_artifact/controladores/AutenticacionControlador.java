@@ -30,7 +30,7 @@ public class AutenticacionControlador {
 
     @GetMapping("/formulario-iniciar-sesion-o-registrar")
     public ModelAndView formularioIniciarSesion(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal,HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("login-form.html");
+        ModelAndView mav = new ModelAndView("formulario-iniciar-sesion-o-registrar.html");
         //parte de formulario iniciar sesion
         if (error != null) mav.addObject("mensajeError", "Email o clave incorrectos");
         if (logout != null) mav.addObject("mensajeSalir", "Sesion finalizada");
