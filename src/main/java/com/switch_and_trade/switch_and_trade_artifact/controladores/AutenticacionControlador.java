@@ -53,8 +53,8 @@ public class AutenticacionControlador {
         return mav;
     }
 
-    //si principal es distinto de null cuando se esta logeado,
-    // entonces si principal!=null me redirige a otra pag, esto es para no iniciar secion de nuevo
+    //si principal es distinto de null cuando se esta logueado,
+    // entonces si principal!=null me redirige a otra pag, esto es para no iniciar sesion de nuevo
     @PostMapping("/registrar")
     public RedirectView registrar(Perfil dto, HttpServletRequest request, RedirectAttributes attribute) {
         RedirectView redirect = new RedirectView("/");

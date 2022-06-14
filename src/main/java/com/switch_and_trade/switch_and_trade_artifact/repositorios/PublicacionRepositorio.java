@@ -35,8 +35,8 @@ public interface PublicacionRepositorio extends JpaRepository<Publicacion, Long>
             "ON " +
                 "propiedad.id_tipo_propiedad_propiedad=tipo_propiedad.id_tipo_propiedad " +
             "WHERE " +
-                "publicacion.id_publicacion=?1" +
-            "AND" +
+                "publicacion.id_publicacion=?1" +//ver
+            "AND" +//ver uso de having
                 "tipo_vehiculo.nombre_tipo_vehiculo " +
             "IN " +
                 "(SELECT " +
@@ -50,7 +50,7 @@ public interface PublicacionRepositorio extends JpaRepository<Publicacion, Long>
                 "WHERE " +
                     "vehiculo.deseado_vehiculo=0)" +
             "OR" +
-                "tipo_vehiculo.nombre_tipo_vehiculo " +
+                "tipo_propiedad.nombre_tipo_propiedad " +
             "IN " +
                 "(SELECT " +
                     "tipo_propiedad.nombre_tipo_propiedad " +
