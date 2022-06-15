@@ -1,14 +1,14 @@
 <header th:fragment="header">
     <nav class="navbar sticky-top navbar-expand-md border-3 border-primary " style="text-decoration:none">
         <div class="container px-lg-5">
-            <a class="navbar-brand" href="index-logueado.html">Switch & Trade</a>
+            <a class="navbar-brand" href="/publicaciones/tabla-todo-publicacion">Switch & Trade</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/automoviles}">vehiculos</a>
+                        <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-vehiculo}">vehiculos</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/propiedades}">Propiedades</a></li>
+                        <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-propiedad}">Propiedades</a></li>
                     <form class="d-flex mb-0 mb-lg-0 ms-5" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     </form>
@@ -21,7 +21,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" th:href="@{/perfil}">Editar Perfil</a></li>
-                            <li><a class="dropdown-item" th:href="@{/mis-publicaciones}">Mis Publicaciones</a></li>
+                            <li><a class="dropdown-item" th:href="@{/publicaciones/tabla-todo-publicacion-perfil}">Mis Publicaciones</a></li>
 
                         </ul>
                     </li>

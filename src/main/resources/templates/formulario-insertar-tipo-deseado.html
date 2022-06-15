@@ -1,0 +1,48 @@
+<head th:replace="fragments/head-forms :: head"></head>
+
+<header th:replace="fragments/navbar-logueado :: header"></header>
+<html>
+<body>
+
+<div class="tarjetas">
+    <div class="row">
+        <div class="col col-lg-12">
+            <h4 class="text-center mt-5 mb-5" style="color: #FFFF"> Añadir deseos</h4>
+            <div class="card text-bg-secondary">
+                <div class="card-header">
+                    <h4 class="text-center">Deseos</h4>
+                </div>
+                <div class="card-body">
+
+                    <select multiple
+                            size="7"
+                            class="form-select "
+                            id="floatingSelect4"
+                            aria-label="Floating label select example"
+                    >
+                        <option value="1">Motocicleta</option>
+                        <option value="2">Automovil</option>
+                        <option value="3">Camioneta</option>
+                        <option value="4">Vehiculo acuatico</option>
+                        <option value="5">Terreno con casa</option>
+                        <option value="6">terreno urbano</option>
+                        <option value="7">Terreno en el monte</option>
+                    </select>
+
+                    <div class="text-center mt-5">
+                        <button type="button" class="btn" style="background-color: rgb(192, 113, 9);">
+                            <a class="nav-link" style="color: #fff">Añadir deseos</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+          <footer th:replace="fragments/footer :: footer"></footer>
+          <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+          <script src="https://kit.fontawesome.com/c9ab963329.js" crossorigin="anonymous"></script>
+          </html>

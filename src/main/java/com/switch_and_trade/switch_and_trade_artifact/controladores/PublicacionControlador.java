@@ -15,15 +15,63 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequiredArgsConstructor
 public class PublicacionControlador {
 //ver nomenclaturas
-    //tabla-publicacion-usuario
-    //tabla-coincidencia-deseado-usuario
-    //tabla-coincidencia-ofrecido-usaurio
-    @GetMapping("/tabla-todo-publicacion")//muestra todo con botones
-    public ModelAndView tabla() {
-        ModelAndView mav = new ModelAndView("index-logueado.html");
-        //mav.addObject("todoProvincia", provinciaServicio.traerTodo());
+    //publicacion-usuario
+    //coincidencia-deseado-usuario
+    //coincidencia-ofrecido-usaurio
+    //tabla-todo-publicacion-vehiculo
+    //tabla-todo-publicacion
+    //tabla-todo-publicacion-propiedad
+
+    @GetMapping("/tabla-todo-publicacion")
+    public ModelAndView tablaTodoPublicacion() {
+        ModelAndView mav = new ModelAndView("tabla-todo-publicacion.html");
         return mav;
     }
+
+    @GetMapping("/tabla-todo-publicacion-vehiculo")
+    public ModelAndView tablaTodoPublicacionVehiculo() {
+        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-vehiculo.html");
+        return mav;
+    }
+
+    @GetMapping("/tabla-todo-publicacion-propiedad")
+    public ModelAndView tablaTodoPublicacionPropiedad() {
+        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-propiedad.html");
+        return mav;
+    }
+
+    @GetMapping("/tabla-todo-publicacion-perfil")///{id}se busca en las publicaciones que tengan ese id de perfil
+    public ModelAndView tablaTodoPublicacionPerfil(/*@PathVariable Long idPerfil*/) {
+        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-perfil.html");
+        return mav;
+    }
+
+    @GetMapping("/formulario-insertar-publicacion")///{id}se busca en las publicaciones que tengan ese id de perfil
+    public ModelAndView publicacionesFormularioInsertarPublicacion(/*@PathVariable Long idPerfil*/) {
+        ModelAndView mav = new ModelAndView("formulario-insertar-publicacion.html");
+        return mav;
+    }
+
+
+
+    @GetMapping("/tabla-publicaciones-que-ofrecen-deseados-de-perfil/{id}")
+    public ModelAndView tablaPublicacionesQueOfrecenDeseadosDePerfil(@PathVariable Long idPerfil) {
+        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-perfil.html");
+        return mav;
+    }
+
+    @GetMapping("/tabla-publicaciones-que-desean-ofrecidos-de-perfil/{id}")
+    public ModelAndView tablaPublicacionesQueDeseanOfrecidosDePerfil(@PathVariable Long idPerfil) {
+        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-perfil.html");
+        return mav;
+    }
+
+    @GetMapping("/tabla-publicaciones-con-coincidencia-exacta/{id}")
+    public ModelAndView tablaPublicacionesQueQfrecenQeseadosDePerfil(@PathVariable Long idPerfil) {
+        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-perfil.html");
+        return mav;
+    }
+
 /*
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/formulario-insertar")

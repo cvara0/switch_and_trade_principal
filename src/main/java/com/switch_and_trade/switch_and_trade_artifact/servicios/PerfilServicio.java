@@ -107,28 +107,10 @@ public class PerfilServicio implements UserDetailsService {
     }
 
     //fin metodos basicos
-/*
+
     // inicio metodos personalizados
-    public List<Perfil> traerTodoOrdenNombreAsc(){
-        return perfilRepositorio.traerTodoOrdenNombreAsc();
-    }
-    public List<Perfil> traerTodoOrdenApellidoAsc(){
-        return perfilRepositorio.traerTodoOrdenApellidoAsc();
-    }
-
-    public List<Perfil> traerTodoOrdenProvinciaAsc(){
-        return perfilRepositorio.traerTodoOrdenProvinciaAsc();
-    }
-
-    public List<Perfil> traerTodoOrdenLocalidadAsc(){
-        return perfilRepositorio.traerTodoOrdenLocalidadAsc();
-    }
-
-    public Perfil traerPorTelefono(Integer telefono){
-        return perfilRepositorio.traerPorTelefono(telefono);
-    }
 
 // fin metodos personalizados
 
-    */
+
 }

@@ -11,4 +11,5 @@ public class IndexControlador {
     public ModelAndView traerIndex() {
         return new ModelAndView("index.html");
     }
+
 }

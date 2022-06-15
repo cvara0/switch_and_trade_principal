@@ -34,36 +34,40 @@ public interface PublicacionRepositorio extends JpaRepository<Publicacion, Long>
                 "propiedad " +
             "ON " +
                 "propiedad.id_tipo_propiedad_propiedad=tipo_propiedad.id_tipo_propiedad " +
+            "JOIN " +
+                "perfil " +
+            "ON " +
+                "publicacion.id_perfil_publicacion=perfil.id_perfil " +
             "WHERE " +
-                "publicacion.id_publicacion=?1" +//ver
-            "AND" +//ver uso de having
+                "perfil.id_perfil=?1 " +//ver
+            "AND " +//ver uso de having
                 "tipo_vehiculo.nombre_tipo_vehiculo " +
             "IN " +
                 "(SELECT " +
                     "tipo_vehiculo.nombre_tipo_vehiculo " +
                 "FROM " +
-                    "tipo_vehiculo  " +
+                    "tipo_vehiculo " +
                 "JOIN " +
                     "vehiculo " +
                 "ON " +
-                    " vehiculo.id_tipo_vehiculo_vehiculo=tipo_vehiculo.id_tipo_vehiculo" +
+                    "vehiculo.id_tipo_vehiculo_vehiculo=tipo_vehiculo.id_tipo_vehiculo " +
                 "WHERE " +
-                    "vehiculo.deseado_vehiculo=0)" +
+                    "vehiculo.deseado_vehiculo=0) " +
             "OR" +
                 "tipo_propiedad.nombre_tipo_propiedad " +
             "IN " +
                 "(SELECT " +
                     "tipo_propiedad.nombre_tipo_propiedad " +
                 "FROM " +
-                    "tipo_propiedad  " +
+                    "tipo_propiedad " +
                 "JOIN " +
                     "propiedad " +
                 "ON " +
-                    " propiedad.id_tipo_propiedad_propiedad=tipo_propiedad.id_tipo_propiedad" +
+                    "propiedad.id_tipo_propiedad_propiedad=tipo_propiedad.id_tipo_propiedad " +
                 "WHERE " +
-                    "propiedad.deseado_propiedad=0)"
+                    "propiedad.deseado_propiedad=0) "
                 ,nativeQuery = true)
-    List<Publicacion> traerPublicacionesQueOfrecenAlgunoDeMisDeseos(Long idPublicacion);
+    List<Publicacion> traerPublicacionesQueOfrecenAlgunoDeMisDeseos(Long idPerfil);
     /*de la publicacion extraigo los tipos deseados, los cuales estan vinculados a los tipos deseados de vehiculo
     y propiedad, ahora debo comparar dichos tipos deseados con los demas en la bd y que a su vez sus propiedades
     y vehiculos correspondientes tengan deseo en false. y el id de la publicacion sera pasado como parametro
