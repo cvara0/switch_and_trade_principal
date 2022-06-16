@@ -28,16 +28,16 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http
                 .authorizeRequests()
-                .antMatchers("/", "/autenticaciones/registrar", "/css/*", "/js/*", "/img/*").permitAll()
+                .antMatchers("/", "/perfiles/insertar", "/css/*", "/js/*", "/img/*").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/autenticaciones/formulario-iniciar-sesion-o-registrar")
+                .loginPage("/perfiles/formulario-iniciar-sesion-o-insertar-perfil")
                 .loginProcessingUrl("/logincheck")//maneja spring , se establece el metodo que procesa la informacion de nuestro login
                 .usernameParameter("emailname")//esto es el name= del input en el html
                 .passwordParameter("clavename")//esto es el name= del input en el html
                 .defaultSuccessUrl("/publicaciones/tabla-todo-publicacion", true)//una vez logueado a que ruta ir, eneste caso index, sin el true va a la ultima pagina visitada
-                .failureUrl("/autenticaciones/formulario-iniciar-sesion-o-registrar?error=true")//no es necesario que sea true se peude poner cualquier cosa,es una query string, dato en la ruta
+                .failureUrl("/perfiles/formulario-iniciar-sesion-o-insertar-perfil?error=true")//no es necesario que sea true se peude poner cualquier cosa,es una query string, dato en la ruta
                 .permitAll()
                 .and()
                 .logout()

@@ -42,7 +42,7 @@ public class PublicacionControlador {
 
     @GetMapping("/tabla-todo-publicacion-perfil")///{id}se busca en las publicaciones que tengan ese id de perfil
     public ModelAndView tablaTodoPublicacionPerfil(/*@PathVariable Long idPerfil*/) {
-        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-perfil.html");
+        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-formulario-actualizar-perfil.html");
         return mav;
     }
 
@@ -56,19 +56,19 @@ public class PublicacionControlador {
 
     @GetMapping("/tabla-publicaciones-que-ofrecen-deseados-de-perfil/{id}")
     public ModelAndView tablaPublicacionesQueOfrecenDeseadosDePerfil(@PathVariable Long idPerfil) {
-        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-perfil.html");
+        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-formulario-actualizar-perfil.html");
         return mav;
     }
 
     @GetMapping("/tabla-publicaciones-que-desean-ofrecidos-de-perfil/{id}")
     public ModelAndView tablaPublicacionesQueDeseanOfrecidosDePerfil(@PathVariable Long idPerfil) {
-        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-perfil.html");
+        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-formulario-actualizar-perfil.html");
         return mav;
     }
 
     @GetMapping("/tabla-publicaciones-con-coincidencia-exacta/{id}")
     public ModelAndView tablaPublicacionesQueQfrecenQeseadosDePerfil(@PathVariable Long idPerfil) {
-        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-perfil.html");
+        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-formulario-actualizar-perfil.html");
         return mav;
     }
 

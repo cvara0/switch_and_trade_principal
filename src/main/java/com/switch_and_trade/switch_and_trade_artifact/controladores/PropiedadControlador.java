@@ -20,14 +20,14 @@ public class PropiedadControlador {
         @GetMapping("/formulario-insertar-propiedad")
         public ModelAndView formularioInsertarPropiedad() {
             ModelAndView mav = new ModelAndView("formulario-insertar-propiedad.html");
-            mav.addObject("objetoPropiedadVacio",new Propiedad());
+            //mav.addObject("objetoPropiedadVacio",new Propiedad());
             return mav;
         }
 
     @PostMapping("/insertar-propiedad")
-    public RedirectView insertarPropiedad(/*Propiedad dto*/) {
+    public RedirectView insertarPropiedad(Propiedad dto) {
             RedirectView redirect=new RedirectView("/tipos-deseados/formulario-insertar-tipo-deseado");
-        //propiedadServicio.crear(dto);
+            propiedadServicio.crear(dto);
 
         return redirect;
     }

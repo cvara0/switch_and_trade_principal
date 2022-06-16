@@ -40,7 +40,7 @@
         <div class="user singupBx">
             <div th:if="${exception}" th:text="${exception}" class="alert alert-danger shadow text-center"></div>
             <div class="formBx">
-                <form th:action="@{/autenticaciones/registrar}" th:object="${objetoPerfil}" method="post">
+                <form th:action="@{/perfiles/insertar-perfil}" th:object="${objetoPerfil}" method="post">
                     <h2>Crear una cuenta</h2>
                     <input type="hidden" th:field="*{eliminado}"/>
                     <div class="form-group mb-3">
