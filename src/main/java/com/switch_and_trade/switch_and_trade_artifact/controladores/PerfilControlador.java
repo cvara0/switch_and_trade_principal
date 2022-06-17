@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.Map;
 
@@ -27,28 +28,28 @@ public class PerfilControlador {
     private final PerfilServicio perfilServicio;
 
     private final LocalidadServicio localidadServicio;
-
+//como acceder al id de perfil una vez logueado
     @GetMapping("/formulario-iniciar-sesion-o-insertar-perfil")
     public ModelAndView formularioIniciarSesionOInsertarPerfil(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("formulario-iniciar-sesion-o-insertar-perfil.html");
         //parte de formulario iniciar sesion
-        if (error != null) mav.addObject("mensajeError", "Email o clave incorrectos");
-        if (logout != null) mav.addObject("mensajeSalir", "Sesion finalizada");
+        //if (error != null) mav.addObject("mensajeError", "Email o clave incorrectos");
+        //if (logout != null) mav.addObject("mensajeSalir", "Sesion finalizada");
         if (principal != null) mav.setViewName("redirect:/");
 
         //parte de formulario registrar
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
-        if (inputFlashMap != null) {//sirve para cuando se registra por primera vez
-            mav.addObject("exception", inputFlashMap.get("atributoFlashExcepcion"));
-            mav.addObject("user", inputFlashMap.get("atributoFlashUsuario"));
-        } else {
+       // if (inputFlashMap != null) {//sirve para cuando se registra por primera vez
+        //    mav.addObject("exception", inputFlashMap.get("atributoFlashExcepcion"));
+         //   mav.addObject("user", inputFlashMap.get("atributoFlashUsuario"));
+        //} else {
             Perfil perfil = new Perfil();
             perfil.setRol(Rol.USUARIO);
             perfil.setEliminado(false);
             //mav.addObject("todoLocalidad",localidadServicio.traerTodo());
             mav.addObject("objetoPerfil", perfil);
-        }
+      //  }
 
         return mav;
     }
@@ -57,11 +58,12 @@ public class PerfilControlador {
     // entonces si principal!=null me redirige a otra pag, esto es para no iniciar sesion de nuevo
     @PostMapping("/insertar-perfil")
     public RedirectView insertarPerfil(Perfil dto, HttpServletRequest request, RedirectAttributes attribute) {
-        RedirectView redirect = new RedirectView("/");
-
+        RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion");
+        //si principal es distinto de null la sesion esta iniciada,
+        //principal o http sesion para que no vuelva al index
         try {
             perfilServicio.insertar(dto);
-            request.login(dto.getEmail(), dto.getClave());
+            request.login(dto.getEmail(), dto.getClave());//autologin
         } catch (IllegalArgumentException e) {
             attribute.addFlashAttribute("atributoFlashUsuario", dto);
             attribute.addFlashAttribute("atributoFlashExcepcion", e.getMessage());
@@ -72,12 +74,35 @@ public class PerfilControlador {
         return redirect;
     }
 
-    @GetMapping("/formulario-actualizar-perfil/{id}")//muestra todo con botones
-    public ModelAndView formularioActualizarPerfil(@PathVariable Long id) {
+    @GetMapping("/formulario-actualizar-perfil/{id}")
+    public ModelAndView formularioActualizarPerfil(@PathVariable Long id, HttpSession session) {//@PathVariable Long id
         ModelAndView mav = new ModelAndView("formulario-actualizar-perfil.html");
-        mav.addObject("objetoMiPerfil", perfilServicio.traerPorId(id));
+
+        if(!session.getAttribute("id").equals(id))//el id del perfil se conserva en toda la sesion, hacerlo para cada metodo
+            return new ModelAndView("index.html");
+        Perfil perfil=perfilServicio.traerPorId(id);
+        mav.addObject("objetoPerfil", perfil);
         return mav;
     }
+
+    @GetMapping("/tabla-perfil")
+    public ModelAndView tablaPerfil(HttpSession session) {
+        ModelAndView mav = new ModelAndView("tabla-perfil.html");
+
+        Perfil perfil=perfilServicio.traerPorId((Long)session.getAttribute("id"));
+        mav.addObject("objetoPerfil", perfil);
+        return mav;
+    }
+
+
+    //@PreAuthorize("hasRole('ADMIN')")
+   @PostMapping("/actualizar-perfil")
+    public RedirectView actualizarPerfil(Perfil dto) {
+        RedirectView redirect = new RedirectView("/perfiles/tabla-perfil");
+        perfilServicio.actualizar(dto);
+        return redirect;
+    }
+
 /*
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/formulario-insertar")

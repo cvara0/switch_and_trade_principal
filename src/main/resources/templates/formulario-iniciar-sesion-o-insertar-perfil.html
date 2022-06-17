@@ -42,6 +42,7 @@
             <div class="formBx">
                 <form th:action="@{/perfiles/insertar-perfil}" th:object="${objetoPerfil}" method="post">
                     <h2>Crear una cuenta</h2>
+                    <input type="hidden" th:field="*{rol}"/>
                     <input type="hidden" th:field="*{eliminado}"/>
                     <div class="form-group mb-3">
                         <input type="email" th:field="*{email}" placeholder="Email" class="form-control"

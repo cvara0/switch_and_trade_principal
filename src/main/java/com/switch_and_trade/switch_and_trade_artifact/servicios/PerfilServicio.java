@@ -33,18 +33,18 @@ public class PerfilServicio implements UserDetailsService {
     @Transactional
     public void insertar(Perfil dto) {
         if (perfilRepositorio.existsByEmail(dto.getEmail())) {
-            throw new IllegalArgumentException("Emal ya registrado!");
+            throw new IllegalArgumentException("Email ya registrado!");
         }
         Perfil perfil = new Perfil();
         perfil.setNombre(dto.getNombre());
         perfil.setApellido(dto.getApellido());
         perfil.setTelefono(dto.getTelefono());
         //perfil.setFoto(dto.getFoto());
-       // perfil.setLocalidad(dto.getLocalidad());
+        //perfil.setLocalidad(dto.getLocalidad());
         perfil.setEmail(dto.getEmail());
-        perfil.setRol(dto.getRol());
+        //perfil.setRol(dto.getRol());
         perfil.setClave(encriptador.encode(dto.getClave()));//se encripta la constrasenia
-
+       // perfil.setRol(Rol.USUARIO);
         if (perfilRepositorio.findAll().isEmpty())
             perfil.setRol(Rol.ADMINISTRADOR);
         else
@@ -56,7 +56,8 @@ public class PerfilServicio implements UserDetailsService {
 
     @Transactional
     public void actualizar(Perfil dto) {
-        Perfil perfil = new Perfil();
+        Perfil perfil = perfilRepositorio.findById(dto.getId()).get();
+        perfil.setRol(dto.getRol());
         perfil.setEmail(dto.getEmail());
         perfil.setClave(dto.getClave());
         perfil.setNombre(dto.getNombre());

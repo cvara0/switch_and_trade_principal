@@ -28,7 +28,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http
                 .authorizeRequests()
-                .antMatchers("/", "/perfiles/insertar", "/css/*", "/js/*", "/img/*").permitAll()
+                .antMatchers("/", "/perfiles/insertar-perfil", "/css/*", "/js/*", "/img/*").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()

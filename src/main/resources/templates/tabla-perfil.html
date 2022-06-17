@@ -10,24 +10,27 @@
     <div class="col-md-8 offset-md-2">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane" aria-selected="true">Datos del Usuario</button>
+          <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab"
+                  data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane"
+                  aria-selected="true">Datos del Usuario
+          </button>
         </li>
-
-
+        <li class="nav-item">
+          <button class="btn btn-primary">
+            <a class="nav-link" th:object="${objetoPerfil}" th:href="@{/perfiles/formulario-actualizar-perfil/__${objetoPerfil.id}__}" style="color: #fff"
+            >Editar</a
+            >
+          </button>
+        </li>
       </ul>
-
-      <form th:action="@{/perfiles/actualizar-perfil}" th:object="${objetoPerfil}" method="post" autocomplete="off"
-            class="needs-validation" enctype="multipart/form-data" novalidate>
-        <input type="hidden" th:field="*{id}">
-        <input type="hidden" th:field="*{clave}">
-        <input type="hidden" th:field="*{email}">
-        <input type="hidden" th:field="*{rol}">
       <div class="tab-content mt-5" id="myTabContent">
-        <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0">
+        <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel"
+             aria-labelledby="usuario-tab" tabindex="0">
           <div class="row mb-2">
             <div class="col-4">
-              <img class="img-thumbnail" src="http://www.manpower.com.ar/TemaPortalReclutamiento/themes/TemaPortalReclutamiento/css/comunidad.talento/img/icon_user.png" alt="usurio">
-              <button class="btn btn-secondary btn-sm mt-2">Cambiar Imagen</button>
+              <img class="img-thumbnail"
+                   src="http://www.manpower.com.ar/TemaPortalReclutamiento/themes/TemaPortalReclutamiento/css/comunidad.talento/img/icon_user.png"
+                   alt="usuario">
             </div>
 
             <div class="col-8">
@@ -41,46 +44,40 @@
               <div class="form-group row mb-2">
                 <label for="nombre" class="col-2">Nombre:</label>
                 <div class="col-8">
-                  <input type="text" class="form-control" th:field="*{nombre}" th:value="${objetoPerfil.nombre}">
+                  <input type="text" class="form-control" th:value="${objetoPerfil.nombre}" disabled>
                 </div>
               </div>
               <div class="form-group row mb-2">
                 <label for="apellido" class="col-2">Apellido:</label>
                 <div class="col-8">
-                  <input type="text" class="form-control" th:field="*{apellido}" th:value="${objetoPerfil.apellido}">
+                  <input type="text" class="form-control" th:value="${objetoPerfil.apellido}" disabled>
                 </div>
               </div>
               <div class="form-group row mb-2">
                 <label for="localidad" class="col-2">Localidad:</label>
                 <div class="col-8">
-                  <input type="text" class="form-control" value="-----">
+                  <input type="text" class="form-control" value="Cainguas" disabled>
                 </div>
               </div>
               <div class="form-group row mb-2">
                 <label for="provincia" class="col-2">Provincia:</label>
                 <div class="col-8">
-                  <input type="text" class="form-control" value="-----">
+                  <input type="text" class="form-control" value="Misiones" disabled>
                 </div>
               </div>
               <div class="form-group row mb-2">
                 <label for="telefono" class="col-2">Telefono:</label>
                 <div class="col-8">
-                  <input type="number" class="form-control" th:field="*{telefono}" th:value="${objetoPerfil.telefono}">
+                  <input type="number" class="form-control" th:value="${objetoPerfil.telefono}" disabled>
                 </div>
               </div>
-              <div class="form-group text-center mt-4">
-                <button type="submit" class="btn btn-danger">Guardar cambios</button>
-              </div>
-
             </div>
           </div>
         </div>
+
       </div>
-      </form>
     </div>
   </div>
-
-
 </div>
 
 
