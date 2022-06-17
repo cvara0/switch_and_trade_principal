@@ -77,9 +77,9 @@ public class PerfilControlador {
     @GetMapping("/formulario-actualizar-perfil/{id}")
     public ModelAndView formularioActualizarPerfil(@PathVariable Long id, HttpSession session) {//@PathVariable Long id
         ModelAndView mav = new ModelAndView("formulario-actualizar-perfil.html");
-
-        if(!session.getAttribute("id").equals(id))//el id del perfil se conserva en toda la sesion, hacerlo para cada metodo
-            return new ModelAndView("index.html");
+//TODO el id del perfil se conserva en toda la sesion, hacerlo para cada metodo
+        if(!session.getAttribute("id").equals(id))
+            return new ModelAndView("redirect:/");
         Perfil perfil=perfilServicio.traerPorId(id);
         mav.addObject("objetoPerfil", perfil);
         return mav;

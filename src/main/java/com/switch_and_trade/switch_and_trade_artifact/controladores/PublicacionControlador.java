@@ -42,7 +42,7 @@ public class PublicacionControlador {
 
     @GetMapping("/tabla-todo-publicacion-perfil")///{id}se busca en las publicaciones que tengan ese id de perfil
     public ModelAndView tablaTodoPublicacionPerfil(/*@PathVariable Long idPerfil*/) {
-        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-formulario-actualizar-perfil.html");
+        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-perfil.html");
         return mav;
     }
 
