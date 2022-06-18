@@ -29,6 +29,7 @@ public class PerfilControlador {
     private final PerfilServicio perfilServicio;
 
     private final LocalidadServicio localidadServicio;
+    private final ProvinciaServicio provinciaServicio;
 //como acceder al id de perfil una vez logueado
     @GetMapping("/formulario-iniciar-sesion-o-insertar-perfil")
     public ModelAndView formularioIniciarSesionOInsertarPerfil(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal, HttpServletRequest request) {
@@ -49,7 +50,9 @@ public class PerfilControlador {
             perfil.setRol(Rol.USUARIO);
             perfil.setEliminado(false);
             //mav.addObject("todoLocalidad",localidadServicio.traerTodo());
-            mav.addObject("objetoPerfil", perfil);
+        mav.addObject("listaProvincia",provinciaServicio.traerTodo());
+        mav.addObject("listaLocalidad",localidadServicio.traerTodo());
+        mav.addObject("objetoPerfil", perfil);
       //  }
 
         return mav;

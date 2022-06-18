@@ -67,7 +67,7 @@ public class ProvinciaServicio {
     public void restablecerPorId(Long id) {
        provinciaRepositorio.restablecerPorId(id);
     }
-//seguir con provincia y localidad
+
 // fin metodos personalizados
 
 }

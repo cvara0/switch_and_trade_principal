@@ -73,20 +73,18 @@
                                required/>
                         <div class="invalid-feedback text-start">phone is required</div>
                     </div>
-
-                    <div class="form-floating mb-3">
-                        <!--  <select
-                                  class="form-select"
-                                  id="floatingSelect"
-                                  aria-label="Floating label select example"
-                                  th:field="*{localidad}"
-                          >
-                          <option selected value="">Localidad</option>
-                              <option th:each="localidad : ${todoLocalidad}" th:text="${localidad.nombre_localidad}"
-                                      th:value="${localidad.id}"></option>
+                    <!--
+                    <div class="form-floating mb-3 ">
+                        <select th:field="*{localidad}" id="localidad" class="form-select" aria-label="Selecciones localidad"
+                                required>
+                            <option selected value="">Author</option>
+                            <option th:each="localidad : ${listaLocalidad}" th:text="${localidad.nombre}"
+                                    th:value="${localidad.id}"></option>
                         </select>
-                        <label for="floatingSelect">Localidad</label>-->
+                        <label for="localidad">Seleccione localidad</label>
+                        <div class="invalid-feedback">localidad es requerida</div>
                     </div>
+                    -->
                     <div class="form-group d-grid gap-2">
                         <button class="btn btn-success" type="submit">Enviar</button>
                     </div>
