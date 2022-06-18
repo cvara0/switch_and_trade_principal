@@ -1,14 +1,20 @@
 package com.switch_and_trade.switch_and_trade_artifact.controladores;
 
+import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Propiedad;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PropiedadServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/propiedades")
@@ -16,13 +22,10 @@ import org.springframework.web.servlet.view.RedirectView;
 public class PropiedadControlador {
 
         private final PropiedadServicio propiedadServicio;
+        private final ProvinciaServicio provinciaServicio;
+        private final PerfilServicio perfilServicio;
 
-        @GetMapping("/formulario-insertar-propiedad")
-        public ModelAndView formularioInsertarPropiedad() {
-            ModelAndView mav = new ModelAndView("formulario-insertar-propiedad.html");
-            //mav.addObject("objetoPropiedadVacio",new Propiedad());
-            return mav;
-        }
+
 
     @PostMapping("/insertar-propiedad")
     public RedirectView insertarPropiedad(Propiedad dto) {

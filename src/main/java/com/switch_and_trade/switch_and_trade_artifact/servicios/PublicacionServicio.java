@@ -26,7 +26,7 @@ public class PublicacionServicio {
         Publicacion publicacion = new Publicacion();
         //publicacion.setPerfil(dto.getPerfil());
         publicacion.setPropiedad(dto.getPropiedad());
-        publicacion.setVehiculo(dto.getVehiculo());
+        //publicacion.setVehiculo(dto.getVehiculo());
         publicacion.setEliminado(dto.getEliminado());
 
         publicacionRepositorio.save(publicacion);
@@ -36,9 +36,9 @@ public class PublicacionServicio {
     public void actualizar(Publicacion dto) {
         Publicacion publicacion = publicacionRepositorio.findById(dto.getId()).get();
 
-        //publicacion.setPerfil(dto.getPerfil());
+        publicacion.setPerfil(dto.getPerfil());
         publicacion.setPropiedad(dto.getPropiedad());
-        publicacion.setVehiculo(dto.getVehiculo());
+        //publicacion.setVehiculo(dto.getVehiculo());
         publicacion.setEliminado(dto.getEliminado());
 
         publicacionRepositorio.save(publicacion);

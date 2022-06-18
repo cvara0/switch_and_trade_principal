@@ -1,6 +1,10 @@
 package com.switch_and_trade.switch_and_trade_artifact.controladores;
 
-import com.switch_and_trade.switch_and_trade_artifact.entidades.Provincia;
+import com.switch_and_trade.switch_and_trade_artifact.entidades.*;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.PropiedadServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.TipoDeseadoServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -10,17 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/publicaciones")
 @RequiredArgsConstructor
 public class PublicacionControlador {
-//ver nomenclaturas
-    //publicacion-usuario
-    //coincidencia-deseado-usuario
-    //coincidencia-ofrecido-usaurio
-    //tabla-todo-publicacion-vehiculo
-    //tabla-todo-publicacion
-    //tabla-todo-publicacion-propiedad
+
+    private final PropiedadServicio propiedadServicio;
+    private final ProvinciaServicio provinciaServicio;
+    private final PerfilServicio perfilServicio;
+    private final TipoDeseadoServicio tipoDeseadoServicio;
+    private final TipoPropiedadServicio tipoPropiedadServicio;
 
     @GetMapping("/tabla-todo-publicacion")
     public ModelAndView tablaTodoPublicacion() {
@@ -28,13 +34,13 @@ public class PublicacionControlador {
         return mav;
     }
 
-    @GetMapping("/tabla-todo-publicacion-vehiculo")
+    @GetMapping("/tabla-todo-publicacion-vehiculo-perfil")
     public ModelAndView tablaTodoPublicacionVehiculo() {
         ModelAndView mav = new ModelAndView("tabla-todo-publicacion-vehiculo.html");
         return mav;
     }
 
-    @GetMapping("/tabla-todo-publicacion-propiedad")
+    @GetMapping("/tabla-todo-publicacion-propiedad-perfil")
     public ModelAndView tablaTodoPublicacionPropiedad() {
         ModelAndView mav = new ModelAndView("tabla-todo-publicacion-propiedad.html");
         return mav;
@@ -46,9 +52,23 @@ public class PublicacionControlador {
         return mav;
     }
 
-    @GetMapping("/formulario-insertar-publicacion")///{id}se busca en las publicaciones que tengan ese id de perfil
-    public ModelAndView publicacionesFormularioInsertarPublicacion(/*@PathVariable Long idPerfil*/) {
-        ModelAndView mav = new ModelAndView("formulario-insertar-publicacion.html");
+    @GetMapping("/formulario-insertar-publicacion-propiedad/{id}")
+    public ModelAndView formularioInsertarPublicacion(@PathVariable Long id, HttpSession session) {
+        ModelAndView mav = new ModelAndView("formulario-insertar-propiedad.html");
+
+        if(!session.getAttribute("id").equals(id))
+            return new ModelAndView("redirect:/");
+
+        Perfil perfil=perfilServicio.traerPorId(id);
+        Propiedad propiedad=new Propiedad();
+
+        //TODO continuar aniadiendo atributos a la publicacion
+        mav.addObject("objetoPerfil",perfil);
+        mav.addObject("objetoPropiedad",propiedad);
+        mav.addObject("listaTipoDeseado",tipoDeseadoServicio.traerTodo());
+        mav.addObject("listaTipoPropiedad",tipoDeseadoServicio.traerTodo());
+
+        mav.addObject("listaProvincia",provinciaServicio.traerTodo());
         return mav;
     }
 
