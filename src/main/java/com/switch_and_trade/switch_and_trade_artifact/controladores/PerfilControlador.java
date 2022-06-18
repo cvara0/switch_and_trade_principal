@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
@@ -75,7 +76,7 @@ public class PerfilControlador {
     }
 
     @GetMapping("/formulario-actualizar-perfil/{id}")
-    public ModelAndView formularioActualizarPerfil(@PathVariable Long id, HttpSession session) {//@PathVariable Long id
+    public ModelAndView formularioActualizarPerfil(@PathVariable Long id,HttpSession session) {//@PathVariable Long id
         ModelAndView mav = new ModelAndView("formulario-actualizar-perfil.html");
 //TODO el id del perfil se conserva en toda la sesion, hacerlo para cada metodo
         if(!session.getAttribute("id").equals(id))
@@ -97,9 +98,9 @@ public class PerfilControlador {
 
     //@PreAuthorize("hasRole('ADMIN')")
    @PostMapping("/actualizar-perfil")
-    public RedirectView actualizarPerfil(Perfil dto) {
+    public RedirectView actualizarPerfil(Perfil dto, @RequestParam(required = false) MultipartFile fotoname) {
         RedirectView redirect = new RedirectView("/perfiles/tabla-perfil");
-        perfilServicio.actualizar(dto);
+        perfilServicio.actualizar(dto,fotoname);
         return redirect;
     }
 

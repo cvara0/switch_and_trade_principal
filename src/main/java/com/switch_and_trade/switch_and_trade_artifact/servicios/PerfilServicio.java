@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -26,7 +27,7 @@ public class PerfilServicio implements UserDetailsService {
     private final PerfilRepositorio perfilRepositorio;
     private final BCryptPasswordEncoder encriptador;//esto se puede hacer porque tengo el bean creado
     private final EmailServicio emailServicio;
-
+    private final FotoServicio fotoServicio;
     // inicio metodos basicos
 
 
@@ -39,6 +40,7 @@ public class PerfilServicio implements UserDetailsService {
         perfil.setNombre(dto.getNombre());
         perfil.setApellido(dto.getApellido());
         perfil.setTelefono(dto.getTelefono());
+        //if (!foto.isEmpty()) perfil.setFoto(fotoServicio.copy(foto));
         //perfil.setFoto(dto.getFoto());
         //perfil.setLocalidad(dto.getLocalidad());
         perfil.setEmail(dto.getEmail());
@@ -55,7 +57,7 @@ public class PerfilServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void actualizar(Perfil dto) {
+    public void actualizar(Perfil dto, MultipartFile foto) {
         Perfil perfil = perfilRepositorio.findById(dto.getId()).get();
         perfil.setRol(dto.getRol());
         perfil.setEmail(dto.getEmail());
@@ -63,7 +65,7 @@ public class PerfilServicio implements UserDetailsService {
         perfil.setNombre(dto.getNombre());
         perfil.setApellido(dto.getApellido());
         perfil.setTelefono(dto.getTelefono());
-        //perfil.setFoto(dto.getFoto());
+        if (!foto.isEmpty()) perfil.setFoto(fotoServicio.copy(foto));
         //perfil.setLocalidad(dto.getLocalidad());
 
         perfilRepositorio.save(perfil);
@@ -106,6 +108,9 @@ public class PerfilServicio implements UserDetailsService {
         //si se trabaja sin roles se envia una lista vacia Collections.emptyList(), en vez de singleton...
         //registra en el contexto de seguridad de spring a ese usuario, si el usuario eprtenece al contexto ingresa a la aplicaciom, sino no
     }
+
+
+
 
     //fin metodos basicos
 

@@ -26,7 +26,8 @@
         <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0">
           <div class="row mb-2">
             <div class="col-4">
-              <img class="img-thumbnail" src="http://www.manpower.com.ar/TemaPortalReclutamiento/themes/TemaPortalReclutamiento/css/comunidad.talento/img/icon_user.png" alt="usurio">
+              <img class="img-thumbnail" th:src="${objetoPerfil.foto} ? @{/uploads/__${objetoPerfil.foto}__} : @{/uploads/fotodefault.jpg}"
+              >
             </div>
 
             <div class="col-8">

@@ -39,8 +39,8 @@ public class Perfil {
     @Column(name = "telefono_perfil",nullable = false)
     private Long telefono;
 
-    //@Column(name="foto_perfil")
-    //private String foto;
+    @Column(name="foto_perfil")
+    private String foto;
 
     //@ManyToOne(fetch = EAGER)
     //@JoinColumn(name="id_localidad_perfil", referencedColumnName = "id_localidad")
