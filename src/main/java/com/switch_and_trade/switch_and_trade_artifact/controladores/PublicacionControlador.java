@@ -1,10 +1,7 @@
 package com.switch_and_trade.switch_and_trade_artifact.controladores;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.*;
-import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
-import com.switch_and_trade.switch_and_trade_artifact.servicios.PropiedadServicio;
-import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
-import com.switch_and_trade.switch_and_trade_artifact.servicios.TipoDeseadoServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -67,7 +64,6 @@ public class PublicacionControlador {
         mav.addObject("objetoPropiedad",propiedad);
         mav.addObject("listaTipoDeseado",tipoDeseadoServicio.traerTodo());
         mav.addObject("listaTipoPropiedad",tipoDeseadoServicio.traerTodo());
-
         mav.addObject("listaProvincia",provinciaServicio.traerTodo());
         return mav;
     }

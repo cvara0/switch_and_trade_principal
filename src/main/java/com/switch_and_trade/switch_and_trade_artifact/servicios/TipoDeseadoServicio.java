@@ -32,7 +32,7 @@ public class TipoDeseadoServicio {
 
         tipoDeseado.setTipoPropiedad(dto.getTipoPropiedad());//tipo propiedad ya esta precargado recordar
         tipoDeseado.setTipoVehiculo(dto.getTipoVehiculo());
-        tipoDeseado.setEliminado(false);
+        tipoDeseado.setEliminado(dto.getEliminado());
         tipoDeseadoRepositorio.save(tipoDeseado);
     }
 

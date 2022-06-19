@@ -1,7 +1,9 @@
 package com.switch_and_trade.switch_and_trade_artifact.servicios;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.TipoDeseado;
+import com.switch_and_trade.switch_and_trade_artifact.entidades.TipoPropiedad;
 import com.switch_and_trade.switch_and_trade_artifact.repositorios.TipoDeseadoRepositorio;
+import com.switch_and_trade.switch_and_trade_artifact.repositorios.TipoPropiedadRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,37 +18,35 @@ public class TipoPropiedadServicio {
 
     //inicio metodos basicos
     @Transactional
-    public void crear(TipoDeseado dto) {
-        TipoDeseado tipoDeseado = new TipoDeseado();
-        tipoDeseado.setTipoPropiedad(dto.getTipoPropiedad());//tipo propiedad ya esta precargado recordar
-        tipoDeseado.setTipoVehiculo(dto.getTipoVehiculo());
-        tipoDeseado.setEliminado(false);
-        tipoDeseadoRepositorio.save(tipoDeseado);
+    public void crear(TipoPropiedad dto) {
+        TipoPropiedad tipoPropiedad = new TipoPropiedad();
+        tipoPropiedad.setEliminado(false);
+        tipoPropiedad.setNombre(dto.getNombre());
+        tipoPropiedadRepositorio.save(tipoPropiedad);
     }
 
     @Transactional
-    public void actualizar(TipoDeseado dto) {
-        TipoDeseado tipoDeseado = tipoDeseadoRepositorio.findById(dto.getId()).get();
+    public void actualizar(TipoPropiedad dto) {
+        TipoPropiedad tipoPropiedad = tipoPropiedadRepositorio.findById(dto.getId()).get();
 
-        tipoDeseado.setTipoPropiedad(dto.getTipoPropiedad());//tipo propiedad ya esta precargado recordar
-        tipoDeseado.setTipoVehiculo(dto.getTipoVehiculo());
-        tipoDeseado.setEliminado(false);
-        tipoDeseadoRepositorio.save(tipoDeseado);
+        tipoPropiedad.setEliminado(false);
+        tipoPropiedad.setNombre(dto.getNombre());
+        tipoPropiedadRepositorio.save(tipoPropiedad);
     }
 
     @Transactional(readOnly = true)
-    public TipoDeseado traerPorId(Long id) {
-        return tipoDeseadoRepositorio.findById(id).get();
+    public TipoPropiedad traerPorId(Long id) {
+        return tipoPropiedadRepositorio.findById(id).get();
     }
 
     @Transactional(readOnly = true)
-    public List<TipoDeseado> traerTodo() {
-        return tipoDeseadoRepositorio.findAll();
+    public List<TipoPropiedad> traerTodo() {
+        return tipoPropiedadRepositorio.findAll();
     }
 
     @Transactional
     public void eliminarPorId(Long id) {
-        tipoDeseadoRepositorio.deleteById(id);
+        tipoPropiedadRepositorio.deleteById(id);
     }
 //fin metodos basicos
 }

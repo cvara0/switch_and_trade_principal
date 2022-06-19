@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TipoVehiculoServicio {
-
+/*
     private final TipoVehiculoRepositorio tipoVehiculoRepositorio;
 
     //inicio metodos basicos
@@ -47,5 +47,7 @@ public class TipoVehiculoServicio {
     public void eliminarPorId(Long id) {
         tipoDeseadoRepositorio.deleteById(id);
     }
+
+ */
 //fin metodos basicos
 }
