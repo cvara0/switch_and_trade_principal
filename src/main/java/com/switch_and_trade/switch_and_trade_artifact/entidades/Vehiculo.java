@@ -58,9 +58,6 @@ public class Vehiculo {
     @Column(name = "tipo_deseado_2_vehiculo")
     private String tipoDeseado2;
 
-    @Column(name = "tipo_deseado_3_vehiculo")
-    private String tipoDeseado3;
-
     @Column(name = "eliminado_vehiculo", nullable = false)
     private Boolean eliminado;
 

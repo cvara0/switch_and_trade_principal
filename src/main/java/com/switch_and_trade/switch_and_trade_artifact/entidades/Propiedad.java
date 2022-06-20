@@ -53,9 +53,6 @@ public class Propiedad {
     @Column(name = "tipo_deseado_2_propiedad")
     private String tipoDeseado2;
 
-    @Column(name = "tipo_deseado_3_propiedad")
-    private String tipoDeseado3;
-
     @Column(name = "eliminado_propiedad", nullable = false)
     private Boolean eliminado;
 

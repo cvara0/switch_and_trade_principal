@@ -36,7 +36,7 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/logincheck")//maneja spring , se establece el metodo que procesa la informacion de nuestro login
                 .usernameParameter("emailname")//esto es el name= del input en el html
                 .passwordParameter("clavename")//esto es el name= del input en el html
-                .defaultSuccessUrl("/propiedades/tabla-todo-publicacion", true)//una vez logueado a que ruta ir, eneste caso index, sin el true va a la ultima pagina visitada
+                .defaultSuccessUrl("/publicaciones/tabla-todo-publicacion", true)//una vez logueado a que ruta ir, eneste caso index, sin el true va a la ultima pagina visitada
                 .failureUrl("/perfiles/formulario-iniciar-sesion-o-insertar-perfil?error=true")//no es necesario que sea true se peude poner cualquier cosa,es una query string, dato en la ruta
                 .permitAll()
                 .and()

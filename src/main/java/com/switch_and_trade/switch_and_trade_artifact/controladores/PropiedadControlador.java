@@ -25,12 +25,12 @@ public class PropiedadControlador {
     private final PerfilServicio perfilServicio;
     private final TipoPropiedadServicio tipoPropiedadServicio;
 
-    @GetMapping("/tabla-todo-propiedad-perfil")
+    @GetMapping("/tabla-todo-propiedad")
     public ModelAndView tablaTodoPublicacionPropiedad() {
-        ModelAndView mav = new ModelAndView("tabla-todo-propiedad-perfil.html");
+        ModelAndView mav = new ModelAndView("tabla-todo-propiedad.html");
         return mav;
     }
-    
+
     @GetMapping("/formulario-insertar-propiedad/{id}")
     public ModelAndView formularioInsertarPropiedad(@PathVariable Long id, HttpSession session) {
         ModelAndView mav = new ModelAndView("formulario-insertar-propiedad.html");
