@@ -30,13 +30,14 @@ public class PropiedadServicio {
         propiedad.setTipoPropiedad(dto.getTipoPropiedad());
         propiedad.setPerfil(dto.getPerfil());
         if (!foto.isEmpty()) propiedad.setFoto(fotoServicio.copy(foto));
+        propiedad.setDescripcionCorta(dto.getDescripcionCorta());
         propiedad.setDescripcion(dto.getDescripcion());
         propiedad.setSuperficie(dto.getSuperficie());
         propiedad.setProvincia(dto.getProvincia());
         propiedad.setLocalidad(dto.getLocalidad());
         propiedad.setTipoDeseado1(dto.getTipoDeseado1());
         propiedad.setTipoDeseado2(dto.getTipoDeseado2());
-        propiedad.setEliminado(dto.getEliminado());
+        propiedad.setEliminado(false);
         propiedadRepositorio.save(propiedad);
     }
 
@@ -47,13 +48,13 @@ public class PropiedadServicio {
         propiedad.setTipoPropiedad(dto.getTipoPropiedad());
         propiedad.setPerfil(dto.getPerfil());
         if (!foto.isEmpty()) propiedad.setFoto(fotoServicio.copy(foto));
+        propiedad.setDescripcionCorta(dto.getDescripcionCorta());
         propiedad.setDescripcion(dto.getDescripcion());
         propiedad.setSuperficie(dto.getSuperficie());
         propiedad.setProvincia(dto.getProvincia());
         propiedad.setLocalidad(dto.getLocalidad());
         propiedad.setTipoDeseado1(dto.getTipoDeseado1());
         propiedad.setTipoDeseado2(dto.getTipoDeseado2());
-        propiedad.setTipoDeseado3(dto.getTipoDeseado3());
         propiedad.setEliminado(dto.getEliminado());
 
         propiedadRepositorio.save(propiedad);

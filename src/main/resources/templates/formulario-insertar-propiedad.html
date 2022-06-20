@@ -28,120 +28,104 @@ deseados 2 select
                     <h4 class="text-center">Inserte Datos de Propiedad</h4>
                 </div>
                 <div class="card-body">
-                    <form th:action="@{/propiedades/insertar-propiedad}" th:object="${objetoPropiedad}" method="post" autocomplete="off" class="needs-validation" novalidate><!-- th:action="@{/propiedades/insertar-propiedad}" method="post"  th:object="${objetoPropiedadVacio}"-->
-
+                    <form th:action="@{/propiedades/insertar-propiedad}" th:object="${objetoPropiedad}" method="post" autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate><!-- th:action="@{/propiedades/insertar-propiedad}" method="post"  th:object="${objetoPropiedadVacio}"-->
+                        <input type="hidden" th:field="*{perfil}">
+                        <input type="hidden" th:field="*{eliminado}">
+                        <div class="form-floating mb-3">
+                            <label for="photo">Upload image</label>
+                            <input class="form-control mt-2" type="file" name="propiedadfotoname" accept="image/*">
+                            </div>
                         <div class="form-floating mb-3">
                             <select th:field="*{tipoPropiedad}" class="form-select" id="floatingSelect" aria-label="Floating label select example"> <!---->
                                 <option selected value="">
                                     Selecciona el tipo de propiedad
                                 </option >
                                 <option th:each="tipoPropiedad : ${listaTipoPropiedad}" th:text="${tipoPropiedad.nombre}" th:value="${tipoPropiedad.id}">
-
                                 </option>
-                                <option value="1">tipo 1</option>
-                                <option value="2">tipo 2</option>
-                                <option value="3">tipo 3</option>
-                                <option value="4">tipo 4</option>
-                                <option value="5">tipo 5</option>
                             </select>
                             <label for="floatingSelect">Tipo de propiedad</label>
                         </div>
-
+                        <div class="form-floating mb-3">
+                            <div class="mb-3 text-center">
+                                <label for="exampleFormControlTextarea1" class="form-label"
+                                >Añade una descripcion corta</label>
+                                <textarea
+                                        class="form-control"
+                                        id="exampleFormControlTextarea1"
+                                        rows="1"
+                                        th:field="*{descripcionCorta}">
+                                      </textarea>
+                            </div>
+                        </div>
                         <label for="basic-url" class="form-label">Ingrese superficie de la propiedad</label>
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3">Metros cuadrados::</span>
-                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <span class="input-group-text" id="basic-addon3">Metros cuadrados (m2):</span>
+                            <input th:field="*{superficie}" type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                         </div>
                     <div class="form-floating mb-3">
                         <select
                                 class="form-select"
                                 id="floatingSelect9"
                                 aria-label="Floating label select example"
+                                th:field="*{provincia}" th:value="${objetoPropiedad.provincia}"
                         >
                             <option selected value="">
                                 Selecciona la provincia donde se ubica la propiedad
-                                      </option>
-                                      <option value="1">Misiones</option>
-                                      <option value="2">Mendoza</option>
-                                      <option value="3">Jupiter</option>
-                                      <option value="4">Tierra do fogo</option>
-                                      <option value="5">Corrientes</option>
+                            </option>
+                            <option th:each="i : ${listaProvincia}" th:text="${i}"
+                                    th:value="${i}"></option>
                                   </select>
                         <label for="floatingSelect2">Provincia</label>
                               </div>
+
+
                         <label for="basic-url" class="form-label">Departamento</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addvon3">Departamento:</span>
-                            <input type="number" class="form-control" id="basic-furl" aria-describedby="basic-addon3">
+                            <input th:field="*{localidad}" type="text" class="form-control" id="basic-furl" aria-describedby="basic-addon3">
                         </div>
                              <div class="form-floating mb-3">
-
-                                  <div class="mb-3 text-center">
-                                      <label for="formFile" class="form-label"
-                                      >Cargar Foto de la propiedad</label>
-                                      <input class="form-control" type="file" id="formFile" />
-                                  </div>
                                   <div class="mb-3 text-center">
                                       <label for="exampleFormControlTextarea1" class="form-label"
-                                      >Añade una descripcion de la propiedad</label>
+                                      >Añade una descripcion completa</label>
                                       <textarea
                                               class="form-control"
-                                              id="exampleFormControlTextarea1"
-                                              rows="3">
+                                              id="exampleFormControlTextareas1"
+                                              rows="3"
+                                              th:field="*{descripcion}">
                                       </textarea>
                                   </div>
-
                               </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect1" aria-label="Floating label select example"> <!--th:field="*{tipoPropiedad}"-->
-                                <option selected>
-                                    Selecciona lo que deseas.
-                                </option><!--th:each="tipoPropiedad : ${listaTipoPropiedad}" th:text="${tipoPropiedad.nombre}" th:value="${tipoPropiedad.id}"-->
-                                <option >
-
+                            <select  class="form-select"
+                                     id="floatingSelect1"
+                                     aria-label="Floating label select example"
+                                     th:field="*{tipoDeseado1}" th:value="${objetoPropiedad.tipoDeseado1}"> <!--th:field="*{tipoPropiedad}"-->
+                                <option selected value="">
+                                    tipo de propiedad o vehiculo que quieres a cambio
                                 </option>
-                                <option value="1">tipo 1</option>
-                                <option value="2">tipo 2</option>
-                                <option value="3">tipo 3</option>
-                                <option value="4">tipo 4</option>
-                                <option value="5">tipo 5</option>
+                                <option th:each="i : ${listaTipoPropiedad}" th:text="${i.nombre}"
+                                        th:value="${i.id}"></option>
                             </select>
                             <label for="floatingSelect1">Que deseas a cambio?</label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect2" aria-label="Floating label select example"> <!--th:field="*{tipoPropiedad}"-->
-                                <option selected>
-                                    Selecciona lo que deseas.
-                                </option><!--th:each="tipoPropiedad : ${listaTipoPropiedad}" th:text="${tipoPropiedad.nombre}" th:value="${tipoPropiedad.id}"-->
-                                <option >
 
+                        <div class="form-floating mb-3">
+                            <select  class="form-select"
+                                     id="floatingSelect2"
+                                     aria-label="Floating label select example"
+                                     th:field="*{tipoDeseado2}" th:value="${objetoPropiedad.tipoDeseado2}"> <!--th:field="*{tipoPropiedad}"-->
+                                <option selected value="">
+                                    tipo de propiedad o vehiculo que quieres a cambio
                                 </option>
-                                <option value="1">tipo 1</option>
-                                <option value="2">tipo 2</option>
-                                <option value="3">tipo 3</option>
-                                <option value="4">tipo 4</option>
-                                <option value="5">tipo 5</option>
+                                <option th:each="i : ${listaTipoPropiedad}" th:text="${i.nombre}"
+                                        th:value="${i.id}"></option>
                             </select>
                             <label for="floatingSelect2">Que deseas a cambio?</label>
                         </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect3" aria-label="Floating label select example"> <!--th:field="*{tipoPropiedad}"-->
-                                <option selected>
-                                    Selecciona lo que deseas.
-                                </option><!--th:each="tipoPropiedad : ${listaTipoPropiedad}" th:text="${tipoPropiedad.nombre}" th:value="${tipoPropiedad.id}"-->
-                                <option >
 
-                                </option>
-                                <option value="1">tipo 1</option>
-                                <option value="2">tipo 2</option>
-                                <option value="3">tipo 3</option>
-                                <option value="4">tipo 4</option>
-                                <option value="5">tipo 5</option>
-                            </select>
-                            <label for="floatingSelect3">Que deseas a cambio?</label>
-                        </div>
                               <div class="text-center">
-                                  <button type="button" class="btn" style="background-color: rgb(192, 113, 9);">
+                                  <button type="submit" class="btn" style="background-color: rgb(192, 113, 9);">
                                       <a class="nav-link" style="color: #fff">Cargar mi propiedad</a>
                                   </button>
 

@@ -34,6 +34,9 @@ public class Vehiculo {
     @Column(name="foto_vehiculo")
     private String foto;
 
+    @Column(name = "descripcion_corta_vehiculo",length = 50,nullable = false)
+    private String descripcionCorta;
+
     @Column(name = "descripcion_vehiculo", columnDefinition = "TEXT", nullable = true)
     private String descripcion;
 

@@ -31,14 +31,14 @@ public class PropiedadControlador {
         return mav;
     }
 
-    @GetMapping("/formulario-insertar-propiedad/{id}")
-    public ModelAndView formularioInsertarPropiedad(@PathVariable Long id, HttpSession session) {
+    @GetMapping("/formulario-insertar-propiedad")
+    public ModelAndView formularioInsertarPropiedad(HttpSession session) {//@PathVariable Long id,
         ModelAndView mav = new ModelAndView("formulario-insertar-propiedad.html");
 
-        if(!session.getAttribute("id").equals(id))
-            return new ModelAndView("redirect:/");
+        //if(!session.getAttribute("id").equals(id))
+           // return new ModelAndView("redirect:/");
 
-        Perfil perfil=perfilServicio.traerPorId(id);
+        Perfil perfil=perfilServicio.traerPorId((Long) session.getAttribute("id"));
         Propiedad propiedad =new Propiedad();
         propiedad.setPerfil(perfil);
 
@@ -51,12 +51,12 @@ public class PropiedadControlador {
 
 
     @PostMapping("/insertar-propiedad")
-    public RedirectView insertarPublicacionPropiedad(Propiedad dto, @RequestParam(required = false) MultipartFile fotoname) {
-        RedirectView redirect = new RedirectView("/provincias/tabla");
+    public RedirectView insertarPublicacionPropiedad(Propiedad dto, @RequestParam(required = false) MultipartFile propiedadfotoname) {
+        RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
         try {
-            propiedadServicio.insertar(dto,fotoname);
+            propiedadServicio.insertar(dto,propiedadfotoname);
         } catch (IllegalArgumentException e) {
-            redirect.setUrl("/provincias/formulario-insertar");
+            redirect.setUrl("/provincias/formulario-insertar-propiedad");
         }
 
         return redirect;
