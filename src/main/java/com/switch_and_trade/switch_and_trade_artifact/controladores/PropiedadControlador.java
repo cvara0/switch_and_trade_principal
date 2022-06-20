@@ -24,34 +24,13 @@ public class PropiedadControlador {
     private final ListaProvincia listaProvincia;
     private final PerfilServicio perfilServicio;
     private final TipoPropiedadServicio tipoPropiedadServicio;
-    /*TODO
-     * mezclar 2 listas y mndarlas al index logueado para mostrrar todas las publicaciones mexcladas
-     * */
-    @GetMapping("/tabla-todo-propiedad")
-    public ModelAndView tablaTodoPropiedad() {//llaman al mismo html con vehiculo pero le mandan cosas diferentes
-        ModelAndView mav = new ModelAndView("tabla-todo-publicacion.html");
 
-        return mav;
-    }
-
-    @GetMapping("/tabla-todo-publicacion-vehiculo-perfil")
-    public ModelAndView tablaTodoPublicacionVehiculo() {
-        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-vehiculo.html");
-        return mav;
-    }
-
-    @GetMapping("/tabla-todo-publicacion-propiedad-perfil")
+    @GetMapping("/tabla-todo-propiedad-perfil")
     public ModelAndView tablaTodoPublicacionPropiedad() {
-        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-propiedad.html");
+        ModelAndView mav = new ModelAndView("tabla-todo-propiedad-perfil.html");
         return mav;
     }
-
-    @GetMapping("/tabla-todo-publicacion-perfil")///{id}se busca en las publicaciones que tengan ese id de perfil
-    public ModelAndView tablaTodoPublicacionPerfil(/*@PathVariable Long idPerfil*/) {
-        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-perfil.html");
-        return mav;
-    }
-
+    
     @GetMapping("/formulario-insertar-propiedad/{id}")
     public ModelAndView formularioInsertarPropiedad(@PathVariable Long id, HttpSession session) {
         ModelAndView mav = new ModelAndView("formulario-insertar-propiedad.html");
@@ -61,12 +40,12 @@ public class PropiedadControlador {
 
         Perfil perfil=perfilServicio.traerPorId(id);
         Propiedad propiedad =new Propiedad();
+        propiedad.setPerfil(perfil);
 
-        //TODO continuar aniadiendo atributos a la publicacion
-        mav.addObject("objetoPerfil",perfil);
         mav.addObject("objetoPropiedad", propiedad);
         mav.addObject("listaTipoPropiedad",tipoPropiedadServicio.traerTodo());
         mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
+        mav.addObject("listaTipoDeseado",listaProvincia.getListaProvincia() /*concatenar arraylist tipo deseado tipo propiedad*/);
         return mav;
     }
 
@@ -84,25 +63,6 @@ public class PropiedadControlador {
     }
 
 
-
-
-    @GetMapping("/tabla-publicaciones-que-ofrecen-deseados-de-perfil/{id}")
-    public ModelAndView tablaPublicacionesQueOfrecenDeseadosDePerfil(@PathVariable Long idPerfil) {
-        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-formulario-actualizar-perfil.html");
-        return mav;
-    }
-
-    @GetMapping("/tabla-publicaciones-que-desean-ofrecidos-de-perfil/{id}")
-    public ModelAndView tablaPublicacionesQueDeseanOfrecidosDePerfil(@PathVariable Long idPerfil) {
-        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-formulario-actualizar-perfil.html");
-        return mav;
-    }
-
-    @GetMapping("/tabla-publicaciones-con-coincidencia-exacta/{id}")
-    public ModelAndView tablaPublicacionesQueQfrecenQeseadosDePerfil(@PathVariable Long idPerfil) {
-        ModelAndView mav = new ModelAndView("tabla-coincidencias-de-formulario-actualizar-perfil.html");
-        return mav;
-    }
 
 /*
     @PreAuthorize("hasRole('ADMIN')")

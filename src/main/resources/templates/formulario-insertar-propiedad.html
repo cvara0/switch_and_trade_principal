@@ -1,3 +1,16 @@
+<!--
+orden de aparicion
+
+perfil input hidden
+foto input
+tipopropiedad select
+descripcion text
+superficie number
+provincia select
+localidad text
+deseados select
+-->
+
 <head th:replace="fragments/head-matches :: head"></head>
 
 <header th:replace="fragments/navbar-logueado :: header"></header>
@@ -19,7 +32,7 @@
 
                         <div class="form-floating mb-3">
                             <select th:field="*{tipoPropiedad}" class="form-select" id="floatingSelect" aria-label="Floating label select example"> <!---->
-                                <option selected>
+                                <option selected value="">
                                     Selecciona el tipo de propiedad
                                 </option >
                                 <option th:each="tipoPropiedad : ${listaTipoPropiedad}" th:text="${tipoPropiedad.nombre}" th:value="${tipoPropiedad.id}">
@@ -45,7 +58,7 @@
                                 id="floatingSelect9"
                                 aria-label="Floating label select example"
                         >
-                            <option selected>
+                            <option selected value="">
                                 Selecciona la provincia donde se ubica la propiedad
                                       </option>
                                       <option value="1">Misiones</option>
