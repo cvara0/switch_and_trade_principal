@@ -47,44 +47,56 @@
                     <div class="form-group mb-3">
                         <input type="email" th:field="*{email}" placeholder="Email" class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">Email is required</div>
+                        <div class="invalid-feedback text-start">Email requerida</div>
                     </div>
                     <div class="form-group mb-3">
                         <input type="password" th:field="*{clave}"  placeholder="Password"
                                class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">Password is required</div>
+                        <div class="invalid-feedback text-start">Clave requerida</div>
                     </div>
                     <div class="form-group mb-3">
                         <input type="text" th:field="*{nombre}"  placeholder="Nombre"
                                class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">Name is required</div>
+                        <div class="invalid-feedback text-start">Nombre requerido</div>
                     </div>
                     <div class="form-group mb-3">
                         <input type="text" th:field="*{apellido}"  placeholder="Apellido"
                                class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">surname is required</div>
+                        <div class="invalid-feedback text-start">Apellido requerido</div>
                     </div>
                     <div class="form-group mb-3">
                         <input type="number" th:field="*{telefono}"  placeholder="telofono"
                                class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">phone is required</div>
+                        <div class="invalid-feedback text-start">Telefono requerido</div>
                     </div>
-                    <!--
-                    <div class="form-floating mb-3 ">
-                        <select th:field="*{localidad}" id="localidad" class="form-select" aria-label="Selecciones localidad"
-                                required>
-                            <option selected value="">Author</option>
-                            <option th:each="localidad : ${listaLocalidad}" th:text="${localidad.nombre}"
-                                    th:value="${localidad.id}"></option>
-                        </select>
-                        <label for="localidad">Seleccione localidad</label>
-                        <div class="invalid-feedback">localidad es requerida</div>
+
+
+                        <div class="form-floating mb-3">
+                            <select class="form-select"
+                                    id="floatingSelect2"
+                                    aria-label="Floating label select example"
+                                    th:field="*{provincia}">
+                                <option selected>
+                                    Selecciona la provincia de donde usted es
+                                </option>
+                                <option th:each="i : ${listaProvincia}" th:text="${i.nombre}"
+                                        th:value="${i.id}"></option>
+
+                            </select>
+                            <label for="floatingSelect2">Provincia</label>
+                            <div class="invalid-feedback">Provincia requerida</div>
+                        </div>
+
+                    <label for="basic-url" class="form-label">Localidad</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addvon3">Localidad:</span>
+                        <input type="text" th:field="*{localidad}" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                     </div>
-                    -->
+
                     <div class="form-group d-grid gap-2">
                         <button class="btn btn-success" type="submit">Enviar</button>
                     </div>

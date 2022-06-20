@@ -3,7 +3,6 @@ package com.switch_and_trade.switch_and_trade_artifact.controladores;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.*;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +21,6 @@ public class PublicacionControlador {
     private final PropiedadServicio propiedadServicio;
     private final ProvinciaServicio provinciaServicio;
     private final PerfilServicio perfilServicio;
-    private final TipoDeseadoServicio tipoDeseadoServicio;
     private final TipoPropiedadServicio tipoPropiedadServicio;
 
     @GetMapping("/tabla-todo-publicacion")
@@ -51,22 +49,35 @@ public class PublicacionControlador {
 
     @GetMapping("/formulario-insertar-publicacion-propiedad/{id}")
     public ModelAndView formularioInsertarPublicacion(@PathVariable Long id, HttpSession session) {
-        ModelAndView mav = new ModelAndView("formulario-insertar-propiedad.html");
+        ModelAndView mav = new ModelAndView("formulario-insertar-publicacion-propiedad.html");
 
         if(!session.getAttribute("id").equals(id))
             return new ModelAndView("redirect:/");
 
         Perfil perfil=perfilServicio.traerPorId(id);
-        Propiedad propiedad=new Propiedad();
+        Propiedad propiedad =new Propiedad();
 
         //TODO continuar aniadiendo atributos a la publicacion
         mav.addObject("objetoPerfil",perfil);
-        mav.addObject("objetoPropiedad",propiedad);
-        mav.addObject("listaTipoDeseado",tipoDeseadoServicio.traerTodo());
-        mav.addObject("listaTipoPropiedad",tipoDeseadoServicio.traerTodo());
+        mav.addObject("objetoPropiedad", propiedad);
+
         mav.addObject("listaProvincia",provinciaServicio.traerTodo());
         return mav;
     }
+
+
+    @PostMapping("/insertar-publicacion-propiedad")
+    public RedirectView insertarPublicacionPropiedad(Publicacion dto) {
+        RedirectView redirect = new RedirectView("/provincias/tabla");
+        try {
+            provinciaServicio.insertar(dto);
+        } catch (IllegalArgumentException e) {
+            redirect.setUrl("/provincias/formulario-insertar");
+        }
+
+        return redirect;
+    }
+
 
 
 

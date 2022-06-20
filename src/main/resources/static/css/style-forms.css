@@ -1,48 +1,109 @@
-body {
-background-image: url("/img/fondo7.png");
-background-attachment: fixed;
-background-size: cover;
-background-repeat: no-repeat;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+.portada{
+margin:auto;
+padding: auto;
+width:80%;
+height:120px;
+text-align: center;
+justify-content: center;
+display:flex;
+background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+background-size: 500%;
+animation: fanimado 10s infinite;
+border-radius: 5px;
 }
-
-
+.container a{
+color:gold;
+}
 * {
-	padding: 0;
-	margin: 0;
-	text-decoration: none;
-	box-sizing: border-box;
-	border: none;
+  font-family: "Poppins", sans-serif;
+}
+.navbar {
+  background-color: #55545459;
+}
+h2 {
+    font-style: italic;
+}
+body{
+background-image: url("/img/fondazo2.jpg");
+background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
 }
 
-.tarjetas{
-	display: flex;
-	justify-content: center;
 
-    align-items: center;
+@keyframes fanimado {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0%, 50%;
+    }
 }
-
+i{
+    color: #00C400;
+    font-size: 40px;
+}
+.match{
+    display: flex;
+    justify-content: center;
+    min-height: 50vh;
+    flex-wrap: wrap;
+}
 .card {
-box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
-   margin-bottom: 100px;
-   width: 100%;
-   border-radius: 6px;
-   -webkit-border-radius: 6px;
-   -moz-border-radius: 6px;
-   -ms-border-radius: 6px;
-   -o-border-radius: 6px;
-   overflow: hidden;
-   box-shadow: 0px 1px 10px rgba(0, 0, 0,0.2);
-
-
- }
-
-
-.button {
-	border-radius: 3rem;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	color: var(--white-text);
-	font-size: 1.2rem;
-	padding: .8rem 1.5rem;
-	letter-spacing: .1rem;
-	align-self: flex-end;
+ background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+    background-size: 500%;
+    animation: fanimado 10s;
+  color: #000000;
+  position: relative;
+    width: 600px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0,0.2);
+  cursor: pointer;
+  transition: all 400ms ease;
+  -webkit-transition: all 400ms ease;
+  -moz-transition: all 400ms ease;
+  -ms-transition: all 400ms ease;
+  -o-transition: all 400ms ease;
 }
+
+.card li {
+ background-image: linear-gradient(135deg,rgb(206, 175, 2), gold);
+  list-style: none;
+  padding: 10px;
+ color: #000000;
+}
+
+
+.card img {
+  width: 100%;
+  height: 200px;
+}
+.btn {
+  margin-bottom: 20px;
+}
+.portada{
+margin:auto;
+padding: auto;
+width:80%;
+height:120px;
+text-align: center;
+justify-content: center;
+display:flex;
+background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+background-size: 500%;
+animation: fanimado 10s ;
+border-radius: 5px;
+}
+

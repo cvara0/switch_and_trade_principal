@@ -7,8 +7,6 @@ import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 
-import java.util.List;
-
 import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.IDENTITY;
 @Entity
@@ -24,24 +22,37 @@ public class Publicacion {
     @Column(name="id_publicacion")
     private Long id;
 
-    @Column(name = "eliminado_publicacion", nullable = false)
-    private Boolean eliminado;
-
     @ManyToOne(fetch = EAGER)
-    @JoinColumn(name = "id_perfil_publicacion", referencedColumnName = "id_perfil", nullable = true)
+    @JoinColumn(name = "id_perfil_publicacion", referencedColumnName = "id_perfil",nullable = false)
     private Perfil perfil;
 
     @ManyToOne(fetch = EAGER)//no se puede tener el mismo vechiculo en 2 publicaciones
-    @JoinColumn(name = "id_vehiculo_publicacion", referencedColumnName = "id_vehiculo", nullable = true)
+    @JoinColumn(name = "id_vehiculo_publicacion", referencedColumnName = "id_vehiculo")
     private Vehiculo vehiculo;
 
     @ManyToOne(fetch = EAGER)
-    @JoinColumn(name = "id_propiedad_publicacion", referencedColumnName = "id_propiedad", nullable = true)
+    @JoinColumn(name = "id_propiedad_publicacion", referencedColumnName = "id_propiedad")
     private Propiedad propiedad;
 
     @ManyToOne(fetch = EAGER)
-    @JoinColumn(name="id_tipo_deseado_publicacion", referencedColumnName = "id_tipo_deseado")
-    private TipoDeseado tipoDeseado;
+    @JoinColumn(name="id_provincia_publicacion", referencedColumnName = "id_provincia")
+    private Provincia provincia;
 
+    @Column(name = "localidad_publicacion",length = 60,nullable = false)
+    private String localidad;
+
+    @Column(name = "tipo_deseado_1_publicacion", nullable = false)
+    private String tipoDeseado1;
+
+    @Column(name = "tipo_deseado_2_publicacion")
+    private String tipoDeseado2;
+
+    @Column(name = "tipo_deseado_3_publicacion")
+    private String tipoDeseado3;
+
+    @Column(name = "eliminado_publicacion", nullable = false)
+    private Boolean eliminado;
+
+    
     //fecha
 }

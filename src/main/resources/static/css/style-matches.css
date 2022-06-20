@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+.portada{
+margin:auto;
+padding: auto;
+width:80%;
+height:120px;
+text-align: center;
+justify-content: center;
+display:flex;
+background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+background-size: 500%;
+animation: fanimado 10s infinite;
+border-radius: 5px;
+}
+.container a{
+color:gold;
+}
+* {
+  font-family: "Poppins", sans-serif;
+  
+}
+.navbar {
+  background-color: #55545459;
+}
+h2 {
+    font-style: italic;
+}
+body{
+background-image: url("/img/fondazo2.jpg");
+background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+@keyframes fanimado {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0%, 50%;
+    }
+}
+i{
+    color: #00C400;
+    font-size: 40px;
+}
+.match{
+    display: flex;
+    justify-content: center;
+    min-height: 70vh;
+    flex-wrap: wrap;
+}
+.card {
+ background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+    background-size: 500%;
+    animation: fanimado 10s;
+  color: #000000;
+  position: relative;
+    width: 550px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0,0.2);
+  cursor: pointer;
+  transition: all 400ms ease;
+  -webkit-transition: all 400ms ease;
+  -moz-transition: all 400ms ease;
+  -ms-transition: all 400ms ease;
+  -o-transition: all 400ms ease;
+}
+
+.card li {
+ background-image: linear-gradient(135deg,rgb(206, 175, 2), gold);
+  list-style: none;
+  padding: 10px;
+ color: #000000;
+}
+
+
+.card img {
+  width: 100%;
+  height: 200px;
+}
+.btn {
+  margin-bottom: 20px;
+}
+.portada{
+margin:auto;
+padding: auto;
+width:80%;
+height:120px;
+text-align: center;
+justify-content: center;
+display:flex;
+background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+background-size: 500%;
+animation: fanimado 10s ;
+border-radius: 5px;
+}
+.nido{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+}
+.tarjeta{
+    position: relative;
+    width: 400px;
+    height: 350px;
+    margin: 60px;
+
+}
+.tarjeta .face{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   backface-visibility: hidden;
+   -webkit-backface-visibility: hidden;
+   border-radius: 10px;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   -ms-border-radius: 10px;
+   -o-border-radius: 10px;
+   overflow: hidden;
+   transition: .5s;
+   -webkit-transition: .5s;
+   -moz-transition: .5s;
+   -ms-transition: .5s;
+   -o-transition: .5s;
+}
+.tarjeta .front{
+    transform: perspective(600px) rotateY(0deg);
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    -moz-transform: perspective(600px) rotateY(0deg);
+    -ms-transform: perspective(600px) rotateY(0deg);
+    -o-transform: perspective(600px) rotateY(0deg);
+    box-shadow: 0 5px 10px #000;
+
+}
+.tarjeta .front img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+.tarjeta .front h3{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: antiquewhite;
+    background: rgba(0,0,0,.5);
+    text-align: center;
+}
+.tarjeta .back {
+    transform: perspective(600px) rotateY(180deg);
+    -webkit-transform: perspective(600px) rotateY(180deg);
+    -moz-transform: perspective(600px) rotateY(180deg);
+    -ms-transform: perspective(600px) rotateY(180deg);
+    -o-transform: perspective(600px) rotateY(180deg);
+    background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+       background-size: 500%;
+       animation: fanimado 10s infinite;
+    padding: 15px;
+    color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 5px 10px #000;
+}
+.tarjeta .back h4{
+    font-size: 20px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+
+}
+
+.tarjeta .back img{
+    border-radius: 20%;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    -ms-border-radius: 20%;
+    -o-border-radius: 20%;
+}
+.tarjeta:hover .front{
+    transform: perspective(600px) rotateY(180deg);
+    -webkit-transform: perspective(600px) rotateY(180deg);
+    -moz-transform: perspective(600px) rotateY(180deg);
+    -ms-transform: perspective(600px) rotateY(180deg);
+    -o-transform: perspective(600px) rotateY(180deg);
+}
+.tarjeta:hover .back{
+    transform: perspective(600px) rotateY(360deg);
+    -webkit-transform: perspective(600px) rotateY(360deg);
+    -moz-transform: perspective(600px) rotateY(360deg);
+    -ms-transform: perspective(600px) rotateY(360deg);
+    -o-transform: perspective(600px) rotateY(360deg);
+}

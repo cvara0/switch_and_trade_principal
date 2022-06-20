@@ -1,13 +1,10 @@
 package com.switch_and_trade.switch_and_trade_artifact.controladores;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
-import com.switch_and_trade.switch_and_trade_artifact.entidades.Provincia;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Rol;
-import com.switch_and_trade.switch_and_trade_artifact.servicios.LocalidadServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +25,6 @@ import java.util.Map;
 public class PerfilControlador {
     private final PerfilServicio perfilServicio;
 
-    private final LocalidadServicio localidadServicio;
     private final ProvinciaServicio provinciaServicio;
 //como acceder al id de perfil una vez logueado
     @GetMapping("/formulario-iniciar-sesion-o-insertar-perfil")
@@ -46,13 +42,9 @@ public class PerfilControlador {
         //    mav.addObject("exception", inputFlashMap.get("atributoFlashExcepcion"));
          //   mav.addObject("user", inputFlashMap.get("atributoFlashUsuario"));
         //} else {
-            Perfil perfil = new Perfil();
-            perfil.setRol(Rol.USUARIO);
-            perfil.setEliminado(false);
-            //mav.addObject("todoLocalidad",localidadServicio.traerTodo());
+
         mav.addObject("listaProvincia",provinciaServicio.traerTodo());
-        mav.addObject("listaLocalidad",localidadServicio.traerTodo());
-        mav.addObject("objetoPerfil", perfil);
+        mav.addObject("objetoPerfil", new Perfil());
       //  }
 
         return mav;
@@ -92,7 +84,6 @@ public class PerfilControlador {
     @GetMapping("/tabla-perfil")
     public ModelAndView tablaPerfil(HttpSession session) {
         ModelAndView mav = new ModelAndView("tabla-perfil.html");
-
         Perfil perfil=perfilServicio.traerPorId((Long)session.getAttribute("id"));
         mav.addObject("objetoPerfil", perfil);
         return mav;

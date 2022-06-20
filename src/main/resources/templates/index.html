@@ -1,163 +1,106 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
+
+
 <head th:replace="fragments/head :: head"></head>
-
 <body>
-<!-- Header-->
-<header th:replace="fragments/navbar :: header"></header>
-<div class="px-lg-5">
-    <div
-            id="carouselExampleCaptions"
-            class="carousel slide"
-            data-bs-ride="false"
-    >
-        <div class="carousel-indicators">
+<header class="mb-5">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a th:href="@{/}" class="navbar-brand">switch and trade</a>
             <button
+                    class="navbar-toggler"
                     type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="0"
-                    class="active"
-                    aria-current="true"
-                    aria-label="Slide 1"
-            ></button>
-            <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="1"
-                    aria-label="Slide 2"
-            ></button>
-            <button
-                    type="button"
-                    data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide-to="2"
-                    aria-label="Slide 3"
-            ></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" style="background:#000">
-                <img
-                        src="/img/foto1.jpg"
-                        class="d-block"
-                        alt="..."
-                        width="1400"
-                        style="opacity: 0.5;"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/perfiles/formulario-iniciar-sesion-o-insertar-perfil}">Entrar</a>
+                    </li>
 
-                />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Switch and trade</h5>
-                    <p>
-                        Primera pagina de intercambio de bienes priorizando tu
-                        privacidad!
-                    </p>
-                </div>
-            </div>
-            <div class="carousel-item" style="background:#000";>
-                <img
-                        src="/img/foto2.jpg"
-                        class="d-block"
-                        alt="..."
-                        width="1400"
-                        style="opacity: 0.5;"
-                />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Switch & Trade</h5>
-                    <p>
-                        Publica lo que tienes para lo que ofreses y indica aquello que buscas
-                    </p>
-                </div>
-            </div>
-            <div class="carousel-item" style="background:#000">
-                <img
-                        src="/img/foto3.jpg"
-                        class="d-block"
-                        alt="..."
-                        width="1400"
-                        style="opacity: 0.5;"
-                />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>
-                        Si encuentras a alquien que quiera lo que ofreces podras comunicarte y cerrar el trato!!
-                    </p>
-                </div>
+                </ul>
             </div>
         </div>
-
+    </nav>
+    <div class="img-portada">
+        <img src="/img/pexels.gif" alt="">
+    </div>
+</header>
+<row>
+    <div class="text-center">
+        <h1>Bienvenido a PermutAr</h1>
+        <h2> Donde priorizamos su privacidad!</h2>
+    </div>
+</row>
+<div class="card">
+    <div class="face front">
+        <img src="/img/foto2.jpg" alt="">
+        <h3> Trato</h3>
+    </div>
+    <div class="face back">
+        <h3>Trato</h3>
+        <p>El trato en privacidad es nuestra prioridad, que solo puedan contactar contigo,
+            las personas que tienen lo que necesitas
+        </p>
+    </div>
+</div>
+<div class="card">
+    <div class="face front">
+        <img src="/img/foto1.jpg" alt="">
+        <h3> Privacidad</h3>
+    </div>
+    <div class="face back">
+        <h3>Trato</h3>
+        <p>El trato en privacidad es nuestra prioridad, que solo puedan contactar contigo,
+            las personas que tienen lo que necesitas
+        </p>
+    </div>
+</div>
+<div class="card">
+    <div class="face front">
+        <img src="/img/foto1.jpg" alt="">
+        <h3> Seguridad</h3>
+    </div>
+    <div class="face back">
+        <h3>Trato</h3>
+        <p>El trato en privacidad es nuestra prioridad, que solo puedan contactar contigo,
+            las personas que tienen lo que necesitas
+        </p>
+    </div>
+</div>
+<div class="card">
+<div class="face front">
+    <img src="/img/foto3.jpg" alt="">
+    <h3> Confianza</h3>
+</div>
+<div class="face back">
+    <h3>Trato</h3>
+    <p>El trato en privacidad es nuestra prioridad, que solo puedan contactar contigo,
+        las personas que tienen lo que necesitas
+    </p>
+</div>
+</div>
+<div class="card">
+    <div class="face front">
+        <img src="/img/foto2.jpg" alt="">
+        <h3> Trato</h3>
+    </div>
+    <div class="face back">
+        <h3>Deseos</h3>
+        <p>El trato en privacidad es nuestra prioridad, que solo puedan contactar contigo,
+            las personas que tienen lo que necesitas
+        </p>
     </div>
 </div>
 
-
-<section class="pt-4">
-    <div class="container px-lg-5">
-        <!-- Page Features-->
-        <div class="row gx-lg-5">
-            <div class="col-lg-4 col-xxl-4">
-                <a class="nav-link" href="/login-form.html">
-                <div class="card">
-                    <img src="/img/gol.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quicd on the cardhe bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique ;" >Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-
-                </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-xxl-4">
-                <a class="nav-link" href="/login-form.html">
-                <div class="card" >
-                    <img src="/img/gol.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Gol Trend</h5>
-                        <p class="card-text">En realidad no se si es un gol trend pero bueno</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique ;" >Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-
-                </div>
-                </a>
-            </div>
-
-            <div class="col-lg-4 col-xxl-4 ">
-
-
-                <a class="nav-link" href="/login-form.html">
-                <div class="card" >
-                    <img src="/img/partner.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">partner</h5>
-                        <p class="card-text">Ni idea si es una partner o no o que es que es no se.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique ;" >Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-
-                </div>
-                </a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<footer th:replace="fragments/footer :: footer"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script src="https://kit.fontawesome.com/c9ab963329.js" crossorigin="anonymous"></script>
-
 </body>
-
 </html>

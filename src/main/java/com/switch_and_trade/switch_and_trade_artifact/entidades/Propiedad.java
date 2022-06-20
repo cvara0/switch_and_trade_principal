@@ -24,28 +24,25 @@ public class Propiedad {
     @Column(name="id_propiedad")
     private Long id;
 
-    @Column(name="superficie_propiedad", nullable = false)
-    private Integer superficie;
-
-    @Column(name="descripcion_propiedad", columnDefinition = "TEXT", nullable = true)
-    private String descripcion;
-
-    @Column(name="foto_propiedad")
-    private String foto;
-
-    @Column(name = "deseado_propiedad", nullable = false)
-    private Boolean deseado;
-
-    @Column(name = "eliminado_propiedad", nullable = false)
-    private Boolean eliminado;
-
     @ManyToOne(fetch = EAGER)
     @JoinColumn(name="id_tipo_propiedad_propiedad", referencedColumnName = "id_tipo_propiedad")
     private TipoPropiedad tipoPropiedad;
 
-    @ManyToOne(fetch = EAGER)
-    @JoinColumn(name="id_provincia_propiedad", referencedColumnName = "id_provincia")
-    private Provincia provincia;
+    @Column(name="foto_propiedad")
+    private String foto;
+
+    @Column(name="descripcion_propiedad", columnDefinition = "TEXT", nullable = true)
+    private String descripcion;
+
+    @Column(name="superficie_propiedad", nullable = false)
+    private Integer superficie;
+
+    @Column(name = "eliminado_propiedad", nullable = false)
+    private Boolean eliminado;
+
+
+
+
 
 
 

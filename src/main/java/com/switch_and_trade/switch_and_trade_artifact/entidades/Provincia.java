@@ -16,6 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name="provincia")
 @SQLDelete(sql = "UPDATE provincia SET eliminado_provincia = true WHERE id = ?")
 public class Provincia {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name="id_provincia")

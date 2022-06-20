@@ -1,15 +1,11 @@
 package com.switch_and_trade.switch_and_trade_artifact.servicios;
 
-import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
-import com.switch_and_trade.switch_and_trade_artifact.entidades.Propiedad;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Publicacion;
-import com.switch_and_trade.switch_and_trade_artifact.entidades.Vehiculo;
 import com.switch_and_trade.switch_and_trade_artifact.repositorios.PublicacionRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,6 +21,9 @@ public class PublicacionServicio {
     public void insertar(Publicacion dto) {
         Publicacion publicacion = new Publicacion();
         //publicacion.setPerfil(dto.getPerfil());
+        publicacion.setTipoDeseado1(dto.getTipoDeseado1());
+        publicacion.setTipoDeseado2(dto.getTipoDeseado2());
+        publicacion.setTipoDeseado3(dto.getTipoDeseado3());
         publicacion.setPropiedad(dto.getPropiedad());
         //publicacion.setVehiculo(dto.getVehiculo());
         publicacion.setEliminado(dto.getEliminado());

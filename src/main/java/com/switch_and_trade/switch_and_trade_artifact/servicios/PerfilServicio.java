@@ -37,33 +37,37 @@ public class PerfilServicio implements UserDetailsService {
             throw new IllegalArgumentException("Email ya registrado!");
         }
         Perfil perfil = new Perfil();
-        perfil.setNombre(dto.getNombre());
-        perfil.setApellido(dto.getApellido());
-        perfil.setTelefono(dto.getTelefono());
-        //perfil.setLocalidad(dto.getLocalidad());
         perfil.setEmail(dto.getEmail());
         perfil.setClave(encriptador.encode(dto.getClave()));//se encripta la constrasenia
-
         if (perfilRepositorio.findAll().isEmpty())
             perfil.setRol(Rol.ADMINISTRADOR);
         else
             perfil.setRol(Rol.USUARIO);
+        perfil.setProvincia(dto.getProvincia());
+        perfil.setLocalidad(dto.getLocalidad());
+        perfil.setNombre(dto.getNombre());
+        perfil.setApellido(dto.getApellido());
+        perfil.setTelefono(dto.getTelefono());
+        perfil.setEliminado(false);
+
+        perfilRepositorio.save(perfil);
 
         //emailServicio.send(dto.getEmail());
-        perfilRepositorio.save(perfil);
     }
 
     @Transactional
     public void actualizar(Perfil dto, MultipartFile foto) {
         Perfil perfil = perfilRepositorio.findById(dto.getId()).get();
-        perfil.setRol(dto.getRol());
         perfil.setEmail(dto.getEmail());
-        perfil.setClave(dto.getClave());
+        perfil.setClave(encriptador.encode(dto.getClave()));//se encripta la constrasenia
+        perfil.setRol(dto.getRol());
+        perfil.setProvincia(dto.getProvincia());
+        perfil.setLocalidad(dto.getLocalidad());
+        if (!foto.isEmpty()) perfil.setFoto(fotoServicio.copy(foto));
         perfil.setNombre(dto.getNombre());
         perfil.setApellido(dto.getApellido());
         perfil.setTelefono(dto.getTelefono());
-        if (!foto.isEmpty()) perfil.setFoto(fotoServicio.copy(foto));
-        //perfil.setLocalidad(dto.getLocalidad());
+        perfil.setEliminado(dto.getEliminado());
 
         perfilRepositorio.save(perfil);
     }

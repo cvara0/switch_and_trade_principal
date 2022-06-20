@@ -1,8 +1,6 @@
 package com.switch_and_trade.switch_and_trade_artifact.servicios;
 
-import com.switch_and_trade.switch_and_trade_artifact.entidades.TipoDeseado;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.TipoPropiedad;
-import com.switch_and_trade.switch_and_trade_artifact.repositorios.TipoDeseadoRepositorio;
 import com.switch_and_trade.switch_and_trade_artifact.repositorios.TipoPropiedadRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

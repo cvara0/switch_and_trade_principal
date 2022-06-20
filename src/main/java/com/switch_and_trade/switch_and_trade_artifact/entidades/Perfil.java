@@ -30,26 +30,31 @@ public class Perfil {
     @Column(name = "clave_perfil", nullable = false)
     private String clave;
 
-    @Column(name = "nombre_perfil",length = 50,nullable = false)
+    @Enumerated(STRING)
+    @Column(name = "rol_perfil", nullable = false)
+    private Rol rol;
+
+    @ManyToOne(fetch = EAGER)
+    @JoinColumn(name="id_provincia_perfil", referencedColumnName = "id_provincia")
+    private Provincia provincia;
+
+    @Column(name = "localidad_perfil",length = 60,nullable = false)
+    private String localidad;
+
+    @Column(name="foto_perfil")
+    private String foto;
+
+    @Column(name = "nombre_perfil",length = 60,nullable = false)
     private String nombre;
 
-    @Column(name = "apellido_perfil",length = 50,nullable = false)
+    @Column(name = "apellido_perfil",length = 60,nullable = false)
     private String apellido;
 
     @Column(name = "telefono_perfil",nullable = false)
     private Long telefono;
 
-    @Column(name="foto_perfil")
-    private String foto;
-
-    //@ManyToOne(fetch = EAGER)
-    //@JoinColumn(name="id_localidad_perfil", referencedColumnName = "id_localidad")
-    //private Localidad localidad;
-
     @Column(name = "eliminado_perfil", nullable = false)
     private Boolean eliminado=false;
 
-    @Enumerated(STRING)
-    @Column(name = "rol_perfil", nullable = false)
-    private Rol rol;
+
 }

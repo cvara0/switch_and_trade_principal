@@ -11,62 +11,7 @@ import java.util.List;
 public interface PublicacionRepositorio extends JpaRepository<Publicacion, Long> {
 
 
-    @Query(value = "SELECT * " +
-            "FROM " +
-                "publicacion " +
-            "JOIN " +
-                "tipo_deseado " +
-            "ON " +
-                "publicacion.id_tipo_deseado_publicacion=tipo_deseado.id_tipo_deseado " +
-            "JOIN " +
-                "tipo_propiedad " +
-            "ON " +
-                "tipo_deseado.id_tipo_propiedad_tipo_deseado=tipo_propiedad.id_tipo_propiedad " +
-            "JOIN " +
-                "tipo_vehiculo " +
-            "ON " +
-                "tipo_deseado.id_tipo_vehiculo_tipo_deseado=tipo_vehiculo.id_tipo_vehiculo " +
-            "JOIN " +
-                "vehiculo " +
-            "ON " +
-                "vehiculo.id_tipo_vehiculo_vehiculo=tipo_vehiculo.id_tipo_vehiculo " +
-            "JOIN " +
-                "propiedad " +
-            "ON " +
-                "propiedad.id_tipo_propiedad_propiedad=tipo_propiedad.id_tipo_propiedad " +
-            "JOIN " +
-                "perfil " +
-            "ON " +
-                "publicacion.id_perfil_publicacion=perfil.id_perfil " +
-            "WHERE " +
-                "perfil.id_perfil=?1 " +//ver
-            "AND " +//ver uso de having
-                "tipo_vehiculo.nombre_tipo_vehiculo " +
-            "IN " +
-                "(SELECT " +
-                    "tipo_vehiculo.nombre_tipo_vehiculo " +
-                "FROM " +
-                    "tipo_vehiculo " +
-                "JOIN " +
-                    "vehiculo " +
-                "ON " +
-                    "vehiculo.id_tipo_vehiculo_vehiculo=tipo_vehiculo.id_tipo_vehiculo " +
-                "WHERE " +
-                    "vehiculo.deseado_vehiculo=0) " +
-            "OR" +
-                "tipo_propiedad.nombre_tipo_propiedad " +
-            "IN " +
-                "(SELECT " +
-                    "tipo_propiedad.nombre_tipo_propiedad " +
-                "FROM " +
-                    "tipo_propiedad " +
-                "JOIN " +
-                    "propiedad " +
-                "ON " +
-                    "propiedad.id_tipo_propiedad_propiedad=tipo_propiedad.id_tipo_propiedad " +
-                "WHERE " +
-                    "propiedad.deseado_propiedad=0) "
-                ,nativeQuery = true)
+    @Query(value = " ",nativeQuery = true)
     List<Publicacion> traerPublicacionesQueOfrecenAlgunoDeMisDeseos(Long idPerfil);
     /*de la publicacion extraigo los tipos deseados, los cuales estan vinculados a los tipos deseados de vehiculo
     y propiedad, ahora debo comparar dichos tipos deseados con los demas en la bd y que a su vez sus propiedades
