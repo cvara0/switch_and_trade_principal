@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/vehiculos")
 @RequiredArgsConstructor
 public class VehiculoControlador {
-
+    //esto no parece ser necesario
     private final VehiculoServicio vehiculoServicio;
-
+/*
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @GetMapping
     public ModelAndView traerTodoVehiculo(){
@@ -31,6 +31,8 @@ public class VehiculoControlador {
         mav.addObject("TodoVehiculoPorAnioAsc",vehiculoServicio.traerTodoOrdenAnio(true));
         return mav;
     }
+    */
+
 /*
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @GetMapping

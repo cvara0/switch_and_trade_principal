@@ -13,7 +13,7 @@ import java.util.List;
 public class VehiculoServicio {
     private final VehiculoRepositorio vehiculoRepositorio;
 //inicio metodos basicos
-
+/*
     @Transactional
     public void insertar(Vehiculo dto) {
 
@@ -57,6 +57,7 @@ public class VehiculoServicio {
     public void eliminarPorId(Long id) {
         vehiculoRepositorio.deleteById(id);
     }
+    */
 //fin metodos basicos
 
     // inicio metodos personalizados

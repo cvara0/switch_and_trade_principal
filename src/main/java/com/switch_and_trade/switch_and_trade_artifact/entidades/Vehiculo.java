@@ -27,6 +27,10 @@ public class Vehiculo {
     @JoinColumn(name="id_tipo_vehiculo_vehiculo", referencedColumnName = "id_tipo_vehiculo")
     private TipoVehiculo tipoVehiculo;//preguntarse que es lo que se comparte entre entidades
 
+    @ManyToOne(fetch = EAGER)
+    @JoinColumn(name = "id_perfil_vehiculo", referencedColumnName = "id_perfil",nullable = false)
+    private Perfil perfil;
+
     @Column(name="foto_vehiculo")
     private String foto;
 
@@ -41,6 +45,21 @@ public class Vehiculo {
 
     @Column(name = "modelo_vehiculo", length = 60, nullable = false)
     private String modelo;
+
+    @Column(name = "provincia_vehiculo",length = 60,nullable = false)
+    private String provincia;
+
+    @Column(name = "localidad_vehiculo",length = 60,nullable = false)
+    private String localidad;
+
+    @Column(name = "tipo_deseado_1_vehiculo", nullable = false)
+    private String tipoDeseado1;
+
+    @Column(name = "tipo_deseado_2_vehiculo")
+    private String tipoDeseado2;
+
+    @Column(name = "tipo_deseado_3_vehiculo")
+    private String tipoDeseado3;
 
     @Column(name = "eliminado_vehiculo", nullable = false)
     private Boolean eliminado;

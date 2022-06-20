@@ -1,49 +1,66 @@
 package com.switch_and_trade.switch_and_trade_artifact.servicios;
 
+import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Propiedad;
+import com.switch_and_trade.switch_and_trade_artifact.entidades.TipoPropiedad;
 import com.switch_and_trade.switch_and_trade_artifact.repositorios.PropiedadRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import javax.persistence.*;
 import java.util.List;
+
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Service
 @RequiredArgsConstructor
 public class PropiedadServicio {
 
     private final PropiedadRepositorio propiedadRepositorio;
+    private final FotoServicio fotoServicio;
 
     //inicio metodos basicos
     @Transactional
-    public void crear(Propiedad dto) {
+    public void insertar(Propiedad dto, MultipartFile foto) {
         Propiedad propiedad = new Propiedad();
-        propiedad.setSuperficie(dto.getSuperficie());
-        propiedad.setDescripcion(dto.getDescripcion());
-        propiedad.setFoto(dto.getFoto());
-        propiedad.setDeseado(dto.getDeseado());
-        propiedad.setEliminado(dto.getEliminado());
         propiedad.setTipoPropiedad(dto.getTipoPropiedad());
+        propiedad.setPerfil(dto.getPerfil());
+        if (!foto.isEmpty()) propiedad.setFoto(fotoServicio.copy(foto));
+        propiedad.setDescripcion(dto.getDescripcion());
+        propiedad.setSuperficie(dto.getSuperficie());
         propiedad.setProvincia(dto.getProvincia());
-
+        propiedad.setLocalidad(dto.getLocalidad());
+        propiedad.setTipoDeseado1(dto.getTipoDeseado1());
+        propiedad.setTipoDeseado2(dto.getTipoDeseado2());
+        propiedad.setTipoDeseado3(dto.getTipoDeseado3());
+        propiedad.setEliminado(dto.getEliminado());
         propiedadRepositorio.save(propiedad);
     }
 
     @Transactional
-    public void actualizar(Propiedad dto) {
+    public void actualizar(Propiedad dto, MultipartFile foto) {
         Propiedad propiedad = propiedadRepositorio.findById(dto.getId()).get();
 
-        propiedad.setSuperficie(dto.getSuperficie());
-        propiedad.setDescripcion(dto.getDescripcion());
-        propiedad.setFoto(dto.getFoto());
-        propiedad.setDeseado(dto.getDeseado());
-        propiedad.setEliminado(dto.getEliminado());
         propiedad.setTipoPropiedad(dto.getTipoPropiedad());
+        propiedad.setPerfil(dto.getPerfil());
+        if (!foto.isEmpty()) propiedad.setFoto(fotoServicio.copy(foto));
+        propiedad.setDescripcion(dto.getDescripcion());
+        propiedad.setSuperficie(dto.getSuperficie());
         propiedad.setProvincia(dto.getProvincia());
+        propiedad.setLocalidad(dto.getLocalidad());
+        propiedad.setTipoDeseado1(dto.getTipoDeseado1());
+        propiedad.setTipoDeseado2(dto.getTipoDeseado2());
+        propiedad.setTipoDeseado3(dto.getTipoDeseado3());
+        propiedad.setEliminado(dto.getEliminado());
 
         propiedadRepositorio.save(propiedad);
     }
+
+
 
     @Transactional(readOnly = true)
     public Propiedad traerPorId(Long id) {

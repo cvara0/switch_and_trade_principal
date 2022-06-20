@@ -4,7 +4,7 @@
 <html>
 <body>
 <div class="portada text-center mt-4">
-    <h2 class="mt-5 mb-5">creando formulario</h2>
+    <h2 class="mt-5 mb-5">Publica tu propiedad inmueble y lo que buscas a cambio</h2>
 </div>
 <div class="match">
     <div class="row mt-5">
@@ -15,14 +15,14 @@
                     <h4 class="text-center">Inserte Datos de Propiedad</h4>
                 </div>
                 <div class="card-body">
-                    <form autocomplete="off" class="needs-validation" novalidate><!-- th:action="@{/propiedades/insertar-propiedad}" method="post"  th:object="${objetoPropiedadVacio}"-->
+                    <form th:action="@{/propiedades/insertar-propiedad}" th:object="${objetoPropiedad}" method="post" autocomplete="off" class="needs-validation" novalidate><!-- th:action="@{/propiedades/insertar-propiedad}" method="post"  th:object="${objetoPropiedadVacio}"-->
 
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"> <!--th:field="*{tipoPropiedad}"-->
+                            <select th:field="*{tipoPropiedad}" class="form-select" id="floatingSelect" aria-label="Floating label select example"> <!---->
                                 <option selected>
                                     Selecciona el tipo de propiedad
-                                </option><!--th:each="tipoPropiedad : ${listaTipoPropiedad}" th:text="${tipoPropiedad.nombre}" th:value="${tipoPropiedad.id}"-->
-                                <option >
+                                </option >
+                                <option th:each="tipoPropiedad : ${listaTipoPropiedad}" th:text="${tipoPropiedad.nombre}" th:value="${tipoPropiedad.id}">
 
                                 </option>
                                 <option value="1">tipo 1</option>

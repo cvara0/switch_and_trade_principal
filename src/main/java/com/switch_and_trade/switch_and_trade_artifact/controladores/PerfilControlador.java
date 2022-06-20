@@ -1,8 +1,7 @@
 package com.switch_and_trade.switch_and_trade_artifact.controladores;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
-import com.switch_and_trade.switch_and_trade_artifact.entidades.Rol;
-import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
+import com.switch_and_trade.switch_and_trade_artifact.listasPreCargadas.ListaProvincia;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,8 +23,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PerfilControlador {
     private final PerfilServicio perfilServicio;
+    private final ListaProvincia listaProvincia;
 
-    private final ProvinciaServicio provinciaServicio;
 //como acceder al id de perfil una vez logueado
     @GetMapping("/formulario-iniciar-sesion-o-insertar-perfil")
     public ModelAndView formularioIniciarSesionOInsertarPerfil(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal, HttpServletRequest request) {
@@ -43,7 +42,7 @@ public class PerfilControlador {
          //   mav.addObject("user", inputFlashMap.get("atributoFlashUsuario"));
         //} else {
 
-        mav.addObject("listaProvincia",provinciaServicio.traerTodo());
+        mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
         mav.addObject("objetoPerfil", new Perfil());
       //  }
 
@@ -78,6 +77,7 @@ public class PerfilControlador {
             return new ModelAndView("redirect:/");
         Perfil perfil=perfilServicio.traerPorId(id);
         mav.addObject("objetoPerfil", perfil);
+        mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
         return mav;
     }
 

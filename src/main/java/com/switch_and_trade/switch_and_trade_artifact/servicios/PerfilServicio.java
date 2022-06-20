@@ -59,15 +59,15 @@ public class PerfilServicio implements UserDetailsService {
     public void actualizar(Perfil dto, MultipartFile foto) {
         Perfil perfil = perfilRepositorio.findById(dto.getId()).get();
         perfil.setEmail(dto.getEmail());
-        perfil.setClave(encriptador.encode(dto.getClave()));//se encripta la constrasenia
-        perfil.setRol(dto.getRol());
+        //perfil.setClave(encriptador.encode(dto.getClave()));//se encripta la constrasenia
+        //perfil.setRol(dto.getRol());
         perfil.setProvincia(dto.getProvincia());
         perfil.setLocalidad(dto.getLocalidad());
         if (!foto.isEmpty()) perfil.setFoto(fotoServicio.copy(foto));
         perfil.setNombre(dto.getNombre());
         perfil.setApellido(dto.getApellido());
         perfil.setTelefono(dto.getTelefono());
-        perfil.setEliminado(dto.getEliminado());
+        //perfil.setEliminado(dto.getEliminado());
 
         perfilRepositorio.save(perfil);
     }

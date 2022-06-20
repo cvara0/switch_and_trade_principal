@@ -20,7 +20,7 @@ public class FotoServicio {
             Files.copy(foto.getInputStream(), photoPath, StandardCopyOption.REPLACE_EXISTING);
             return photoName;
         } catch (IOException e) {
-            throw new IllegalArgumentException("Error saving image");
+            throw new IllegalArgumentException("Error al guardar imagen");
         }
     }
 }

@@ -28,6 +28,10 @@ public class Propiedad {
     @JoinColumn(name="id_tipo_propiedad_propiedad", referencedColumnName = "id_tipo_propiedad")
     private TipoPropiedad tipoPropiedad;
 
+    @ManyToOne(fetch = EAGER)
+    @JoinColumn(name = "id_perfil_propiedad", referencedColumnName = "id_perfil",nullable = false)
+    private Perfil perfil;
+
     @Column(name="foto_propiedad")
     private String foto;
 
@@ -37,13 +41,22 @@ public class Propiedad {
     @Column(name="superficie_propiedad", nullable = false)
     private Integer superficie;
 
+    @Column(name = "provincia_propiedad",length = 60,nullable = false)
+    private String provincia;
+
+    @Column(name = "localidad_propiedad",length = 60,nullable = false)
+    private String localidad;
+
+    @Column(name = "tipo_deseado_1_propiedad", nullable = false)
+    private String tipoDeseado1;
+
+    @Column(name = "tipo_deseado_2_propiedad")
+    private String tipoDeseado2;
+
+    @Column(name = "tipo_deseado_3_propiedad")
+    private String tipoDeseado3;
+
     @Column(name = "eliminado_propiedad", nullable = false)
     private Boolean eliminado;
-
-
-
-
-
-
 
 }

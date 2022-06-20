@@ -34,9 +34,8 @@ public class Perfil {
     @Column(name = "rol_perfil", nullable = false)
     private Rol rol;
 
-    @ManyToOne(fetch = EAGER)
-    @JoinColumn(name="id_provincia_perfil", referencedColumnName = "id_provincia")
-    private Provincia provincia;
+    @Column(name = "provincia_perfil",length = 60,nullable = false)
+    private String provincia;
 
     @Column(name = "localidad_perfil",length = 60,nullable = false)
     private String localidad;
