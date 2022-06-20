@@ -35,7 +35,10 @@ public class Propiedad {
     @Column(name="foto_propiedad")
     private String foto;
 
-    @Column(name="descripcion_propiedad", columnDefinition = "TEXT", nullable = true)
+    @Column(name = "descripcion_corta_propiedad",length = 50,nullable = false)
+    private String descripcionCorta;
+
+    @Column(name="descripcion_propiedad", columnDefinition = "TEXT", nullable = false)
     private String descripcion;
 
     @Column(name="superficie_propiedad", nullable = false)

@@ -36,7 +36,6 @@ public class PropiedadServicio {
         propiedad.setLocalidad(dto.getLocalidad());
         propiedad.setTipoDeseado1(dto.getTipoDeseado1());
         propiedad.setTipoDeseado2(dto.getTipoDeseado2());
-        propiedad.setTipoDeseado3(dto.getTipoDeseado3());
         propiedad.setEliminado(dto.getEliminado());
         propiedadRepositorio.save(propiedad);
     }
