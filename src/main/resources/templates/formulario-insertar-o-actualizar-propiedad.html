@@ -29,6 +29,7 @@ deseados 2 select
                 </div>
                 <div class="card-body">
                     <form th:action="@{/propiedades/insertar-propiedad}" th:object="${objetoPropiedad}" method="post" autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate><!-- th:action="@{/propiedades/insertar-propiedad}" method="post"  th:object="${objetoPropiedadVacio}"-->
+                        <input type="hidden" th:field="*{id}">
                         <input type="hidden" th:field="*{perfil}">
                         <input type="hidden" th:field="*{eliminado}">
                         <div class="form-floating mb-3">

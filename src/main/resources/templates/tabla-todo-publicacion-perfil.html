@@ -14,17 +14,33 @@
         <!-- Page Features-->
         <div class="row gx-lg-5">
 
-
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary me-md-2" type="button">crear propiedad</button>
+                <button class="btn btn-primary" type="button">crear publicacion</button>
+            </div>
             <div th:if="${listaPropiedadPerfil.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
                 No hay ningúna publicacion cargate una rata.
-                <button><a th:href="@{/propiedades/formulario-insertar-propiedad}">insertar propeidad</a></button>
-                <button><a href="">insertar vehiculo</a></button>
-
             </div>
-
 
             <div class="col-lg-4 col-xxl-4" th:each="propiedad : ${listaPropiedadPerfil}">
                 <div class="card text-bg-warning mb-3">
+                    <div class="col text-center">
+                        <a
+                                th:href="@{/propiedades/formulario-actualizar-propiedad/__${propiedad.id}__}"
+                                class="btn btn-primary tooltips"
+                                data-placement="top"
+                                data-toggle="tooltip"
+                                data-original-title="Edit"
+                        ><i class="fa fa-pencil"></i>
+                        </a>
+                        <a
+                                class="btn btn-secondary tooltips"
+                                data-placement="top"
+                                data-toggle="tooltip"
+                                data-original-title="Delete"
+                        ><i class="fa fa-times"></i
+                        ></a>
+                    </div>
                     <img th:src="${propiedad.foto} ? @{/uploads/__${propiedad.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="Formato de imagen incompatible">
                     <div class="card-body">
                         <h5 class="card-title text-center" th:text="${propiedad.tipoPropiedad.nombre}"> </h5>
@@ -35,7 +51,7 @@
                             <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por:</li>
                             <li class="list-group-item" th:text="${propiedad.tipoDeseado1}"></li>
                             <li class="list-group-item" th:text="${propiedad.tipoDeseado2}"></li>
-                            <li class="list-group-item"></li>
+                            <li class="list-group-item"><button type="button" class="btn btn-light">Coincidencias</button></li>
                         </ul>
                 </div>
             </div>

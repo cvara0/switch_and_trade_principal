@@ -33,7 +33,7 @@ public class PropiedadControlador {
 
     @GetMapping("/formulario-insertar-propiedad")
     public ModelAndView formularioInsertarPropiedad(HttpSession session) {//@PathVariable Long id,
-        ModelAndView mav = new ModelAndView("formulario-insertar-propiedad.html");
+        ModelAndView mav = new ModelAndView("formulario-insertar-o-actualizar-propiedad.html");
 
         //if(!session.getAttribute("id").equals(id))
            // return new ModelAndView("redirect:/");
@@ -49,16 +49,38 @@ public class PropiedadControlador {
         return mav;
     }
 
+    @GetMapping("/formulario-actualizar-propiedad/{id}")
+    public ModelAndView formularioActualizarPropiedad(HttpSession session,@PathVariable Long id) {//,
+        ModelAndView mav = new ModelAndView("formulario-insertar-o-actualizar-propiedad.html");
+
+        //if(!session.getAttribute("id").equals(id))
+        // return new ModelAndView("redirect:/");
+
+        Propiedad propiedad =propiedadServicio.traerPorId(id);
+
+        mav.addObject("objetoPropiedad", propiedad);
+        mav.addObject("listaTipoPropiedad",tipoPropiedadServicio.traerTodo());
+        mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
+        mav.addObject("listaTipoDeseado",listaProvincia.getListaProvincia() /*concatenar arraylist tipo deseado tipo propiedad*/);
+        return mav;
+    }
+
 
     @PostMapping("/insertar-propiedad")
-    public RedirectView insertarPublicacionPropiedad(Propiedad dto, @RequestParam(required = false) MultipartFile propiedadfotoname) {
+    public RedirectView insertarPropiedad(Propiedad dto, @RequestParam(required = false) MultipartFile propiedadfotoname) {
         RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
         try {
             propiedadServicio.insertar(dto,propiedadfotoname);
         } catch (IllegalArgumentException e) {
             redirect.setUrl("/provincias/formulario-insertar-propiedad");
         }
+        return redirect;
+    }
 
+    @PostMapping("/actualizar-propiedad")
+    public RedirectView actualizar(Propiedad dto, @RequestParam(required = false) MultipartFile propiedadfotoname) {
+        RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
+        propiedadServicio.actualizar(dto,propiedadfotoname);
         return redirect;
     }
 
