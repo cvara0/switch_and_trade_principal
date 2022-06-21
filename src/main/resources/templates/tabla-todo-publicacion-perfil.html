@@ -14,6 +14,15 @@
         <!-- Page Features-->
         <div class="row gx-lg-5">
 
+
+            <div th:if="${listaPropiedadPerfil.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+                No hay ningúna publicacion cargate una rata.
+                <button><a th:href="@{/propiedades/formulario-insertar-propiedad}">insertar propeidad</a></button>
+                <button><a href="">insertar vehiculo</a></button>
+
+            </div>
+
+
             <div class="col-lg-4 col-xxl-4" th:each="propiedad : ${listaPropiedadPerfil}">
                 <div class="card text-bg-warning mb-3">
                     <img th:src="${propiedad.foto} ? @{/uploads/__${propiedad.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="Formato de imagen incompatible">
