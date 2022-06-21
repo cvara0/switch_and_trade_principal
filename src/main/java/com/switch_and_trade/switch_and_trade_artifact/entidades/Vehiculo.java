@@ -16,7 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @NoArgsConstructor
 @Table(name = "vehiculo", indexes = {@Index(name = "idx_id_tipo_vehiculo_vehiculo", columnList = "id_tipo_vehiculo_vehiculo")})
-@SQLDelete(sql = "UPDATE vehiculo SET eliminado_vehiculo = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE vehiculo SET eliminado_vehiculo = true WHERE id_vehiculo = ?")
 public class Vehiculo {
     @Id
     @GeneratedValue(strategy = IDENTITY)

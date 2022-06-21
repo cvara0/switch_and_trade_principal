@@ -16,7 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Getter
 @NoArgsConstructor
 @Table(name = "propiedad", indexes = {@Index(name = "idx_id_tipo_propiedad_propiedad", columnList = "id_tipo_propiedad_propiedad")})
-@SQLDelete(sql = "UPDATE propiedad SET eliminado_propiedad = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE propiedad SET eliminado_propiedad = true WHERE id_propiedad = ?")
 public class Propiedad {
 
     @Id
@@ -25,12 +25,13 @@ public class Propiedad {
     private Long id;
 
     @ManyToOne(fetch = EAGER)
-    @JoinColumn(name="id_tipo_propiedad_propiedad", referencedColumnName = "id_tipo_propiedad")
+    @JoinColumn(name="id_tipo_propiedad_propiedad", referencedColumnName = "id_tipo_propiedad",nullable = false)
     private TipoPropiedad tipoPropiedad;
 
     @ManyToOne(fetch = EAGER)
     @JoinColumn(name = "id_perfil_propiedad", referencedColumnName = "id_perfil",nullable = false)
     private Perfil perfil;
+
 
     @Column(name="foto_propiedad")
     private String foto;
@@ -44,8 +45,9 @@ public class Propiedad {
     @Column(name="superficie_propiedad", nullable = false)
     private Integer superficie;
 
-    @Column(name = "provincia_propiedad",length = 60,nullable = false)
-    private String provincia;
+    @ManyToOne(fetch = EAGER)
+    @JoinColumn(name = "id_provincia_propiedad", referencedColumnName = "id_provincia",nullable = false)
+    private Provincia provincia;
 
     @Column(name = "localidad_propiedad",length = 60,nullable = false)
     private String localidad;

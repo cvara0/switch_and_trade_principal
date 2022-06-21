@@ -16,7 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Getter
 @NoArgsConstructor
 @Table(name = "perfil", indexes = {@Index(name = "idx_email_perfil", columnList = "email_perfil")})
-@SQLDelete(sql = "UPDATE perfil SET eliminado_perfil = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE perfil SET eliminado_perfil = true WHERE id_perfil = ?")
 public class Perfil {
 
     @Id

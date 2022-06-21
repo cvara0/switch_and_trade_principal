@@ -12,7 +12,6 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane" aria-selected="true">Datos del Usuario</button>
         </li>
-
       </ul>
 
       <form th:action="@{/perfiles/actualizar-perfil}" th:object="${objetoPerfil}" method="post" autocomplete="off"
@@ -27,7 +26,7 @@
             <div class="col-4">
               <img class="img-thumbnail rounded"
                    th:src="${objetoPerfil.foto} ? @{/uploads/__${objetoPerfil.foto}__} : @{/uploads/fotodefault.jpg}"
-                   alt="Formato de imagen incompatible">
+                   alt="🖤 Thymeleaf 🖤">
             </div>
 
             <div class="col-8">

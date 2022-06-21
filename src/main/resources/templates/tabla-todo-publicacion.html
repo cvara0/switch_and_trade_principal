@@ -14,11 +14,15 @@
         <!-- Page Features-->
         <div class="row gx-lg-5">
 
-            <div class="col-lg-4 col-xxl-4" th:each="propiedad : ${listaPropiedad}">
+            <div th:if="${listaPropiedad.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+                No hay ningúna publicacion.
+            </div>
+
+            <div th:unless="${listaPropiedad.isEmpty()}" class="col-lg-4 col-xxl-4" th:each="propiedad : ${listaPropiedad}">
                 <div class="card text-bg-warning mb-3">
                     <img th:src="${propiedad.foto} ? @{/uploads/__${propiedad.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="Formato de imagen incompatible">
                     <div class="card-body">
-                        <h5 class="card-title text-center" th:text="${propiedad.tipoPropiedad.nombre}"> </h5>
+                        <h5 class="card-title text-center" th:text="${propiedad.tipoPropiedad.nombre}"> </h5><!---->
                         <p class="card-text" th:text="${propiedad.descripcionCorta}"></p>
                     </div>
 

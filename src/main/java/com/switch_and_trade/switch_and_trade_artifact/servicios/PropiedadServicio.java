@@ -79,6 +79,7 @@ public class PropiedadServicio {
 //fin metodos basicos
 
 // inicio metodos personalizados
+
     @Transactional(readOnly = true)
     public List<Propiedad> traerTodoOrdenProvinciaAsc() {
         return propiedadRepositorio.traerTodoOrdenProvinciaAsc();
@@ -134,8 +135,8 @@ public class PropiedadServicio {
     }
 
     @Transactional(readOnly = true)
-    public List<Propiedad> traerTodoPorIdPerfil(Long idPerfil) {
-        return propiedadRepositorio.traerTodoPorIdPerfil(idPerfil);
+    public List<Propiedad> traerTodoNoEliminadoPorIdPerfil(Long idPerfil) {
+        return propiedadRepositorio.traerTodoNoEliminadoPorIdPerfil(idPerfil);
     }
 
     @Transactional(readOnly = true)
@@ -146,6 +147,11 @@ public class PropiedadServicio {
     @Transactional(readOnly = true)
     public List<Propiedad> traerTodoOfrecidoPorIdPerfil(Long idPerfil) {
         return propiedadRepositorio.traerTodoOfrecidoPorIdPerfil(idPerfil);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Propiedad> traerTodoNoEliminado() {
+        return propiedadRepositorio.traerTodoNoEliminado();
     }
     // fin metodos personalizados
 

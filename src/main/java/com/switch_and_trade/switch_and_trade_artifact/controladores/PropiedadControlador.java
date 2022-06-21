@@ -2,7 +2,6 @@ package com.switch_and_trade.switch_and_trade_artifact.controladores;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Propiedad;
-import com.switch_and_trade.switch_and_trade_artifact.listasPreCargadas.ListaProvincia;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PropiedadServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.TipoPropiedadServicio;
@@ -41,11 +40,11 @@ public class PropiedadControlador {
         Perfil perfil=perfilServicio.traerPorId((Long) session.getAttribute("id"));
         Propiedad propiedad =new Propiedad();
         propiedad.setPerfil(perfil);
-
+        mav.addObject("accion","insertar-propiedad");
         mav.addObject("objetoPropiedad", propiedad);
         mav.addObject("listaTipoPropiedad",tipoPropiedadServicio.traerTodo());
         mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
-        mav.addObject("listaTipoDeseado",listaProvincia.getListaProvincia() /*concatenar arraylist tipo deseado tipo propiedad*/);
+        //mav.addObject("listaTipoDeseado",listaProvincia.getListaProvincia() /*concatenar arraylist tipo deseado tipo propiedad*/);
         return mav;
     }
 
@@ -53,15 +52,15 @@ public class PropiedadControlador {
     public ModelAndView formularioActualizarPropiedad(HttpSession session,@PathVariable Long id) {//,
         ModelAndView mav = new ModelAndView("formulario-insertar-o-actualizar-propiedad.html");
 
-        //if(!session.getAttribute("id").equals(id))
-        // return new ModelAndView("redirect:/");
+        if(!session.getAttribute("id").equals(id))
+            return new ModelAndView("redirect:/");
 
         Propiedad propiedad =propiedadServicio.traerPorId(id);
-
+        mav.addObject("accion","actualizar-propiedad");
         mav.addObject("objetoPropiedad", propiedad);
         mav.addObject("listaTipoPropiedad",tipoPropiedadServicio.traerTodo());
         mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
-        mav.addObject("listaTipoDeseado",listaProvincia.getListaProvincia() /*concatenar arraylist tipo deseado tipo propiedad*/);
+        mav.addObject("listaTipoDeseado",listaProvincia.getListaProvincia() );/*concatenar arraylist tipo deseado tipo propiedad*/
         return mav;
     }
 
@@ -72,7 +71,7 @@ public class PropiedadControlador {
         try {
             propiedadServicio.insertar(dto,propiedadfotoname);
         } catch (IllegalArgumentException e) {
-            redirect.setUrl("/provincias/formulario-insertar-propiedad");
+            redirect.setUrl("/propiedades/formulario-insertar-propiedad");
         }
         return redirect;
     }
@@ -81,6 +80,14 @@ public class PropiedadControlador {
     public RedirectView actualizar(Propiedad dto, @RequestParam(required = false) MultipartFile propiedadfotoname) {
         RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
         propiedadServicio.actualizar(dto,propiedadfotoname);
+        return redirect;
+    }
+
+
+    @PostMapping("/eliminar-propiedad/{id}")
+    public RedirectView eliminarPropiedad(@PathVariable Long id) {
+        RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
+        propiedadServicio.eliminarPorId(id);
         return redirect;
     }
 

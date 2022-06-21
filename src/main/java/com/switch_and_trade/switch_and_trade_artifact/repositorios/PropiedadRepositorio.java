@@ -61,6 +61,9 @@ public interface PropiedadRepositorio extends JpaRepository<Propiedad, Long> {
     @Query(value = "SELECT * FROM propiedad JOIN perfil ON propiedad.id_perfil_propiedad=perfil.id_perfil WHERE perfil.id_perfil=?1", nativeQuery = true)
     List<Propiedad> traerTodoPorIdPerfil(Long idPerfil);
 
+    @Query(value = "SELECT * FROM propiedad JOIN perfil ON propiedad.id_perfil_propiedad=perfil.id_perfil WHERE perfil.id_perfil=?1 AND propiedad.eliminado_propiedad=0", nativeQuery = true)
+    List<Propiedad> traerTodoNoEliminadoPorIdPerfil(Long idPerfil);
+
     @Query(value = "SELECT * FROM propiedad JOIN perfil ON propiedad.id_perfil_propiedad=perfil.id_perfil WHERE propiedad.deseado_propiedad=1 AND perfil.id_perfil=?1", nativeQuery = true)
     List<Propiedad> traerTodoDeseadoPorIdPerfil(Long idPerfil);
 

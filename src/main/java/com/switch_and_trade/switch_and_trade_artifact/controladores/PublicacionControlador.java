@@ -19,14 +19,14 @@ public class PublicacionControlador {
     public ModelAndView tablaTodoPublicacionPerfil(HttpSession session) {
         ModelAndView mav = new ModelAndView("tabla-todo-publicacion-perfil.html");
         //tendria que agregar vehiculo a otra lista y mandarle tambien
-        mav.addObject("listaPropiedadPerfil",propiedadServicio.traerTodoPorIdPerfil((Long) session.getAttribute("id")));
+        mav.addObject("listaPropiedadPerfil",propiedadServicio.traerTodoNoEliminadoPorIdPerfil((Long) session.getAttribute("id")));
         return mav;
     }
 
     @GetMapping("/tabla-todo-publicacion")
     public ModelAndView tablaTodoPropiedad() {//llaman al mismo html con vehiculo pero le mandan cosas diferentes
         ModelAndView mav = new ModelAndView("tabla-todo-publicacion.html");
-        mav.addObject("listaPropiedad",propiedadServicio.traerTodo());
+        mav.addObject("listaPropiedad",propiedadServicio.traerTodoNoEliminado());
         return mav;
     }
 

@@ -22,28 +22,32 @@
                 No hay ningúna publicacion cargate una rata.
             </div>
 
-            <div class="col-lg-4 col-xxl-4" th:each="propiedad : ${listaPropiedadPerfil}">
+            <div th:unless="${listaPropiedadPerfil.isEmpty()}" class="col-lg-4 col-xxl-4" th:each="propiedad : ${listaPropiedadPerfil}">
                 <div class="card text-bg-warning mb-3">
                     <div class="col text-center">
                         <a
-                                th:href="@{/propiedades/formulario-actualizar-propiedad/__${propiedad.id}__}"
+                                th:href="@{/propiedades/formulario-actualizar-propiedad/__${propiedad.perfil.id}__}"
                                 class="btn btn-primary tooltips"
                                 data-placement="top"
                                 data-toggle="tooltip"
                                 data-original-title="Edit"
                         ><i class="fa fa-pencil"></i>
                         </a>
-                        <a
+                        <form th:action="@{/propiedades/eliminar-propiedad/__${propiedad.id}__}"
+                              method="post">
+                        <button
                                 class="btn btn-secondary tooltips"
                                 data-placement="top"
                                 data-toggle="tooltip"
                                 data-original-title="Delete"
-                        ><i class="fa fa-times"></i
-                        ></a>
+                                type="submit"><i class="fa fa-times"></i>
+                        </button>
+                        </form>
+
                     </div>
-                    <img th:src="${propiedad.foto} ? @{/uploads/__${propiedad.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="Formato de imagen incompatible">
+                    <img th:src="${propiedad.foto} ? @{/uploads/__${propiedad.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 Thymeleaf 🖤">
                     <div class="card-body">
-                        <h5 class="card-title text-center" th:text="${propiedad.tipoPropiedad.nombre}"> </h5>
+                        <h5 class="card-title text-center" th:text="${propiedad.tipoPropiedad.nombre}"> </h5><!---->
                         <p class="card-text" th:text="${propiedad.descripcionCorta}"></p>
                     </div>
 

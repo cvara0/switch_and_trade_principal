@@ -28,12 +28,18 @@ deseados 2 select
                     <h4 class="text-center">Inserte Datos de Propiedad</h4>
                 </div>
                 <div class="card-body">
-                    <form th:action="@{/propiedades/insertar-propiedad}" th:object="${objetoPropiedad}" method="post" autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate><!-- th:action="@{/propiedades/insertar-propiedad}" method="post"  th:object="${objetoPropiedadVacio}"-->
+                    <form th:action="@{/propiedades/__${accion}__}" th:object="${objetoPropiedad}" method="post" autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate><!-- th:action="@{/propiedades/insertar-propiedad}" method="post"  th:object="${objetoPropiedadVacio}"-->
                         <input type="hidden" th:field="*{id}">
                         <input type="hidden" th:field="*{perfil}">
                         <input type="hidden" th:field="*{eliminado}">
+
+                        <div th:if="${accion.equals('actualizar-propiedad')}" class="col-4">
+                            <img class="rounded mx-auto d-block"
+                                 th:src="${objetoPropiedad.foto} ? @{/uploads/__${objetoPropiedad.foto}__} : @{/uploads/fotodefault.jpg}"
+                                 alt="🖤 Thymeleaf 🖤">
+                        </div>
+
                         <div class="form-floating mb-3">
-                            <label for="photo">Upload image</label>
                             <input class="form-control mt-2" type="file" name="propiedadfotoname" accept="image/*">
                             </div>
                         <div class="form-floating mb-3">
@@ -127,7 +133,7 @@ deseados 2 select
 
                               <div class="text-center">
                                   <button type="submit" class="btn" style="background-color: rgb(192, 113, 9);">
-                                      <a class="nav-link" style="color: #fff">Cargar mi propiedad</a>
+                                      <a class="nav-link" style="color: #fff">Guardar</a>
                                   </button>
 
                               </div>

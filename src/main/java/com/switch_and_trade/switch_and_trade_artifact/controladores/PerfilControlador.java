@@ -1,7 +1,6 @@
 package com.switch_and_trade.switch_and_trade_artifact.controladores;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
-import com.switch_and_trade.switch_and_trade_artifact.listasPreCargadas.ListaProvincia;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

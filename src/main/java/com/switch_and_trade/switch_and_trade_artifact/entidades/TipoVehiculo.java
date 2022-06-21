@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @Getter
 @Table(name="tipo_vehiculo")
-@SQLDelete(sql = "UPDATE tipo_vehiculo SET eliminado_tipo_vehiculo = true WHERE id = ?")
+@SQLDelete(sql = "UPDATE tipo_vehiculo SET eliminado_tipo_vehiculo = true WHERE id_tipo_vehiculo = ?")
 public class TipoVehiculo {
 
     @Id
