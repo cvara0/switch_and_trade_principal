@@ -13,111 +13,24 @@
     <div class="container px-lg-5 mt-5" >
         <!-- Page Features-->
         <div class="row gx-lg-5">
-            <div class="col-lg-4 col-xxl-4">
 
+            <div class="col-lg-4 col-xxl-4" th:each="propiedad : ${listaPropiedad}">
                 <div class="card text-bg-warning mb-3">
-                    <img src="/img/partner.jpg" class="card-img-top" alt="...">
+                    <img th:src="${propiedad.foto} ? @{/uploads/__${propiedad.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="Formato de imagen incompatible">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Card title</h5>
-                        <p class="card-text">Some quicd on the cardhe bulk of the card's content.</p>
+                        <h5 class="card-title text-center" th:text="${propiedad.tipoPropiedad.nombre}"> </h5>
+                        <p class="card-text" th:text="${propiedad.descripcionCorta}"></p>
                     </div>
 
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-center" style="font-style: oblique ;" >Me interesa</li>
-                            <li class="list-group-item">terreno urbano</li>
-                            <li class="list-group-item">motocicleta</li>
-                            <li class="list-group-item">helicoptero apache</li>
-                        </ul>
-
-
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-xxl-4">
-
-                <div class="card text-bg-dark mb-3" >
-                    <img src="/img/partner.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Gol Trend</h5>
-                        <p class="card-text">En realidad no se si es un gol trend pero bueno</p>
-                    </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-xxl-4 ">
-
-                <div class="card text-bg-warning mb-3" >
-                    <img src="/img/partner.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">partner</h5>
-                        <p class="card-text">Ni idea si es una partner o no o que es que es no se.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-xxl-4">
-
-                <div class="card text-bg-warning mb-3" >
-                    <img src="/img/partner.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-xxl-4">
-
-                <div class="card text-bg-warning mb-3">
-                    <img src="/img/partner.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-xxl-4">
-
-                <div class="card text-bg-warning mb-3">
-                    <img src="/img/partner.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
+                        <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por:</li>
+                        <li class="list-group-item" th:text="${propiedad.tipoDeseado1}"></li>
+                        <li class="list-group-item" th:text="${propiedad.tipoDeseado2}"></li>
+                        <li class="list-group-item"></li>
                     </ul>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

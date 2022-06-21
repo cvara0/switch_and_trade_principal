@@ -1,223 +1,41 @@
-<head th:replace="fragments/head :: head"></head>
+<head th:replace="fragments/head-logueado :: head"></head>
 
 <header th:replace="fragments/navbar-logueado :: header"></header>
+<!-- Page Content-->
+<html>
 <body>
 <div>
-    <h2 class="text-center mt-5"> Mis Publicaciones</h2>
-    <div class="text-center">
-        <button type="button" class="btn btn-success">
-            <a class="nav-link" th:href="@{/publicaciones/formulario-insertar-publicacion}" style="color: #fff"
-            >Agregar Publicacion </a
-            >
-        </button>
+    <div class="portada text-center mt-4">
+        <h2 class="mt-5">Mis publicaciones</h2>
     </div>
     <div class="text-center">
     </div>
     <div class="container px-lg-5 mt-5" >
         <!-- Page Features-->
         <div class="row gx-lg-5">
-            <div class="col-md-6 col-lg-4 col-xxl-4">
 
-                <div class="card">
-                    <img src="/img/gol.jpg" class="card-img-top" alt="...">
+            <div class="col-lg-4 col-xxl-4" th:each="propiedad : ${listaPropiedadPerfil}">
+                <div class="card text-bg-warning mb-3">
+                    <img th:src="${propiedad.foto} ? @{/uploads/__${propiedad.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="Formato de imagen incompatible">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quicd on the cardhe bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique ;" >Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-                    <div class="card-body">
-                        <a
-                                class="btn btn-primary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Edit"
-                        ><i class="fa fa-pencil"></i>
-                        </a>
-                        <a
-                                class="btn btn-secondary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Delete"
-                        ><i class="fa fa-times"></i
-                        ></a>
+                        <h5 class="card-title text-center" th:text="${propiedad.tipoPropiedad.nombre}"> </h5>
+                        <p class="card-text" th:text="${propiedad.descripcionCorta}"></p>
                     </div>
 
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xxl-4">
-
-                <div class="card" >
-                    <img src="/img/gol.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Gol Trend</h5>
-                        <p class="card-text">En realidad no se si es un gol trend pero bueno</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-                    <div class="card-body">
-                        <a
-                                class="btn btn-primary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Edit"
-                        ><i class="fa fa-pencil"></i>
-                        </a>
-                        <a
-                                class="btn btn-secondary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Delete"
-                        ><i class="fa fa-times"></i
-                        ></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xxl-4 ">
-
-                <div class="card" >
-                    <img src="/img/gol.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">partner</h5>
-                        <p class="card-text">Ni idea si es una partner o no o que es que es no se.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero mapache</li>
-                    </ul>
-                    <div class="card-body">
-                        <a
-                                class="btn btn-primary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Edit"
-                        ><i class="fa fa-pencil"></i>
-                        </a>
-                        <a
-                                class="btn btn-secondary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Delete"
-                        ><i class="fa fa-times"></i
-                        ></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xxl-4">
-
-                <div class="card" >
-                    <img src="/img/gol.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero mapache</li>
-                    </ul>
-                    <div class="card-body">
-                        <a
-                                class="btn btn-primary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Edit"
-                        ><i class="fa fa-pencil"></i>
-                        </a>
-                        <a
-                                class="btn btn-secondary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Delete"
-                        ><i class="fa fa-times"></i
-                        ></a>
-                    </div>
-
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por:</li>
+                            <li class="list-group-item" th:text="${propiedad.tipoDeseado1}"></li>
+                            <li class="list-group-item" th:text="${propiedad.tipoDeseado2}"></li>
+                            <li class="list-group-item"></li>
+                        </ul>
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4 col-xxl-4">
-
-                <div class="card">
-                    <img src="/img/gol.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-                    <div class="card-body">
-                        <a
-                                class="btn btn-primary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Edit"
-                        ><i class="fa fa-pencil"></i>
-                        </a>
-                        <a
-                                class="btn btn-secondary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Delete"
-                        ><i class="fa fa-times"></i
-                        ></a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 col-xxl-4">
-
-                <div class="card">
-                    <img src="/img/gol.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique">Me interesa</li>
-                        <li class="list-group-item">terreno urbano</li>
-                        <li class="list-group-item">motocicleta</li>
-                        <li class="list-group-item">helicoptero apache</li>
-                    </ul>
-                    <div class="card-body">
-                        <a
-                                class="btn btn-primary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Edit"
-                        ><i class="fa fa-pencil"></i>
-                        </a>
-                        <a
-                                class="btn btn-secondary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Delete"
-                        ><i class="fa fa-times"></i
-                        ></a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <footer th:replace="fragments/footer :: footer"></footer>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <script src="https://kit.fontawesome.com/c9ab963329.js" crossorigin="anonymous"></script>
+</div>
 </body>
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://kit.fontawesome.com/c9ab963329.js" crossorigin="anonymous"></script>
 </html>
