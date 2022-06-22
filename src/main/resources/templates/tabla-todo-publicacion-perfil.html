@@ -55,7 +55,7 @@
                         <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por:</li>
                         <li class="list-group-item" th:text="${publicacion.tipoDeseado1}"></li>
                         <li class="list-group-item" th:text="${publicacion.tipoDeseado2}"></li>
-                        <li class="list-group-item"><button type="button" class="btn btn-light">Ver quienes la buscan</button></li>
+                        <li class="list-group-item"><a th:href="@{/publicaciones/tabla-todo-publicacion-match-oferta-perfil/__${publicacion.id}__}"  class="btn btn-light">Ver quienes la buscan</a></li><!--class="btn btn-primary stretched-link"-->
                     </ul>
                 </div>
             </div>

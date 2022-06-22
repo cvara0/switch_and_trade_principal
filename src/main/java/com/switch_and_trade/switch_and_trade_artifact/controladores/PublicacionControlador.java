@@ -44,7 +44,14 @@ public class PublicacionControlador {
 
     @GetMapping("/tabla-todo-publicacion-match-oferta-perfil/{id}")
     public ModelAndView tablaTodoPublicacionMatchOfertaPerfil(HttpSession session,@PathVariable Long id){
-        return null;
+        ModelAndView mav = new ModelAndView("tabla-todo-publicacion-match-oferta-perfil.html");
+
+        if(!session.getAttribute("id").equals(perfilServicio.traerIdPorIdPublicacion(id)))
+            return new ModelAndView("redirect:/publicaciones/tabla-todo-publicacion-perfil");
+
+        mav.addObject("PublicacionPerfil", publicacionServicio.traerPorId(id));
+        mav.addObject("listaPublicaionMachOfertaPerfil",publicacionServicio.traerTodoPorOfertaIdPublicacion(id));
+        return mav;
     }
 
     @GetMapping("/formulario-insertar/{id}")

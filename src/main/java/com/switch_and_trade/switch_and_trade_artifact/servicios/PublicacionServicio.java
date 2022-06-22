@@ -82,6 +82,11 @@ public class PublicacionServicio {
     public List<Publicacion> traerTodoNoEliminadoPorIdPerfil(Long id) {
         return publicacionRepositorio.traerTodoNoEliminadoPorIdPerfil(id);
     }
+    @Transactional(readOnly = true)
+    public List<Publicacion> traerTodoPorOfertaIdPublicacion(Long idPublicacion) {
+        return publicacionRepositorio.traerTodoPorOfertaIdPublicacion(idPublicacion);
+    }
+
     // fin metodos personalizados
 
 }
