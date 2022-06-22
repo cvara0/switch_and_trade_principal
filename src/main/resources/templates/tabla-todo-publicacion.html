@@ -14,20 +14,21 @@
         <!-- Page Features-->
         <div class="row gx-lg-5">
 
-            <div th:if="${listaPropiedad.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+            <div th:if="${listaPublicacion.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
                 No hay ningúna publicacion.
             </div>
 
-            <div th:unless="${listaPropiedad.isEmpty()}" class="col-lg-4 col-xxl-4" th:each="publicacion : ${listaPropiedad}">
+            <div th:unless="${listaPublicacion.isEmpty()}" class="col-lg-4 col-xxl-4" th:each="publicacion : ${listaPublicacion}">
                 <div class="card text-bg-warning mb-3">
-                    <img th:src="${publicacion.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="Formato de imagen incompatible">
+                    <img th:src="${publicacion.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefecto.jpg}" class="card-img-top" alt="para que queres ver la imagen si ya la subiste">
                     <div class="card-body">
+                        <h5 class="card-title text-center" th:text="|${publicacion.perfil.nombre} tiene|"> </h5>
                         <h5 class="card-title text-center" th:text="${publicacion.tipo.nombre}"> </h5><!---->
                         <p class="card-text" th:text="${publicacion.descripcionCorta}"></p>
                     </div>
 
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por:</li>
+                        <li class="list-group-item text-center" style="font-style: oblique ;" >lo cambia por:</li>
                         <li class="list-group-item" th:text="${publicacion.tipoDeseado1}"></li>
                         <li class="list-group-item" th:text="${publicacion.tipoDeseado2}"></li>
                         <li class="list-group-item"></li>

@@ -5,14 +5,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-vehiculo}">vehiculos</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-publicacion}">Propiedades</a></li>
-                    <form class="d-flex mb-0 mb-lg-0 ms-5" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    </form>
-
+                    
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-perfil}">Mis publicaciones</a></li>
                     <li class="nav-item dropdown">
@@ -21,8 +14,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" th:href="@{/perfiles/tabla-perfil}">Mi Perfil</a></li>
-                            <li><a class="dropdown-item" href="">Añadir vehiculo</a></li>
-                            <li><a class="dropdown-item" th:href="@{/propiedades/formulario-insertar-publicacion/__${idPerfil}__}">Añadir publicacion</a></li>
+                            <li><a class="dropdown-item" th:href="@{/publicaciones/formulario-insertar/__${idPerfil}__}">Agregar publicacion</a></li>
+
 
                         </ul>
                     </li>

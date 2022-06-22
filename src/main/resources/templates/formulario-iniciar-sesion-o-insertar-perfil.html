@@ -40,64 +40,43 @@
         <div class="user singupBx">
             <div th:if="${exception}" th:text="${exception}" class="alert alert-danger shadow text-center"></div>
             <div class="formBx">
-                <form th:action="@{/perfiles/insertar-perfil}" th:object="${objetoPerfil}" method="post">
+                <form th:action="@{/perfiles/insertar}" th:object="${objetoPerfil}" method="post">
                     <h2>Crear una cuenta</h2>
                     <input type="hidden" th:field="*{rol}"/>
                     <input type="hidden" th:field="*{eliminado}"/>
                     <div class="form-group mb-3">
                         <input type="email" th:field="*{email}" placeholder="Email" class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">Email requerida</div>
+                        <div class="invalid-feedback text-start">Email is required</div>
                     </div>
                     <div class="form-group mb-3">
                         <input type="password" th:field="*{clave}"  placeholder="Password"
                                class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">Clave requerida</div>
+                        <div class="invalid-feedback text-start">Password is required</div>
                     </div>
                     <div class="form-group mb-3">
                         <input type="text" th:field="*{nombre}"  placeholder="Nombre"
                                class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">Nombre requerido</div>
+                        <div class="invalid-feedback text-start">Name is required</div>
                     </div>
                     <div class="form-group mb-3">
                         <input type="text" th:field="*{apellido}"  placeholder="Apellido"
                                class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">Apellido requerido</div>
+                        <div class="invalid-feedback text-start">surname is required</div>
                     </div>
                     <div class="form-group mb-3">
                         <input type="number" th:field="*{telefono}"  placeholder="telofono"
                                class="form-control"
                                required/>
-                        <div class="invalid-feedback text-start">Telefono requerido</div>
+                        <div class="invalid-feedback text-start">phone is required</div>
                     </div>
 
+                    <div class="form-floating mb-3">
 
-                        <div class="form-floating mb-3">
-                            <select class="form-select"
-                                    id="floatingSelect2"
-                                    aria-label="Floating label select example"
-                                    th:field="*{provincia}">
-                                <option selected value="">
-                                    Selecciona la provincia de donde usted es
-                                </option>
-                                <option th:each="provincia : ${listaProvincia}" th:text="${provincia.nombre}"
-                                        th:value="${provincia.id}"></option>
-                            </select>
-                            <label for="floatingSelect2">Provincia</label>
-                            <div class="invalid-feedback">Provincia requerida</div>
-                        </div>
-
-
-                    <div class="form-group mb-3">
-                        <input type="text" th:field="*{localidad}"  placeholder="Localidad"
-                               class="form-control"
-                               required/>
-                        <div class="invalid-feedback text-start">Localidad requerida</div>
                     </div>
-
                     <div class="form-group d-grid gap-2">
                         <button class="btn btn-success" type="submit">Enviar</button>
                     </div>

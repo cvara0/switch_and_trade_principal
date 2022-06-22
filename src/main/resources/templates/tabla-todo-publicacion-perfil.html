@@ -18,30 +18,30 @@
                 <button class="btn btn-primary me-md-2" type="button">crear publicacion</button>
                 <button class="btn btn-primary" type="button">crear publicacion</button>
             </div>
-            <div th:if="${listaPropiedadPerfil.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
+            <div th:if="${listaPublicacionPerfil.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
                 No hay ningúna publicacion cargate una rata.
             </div>
 
-            <div th:unless="${listaPropiedadPerfil.isEmpty()}" class="col-lg-4 col-xxl-4" th:each="publicacion : ${listaPropiedadPerfil}">
+            <div th:unless="${listaPublicacionPerfil.isEmpty()}" class="col-lg-4 col-xxl-4" th:each="publicacion : ${listaPublicacionPerfil}">
                 <div class="card text-bg-warning mb-3">
                     <div class="col text-center">
                         <a
-                                th:href="@{/propiedades/formulario-actualizar-publicacion/__${publicacion.perfil.id}__}"
+                                th:href="@{/publicaciones/formulario-actualizar/__${publicacion.id}__}"
                                 class="btn btn-primary tooltips"
                                 data-placement="top"
                                 data-toggle="tooltip"
                                 data-original-title="Edit"
                         ><i class="fa fa-pencil"></i>
                         </a>
-                        <form th:action="@{/propiedades/eliminar-publicacion/__${publicacion.id}__}"
+                        <form th:action="@{/publicaciones/eliminar/__${publicacion.id}__}"
                               method="post">
-                        <button
-                                class="btn btn-secondary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Delete"
-                                type="submit"><i class="fa fa-times"></i>
-                        </button>
+                            <button
+                                    class="btn btn-secondary tooltips"
+                                    data-placement="top"
+                                    data-toggle="tooltip"
+                                    data-original-title="Delete"
+                                    type="submit"><i class="fa fa-times"></i>
+                            </button>
                         </form>
 
                     </div>
@@ -51,12 +51,12 @@
                         <p class="card-text" th:text="${publicacion.descripcionCorta}"></p>
                     </div>
 
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por:</li>
-                            <li class="list-group-item" th:text="${publicacion.tipoDeseado1}"></li>
-                            <li class="list-group-item" th:text="${publicacion.tipoDeseado2}"></li>
-                            <li class="list-group-item"><button type="button" class="btn btn-light">Coincidencias</button></li>
-                        </ul>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por:</li>
+                        <li class="list-group-item" th:text="${publicacion.tipoDeseado1}"></li>
+                        <li class="list-group-item" th:text="${publicacion.tipoDeseado2}"></li>
+                        <li class="list-group-item"><button type="button" class="btn btn-light">Ver quienes la buscan</button></li>
+                    </ul>
                 </div>
             </div>
 

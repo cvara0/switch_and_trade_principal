@@ -70,6 +70,10 @@ public class PerfilServicio implements UserDetailsService {
     public Perfil traerPorId(Long id) {
         return perfilRepositorio.findById(id).get();
     }
+    @Transactional(readOnly = true)
+    public Long traerIdPorIdPublicacion (Long id) {
+        return perfilRepositorio.traerIdPorIdPublicacion(id);
+    }
 
     @Transactional(readOnly = true)
     public List<Perfil> traerTodo() {

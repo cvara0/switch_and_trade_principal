@@ -1,0 +1,135 @@
+
+<head th:replace="fragments/head-matches :: head"></head>
+
+<header th:replace="fragments/navbar-logueado :: header"></header>
+<html>
+<body>
+<div class="portada text-center mt-4">
+    <h2 class="mt-5 mb-5">Publica algo y lo que buscas a cambio</h2>
+</div>
+<div class="match">
+    <div class="row mt-5">
+
+        <div class="col col-lg-12">
+            <div class="card text-bg-secondary">
+                <div class="card-header">
+                    <h4 class="text-center">Inserte Datos de Publicacion</h4>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/publicaciones/__${accion}__}" th:object="${objetoPublicacion}" method="post" autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate><!-- th:action="@{/propiedades/insertar-publicacion}" method="post"  th:object="${objetoPropiedadVacio}"-->
+                        <input type="hidden" th:field="*{id}">
+                        <input type="hidden" th:field="*{perfil}">
+                        <input type="hidden" th:field="*{eliminado}">
+
+                        <div class="col-4">
+                            <img class="rounded mx-auto d-block"
+                                 th:src="${objetoPublicacion.foto} ? @{/uploads/__${objetoPublicacion.foto}__} : @{/uploads/fotodefecto.jpg}"
+                                 alt="🖤 Thymeleaf 🖤">
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control mt-2" type="file" name="publicacionFotoName" accept="image/*">
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select th:field="*{tipo}" class="form-select" id="floatingSelect" aria-label="Floating label select example"> <!---->
+                                <option selected value="">
+                                    Selecciona el tipo de publicacion
+                                </option >
+                                <option th:each="tipo : ${listaTipo}" th:text="${tipo.nombre}" th:value="${tipo.id}">
+                                </option>
+                            </select>
+                            <label for="floatingSelect">Tipo de publicacion</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <div class="mb-3 text-center">
+                                <label for="exampleFormControlTextarea1" class="form-label"
+                                >Añade una descripcion corta</label>
+                                <textarea
+                                        class="form-control"
+                                        id="exampleFormControlTextarea1"
+                                        rows="1"
+                                        th:field="*{descripcionCorta}">
+                                      </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <select
+                                    class="form-select"
+                                    id="floatingSelect9"
+                                    aria-label="Floating label select example"
+                                    th:field="*{provincia}" th:value="${objetoPublicacion.provincia}"
+                            >
+                                <option selected value="">
+                                    Selecciona la provincia donde se ubica la publicacion
+                                </option>
+                                <option th:each="provincia : ${listaProvincia}" th:text="${provincia.nombre}"
+                                        th:value="${provincia.id}"></option>
+                            </select>
+                            <label for="floatingSelect2">Provincia</label>
+                        </div>
+
+
+                        <label for="basic-url" class="form-label">Localidad</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addvon3">Localidad:</span>
+                            <input th:field="*{localidad}" type="text" class="form-control" id="basic-furl" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="form-floating mb-3">
+                            <div class="mb-3 text-center">
+                                <label for="exampleFormControlTextarea1" class="form-label"
+                                >Añade una descripcion completa</label>
+                                <textarea
+                                        class="form-control"
+                                        id="exampleFormControlTextareas1"
+                                        rows="3"
+                                        th:field="*{descripcion}">
+                                      </textarea>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select  class="form-select"
+                                     id="floatingSelect1"
+                                     aria-label="Floating label select example"
+                                     th:field="*{tipoDeseado1}" th:value="${objetoPublicacion.tipoDeseado1}"> <!--th:field="*{tipo}"-->
+                                <option selected value="">
+                                    tipo de publicacion o vehiculo que quieres a cambio
+                                </option>
+                                <option th:each="tipo : ${listaTipo}" th:text="${tipo.nombre}"
+                                        th:value="${tipo.nombre}"></option>
+                            </select>
+                            <label for="floatingSelect1">Que deseas a cambio?</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <select  class="form-select"
+                                     id="floatingSelect2"
+                                     aria-label="Floating label select example"
+                                     th:field="*{tipoDeseado2}" th:value="${objetoPublicacion.tipoDeseado2}">
+                                <option selected value="">
+                                    tipo de publicacion o vehiculo que quieres a cambio
+                                </option>
+                                <option th:each="tipo : ${listaTipo}" th:text="${tipo.nombre}"
+                                        th:value="${tipo.nombre}"></option>
+                            </select>
+                            <label for="floatingSelect2">Que deseas a cambio?</label>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn" style="background-color: rgb(192, 113, 9);">
+                                <a class="nav-link" style="color: #fff">Guardar</a>
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://kit.fontawesome.com/c9ab963329.js" crossorigin="anonymous"></script>
+</html>

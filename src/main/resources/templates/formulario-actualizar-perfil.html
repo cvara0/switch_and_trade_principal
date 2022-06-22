@@ -12,9 +12,11 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane" aria-selected="true">Datos del Usuario</button>
         </li>
+
+
       </ul>
 
-      <form th:action="@{/perfiles/actualizar-perfil}" th:object="${objetoPerfil}" method="post" autocomplete="off"
+      <form th:action="@{/perfiles/actualizar}" th:object="${objetoPerfil}" method="post" autocomplete="off"
             class="needs-validation" enctype="multipart/form-data" novalidate>
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:field="*{clave}">
@@ -24,19 +26,11 @@
         <div class="tab-pane fade show active" id="usuario-tab-pane" role="tabpanel" aria-labelledby="usuario-tab" tabindex="0">
           <div class="row mb-2">
             <div class="col-4">
-              <img class="img-thumbnail rounded"
-                   th:src="${objetoPerfil.foto} ? @{/uploads/__${objetoPerfil.foto}__} : @{/uploads/fotodefault.jpg}"
-                   alt="🖤 Thymeleaf 🖤">
+              <img class="img-thumbnail rounded" th:src="${objetoPerfil.foto} ? @{/uploads/__${objetoPerfil.foto}__} : @{/uploads/fotodefecto.jpg}" alt="🖤 🖤 🖤 🖤 🖤 Thymeleaf🖤 🖤 🖤 🖤 🖤">
+              <input class="form-control mt-2" type="file" name="fotoPerfilName" accept="image/*">
             </div>
 
             <div class="col-8">
-
-              <div class="form-group row mb-2">
-                <label for="fotoid">Cambiar imagen</label>
-                <div class="col-8">
-                  <input id="fotoid" class="form-control mt-2" type="file" name="fotoname" accept="image/*">
-                </div>
-              </div>
 
               <div class="form-group row mb-2">
                 <label for="email" class="col-2">Email:</label>
@@ -55,27 +49,6 @@
                 <div class="col-8">
                   <input type="text" class="form-control" th:field="*{apellido}" th:value="${objetoPerfil.apellido}">
                 </div>
-              </div>
-              <div class="form-group row mb-2">
-                <label for="localidad" class="col-2">Localidad:</label>
-                <div class="col-8">
-                  <input type="text" class="form-control" th:field="*{localidad}" th:value="${objetoPerfil.localidad}">
-                </div>
-              </div>
-
-              <div class="form-floating mb-3">
-                <select class="form-select"
-                        id="floatingSelect2"
-                        aria-label="Floating label select example"
-                        th:field="*{provincia}" th:value="${objetoPerfil.provincia}">
-                  <option selected value="">
-                    Selecciona la provincia de donde usted es
-                  </option>
-                  <option th:each="provincia : ${listaProvincia}" th:text="${provincia.nombre}"
-                          th:value="${provincia.id}"></option>
-                </select>
-                <label for="floatingSelect2">Provincia</label>
-                <div class="invalid-feedback">Provincia requerida</div>
               </div>
 
               <div class="form-group row mb-2">

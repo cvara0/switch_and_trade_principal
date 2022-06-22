@@ -28,7 +28,7 @@ public class PerfilControlador {
 
 //como acceder al id de perfil una vez logueado
     @GetMapping("/formulario-iniciar-sesion-o-insertar")
-    public ModelAndView formularioIniciarSesionOInsertar(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal, HttpServletRequest request) {
+    public ModelAndView formularioIniciarSesionOInsertar(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal, HttpServletRequest request,HttpSession session) {
         ModelAndView mav = new ModelAndView("formulario-iniciar-sesion-o-insertar-perfil.html");
         //parte de formulario iniciar sesion
         //if (error != null) mav.addObject("mensajeError", "Email o clave incorrectos");
@@ -76,25 +76,28 @@ public class PerfilControlador {
         if(!session.getAttribute("id").equals(id))
             return new ModelAndView("redirect:/");
         Perfil perfil=perfilServicio.traerPorId(id);
+        mav.addObject("idPerfil",session.getAttribute("id"));
         mav.addObject("objetoPerfil", perfil);
         //mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
         return mav;
     }
 
-    @GetMapping("/tabla-perfil/{id}")
+    @GetMapping("/tabla-perfil")
     public ModelAndView tablaPerfil(HttpSession session) {
         ModelAndView mav = new ModelAndView("tabla-perfil.html");
+        mav.addObject("idPerfil",session.getAttribute("id"));
         Perfil perfil=perfilServicio.traerPorId((Long)session.getAttribute("id"));
+        //mav.addObject("idPerfil",session.getAttribute("id"));
         mav.addObject("objetoPerfil", perfil);
         return mav;
     }
 
 
     //@PreAuthorize("hasRole('ADMIN')")
-   @PostMapping("/actualizar-perfil")
-    public RedirectView actualizarPerfil(Perfil dto, @RequestParam(required = false) MultipartFile fotoname) {
+   @PostMapping("/actualizar")
+    public RedirectView actualizarPerfil(Perfil dto, @RequestParam(required = false) MultipartFile fotoPerfilName) {
         RedirectView redirect = new RedirectView("/perfiles/tabla-perfil");
-        perfilServicio.actualizar(dto,fotoname);
+        perfilServicio.actualizar(dto,fotoPerfilName);
         return redirect;
     }
 

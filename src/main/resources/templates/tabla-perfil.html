@@ -17,7 +17,7 @@
         </li>
         <li class="nav-item">
           <button class="btn btn-primary">
-            <a class="nav-link" th:object="${objetoPerfil}" th:href="@{/perfiles/formulario-actualizar-perfil/__${objetoPerfil.id}__}" style="color: #fff"
+            <a class="nav-link" th:object="${objetoPerfil}" th:href="@{/perfiles/formulario-actualizar/__${objetoPerfil.id}__}" style="color: #fff"
             >Editar</a
             >
           </button>
@@ -28,14 +28,11 @@
              aria-labelledby="usuario-tab" tabindex="0">
           <div class="row mb-2">
             <div class="col-4">
-              <img class="img-thumbnail"
-                   th:src="${objetoPerfil.foto} ? @{/uploads/__${objetoPerfil.foto}__} : @{/uploads/fotodefault.jpg}"
-              alt="🖤 Thymeleaf 🖤"
-              >
+              <img class="img-thumbnail rounded"
+                   th:src="${objetoPerfil.foto} ? @{/uploads/__${objetoPerfil.foto}__} : @{/uploads/fotodefecto.jpg}" alt="🖤 🖤 🖤 🖤 🖤 Thymeleaf🖤 🖤 🖤 🖤 🖤">
             </div>
 
             <div class="col-8">
-
               <div class="form-group row mb-2">
                 <label for="email" class="col-2">Email:</label>
                 <div class="col-8">
@@ -54,18 +51,7 @@
                   <input type="text" class="form-control" th:value="${objetoPerfil.apellido}" disabled>
                 </div>
               </div>
-              <div class="form-group row mb-2">
-                <label for="localidad" class="col-2">Localidad:</label>
-                <div class="col-8">
-                  <input type="text" class="form-control" th:value="${objetoPerfil.localidad}" disabled>
-                </div>
-              </div>
-              <div class="form-group row mb-2">
-                <label for="provincia" class="col-2">Provincia:</label>
-                <div class="col-8">
-                  <input type="text" class="form-control" th:value="${objetoPerfil.provincia}" disabled>
-                </div>
-              </div>
+
               <div class="form-group row mb-2">
                 <label for="telefono" class="col-2">Telefono:</label>
                 <div class="col-8">

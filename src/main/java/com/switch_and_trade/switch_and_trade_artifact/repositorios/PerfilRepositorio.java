@@ -1,7 +1,9 @@
 package com.switch_and_trade.switch_and_trade_artifact.repositorios;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
+import com.switch_and_trade.switch_and_trade_artifact.entidades.Publicacion;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +17,8 @@ public interface PerfilRepositorio extends JpaRepository<Perfil, Long> {
 
     List<Perfil> findByEliminado(Boolean eliminado);
 
+    @Query(value = "SELECT perfil.id_perfil FROM publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil WHERE publicacion.id_publicacion=?", nativeQuery = true)
+    Long traerIdPorIdPublicacion(Long id);
 /*
     @Query(value = "SELECT * FROM usuario ORDER BY nombre_usuario ASC",nativeQuery = true)
     List<Perfil> traerTodoOrdenNombreAsc();

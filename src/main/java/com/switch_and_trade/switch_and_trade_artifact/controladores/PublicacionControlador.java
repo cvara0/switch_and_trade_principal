@@ -30,15 +30,15 @@ public class PublicacionControlador {
     public ModelAndView tablaTodoPublicacion(HttpSession session) {//llaman al mismo html con vehiculo pero le mandan cosas diferentes
         ModelAndView mav = new ModelAndView("tabla-todo-publicacion.html");
         mav.addObject("idPerfil",session.getAttribute("id"));
-        mav.addObject("listaPropiedad", publicacionServicio.traerTodoNoEliminado());
+        mav.addObject("listaPublicacion", publicacionServicio.traerTodoNoEliminado());
         return mav;
     }
-    @GetMapping("/tabla-todo-publicacion-perfil/{id}")
-    public ModelAndView tablaTodoPublicacionPerfil(HttpSession session,@PathVariable Long id) {
+    @GetMapping("/tabla-todo-publicacion-perfil")
+    public ModelAndView tablaTodoPublicacionPerfil(HttpSession session) {
         ModelAndView mav = new ModelAndView("tabla-todo-publicacion-perfil.html");
-        if(!session.getAttribute("id").equals(id))
-            return new ModelAndView("redirect:/");
-        mav.addObject("listaPropiedadPerfil", publicacionServicio.traerTodoNoEliminadoPorIdPerfil((Long) session.getAttribute("id")));
+
+        mav.addObject("idPerfil",session.getAttribute("id"));
+        mav.addObject("listaPublicacionPerfil", publicacionServicio.traerTodoNoEliminadoPorIdPerfil((Long) session.getAttribute("id")));
         return mav;
     }
 
@@ -52,11 +52,12 @@ public class PublicacionControlador {
         ModelAndView mav = new ModelAndView("formulario-insertar-o-actualizar-publicacion.html");
 
         if(!session.getAttribute("id").equals(id))
-            return new ModelAndView("redirect:/");
+            return new ModelAndView("redirect:/publicaciones/tabla-todo-publicacion");
 
         Perfil perfil=perfilServicio.traerPorId((Long) session.getAttribute("id"));
         Publicacion publicacion =new Publicacion();
         publicacion.setPerfil(perfil);
+        mav.addObject("idPerfil",session.getAttribute("id"));
         mav.addObject("accion","insertar");
         mav.addObject("objetoPublicacion", publicacion);
         mav.addObject("listaTipo", tipoServicio.traerTodo());
@@ -67,15 +68,16 @@ public class PublicacionControlador {
 
     @GetMapping("/formulario-actualizar/{id}")
     public ModelAndView formularioActualizar(HttpSession session,@PathVariable Long id) {//,
-        ModelAndView mav = new ModelAndView("formulario-insertar-o-actualizar-propiedad.html");
+        ModelAndView mav = new ModelAndView("formulario-insertar-o-actualizar-publicacion.html");
 
-        if(!session.getAttribute("id").equals(id))
-            return new ModelAndView("redirect:/");
+       if(!session.getAttribute("id").equals(perfilServicio.traerIdPorIdPublicacion(id)))
+           return new ModelAndView("redirect:/publicaciones/tabla-todo-publicacion-perfil");
 
         Publicacion publicacion = publicacionServicio.traerPorId(id);
+        mav.addObject("idPerfil",session.getAttribute("id"));
         mav.addObject("accion","actualizar");
-        mav.addObject("objetoPropiedad", publicacion);
-        mav.addObject("listaTipoPropiedad", tipoServicio.traerTodo());
+        mav.addObject("objetoPublicacion", publicacion);
+        mav.addObject("listaTipo", tipoServicio.traerTodo());
         mav.addObject("listaProvincia", provinciaServicio.traerTodo());
         //mav.addObject("listaTipoDeseado",listaProvincia.getListaProvincia() );/*concatenar arraylist tipo deseado tipo propiedad*/
         return mav;
@@ -83,10 +85,11 @@ public class PublicacionControlador {
 
 
     @PostMapping("/insertar")
-    public RedirectView insertar(Publicacion dto, @RequestParam(required = false) MultipartFile propiedadfotoname) {
+    public RedirectView insertar(Publicacion dto, @RequestParam(required = false) MultipartFile publicacionFotoName) {
         RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
+
         try {
-            publicacionServicio.insertar(dto,propiedadfotoname);
+            publicacionServicio.insertar(dto,publicacionFotoName);
         } catch (IllegalArgumentException e) {
             redirect.setUrl("/propiedades/formulario-insertar-propiedad");
         }
@@ -96,6 +99,7 @@ public class PublicacionControlador {
     @PostMapping("/actualizar")
     public RedirectView actualizar(Publicacion dto, @RequestParam(required = false) MultipartFile propiedadfotoname) {
         RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
+
         publicacionServicio.actualizar(dto,propiedadfotoname);
         return redirect;
     }

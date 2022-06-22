@@ -37,7 +37,7 @@ background-repeat: no-repeat;
 .card {
  background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
     background-size: 500%;
-    animation: fanimado 10s infinite;
+    animation: fanimado 20s infinite;
   color: #000000;
   margin-bottom: 20px;
   width: 100%;
