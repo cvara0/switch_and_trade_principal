@@ -8,7 +8,7 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-vehiculo}">vehiculos</a></li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-propiedad}">Propiedades</a></li>
+                        <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-publicacion}">Propiedades</a></li>
                     <form class="d-flex mb-0 mb-lg-0 ms-5" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     </form>
@@ -22,7 +22,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" th:href="@{/perfiles/tabla-perfil}">Mi Perfil</a></li>
                             <li><a class="dropdown-item" href="">Añadir vehiculo</a></li>
-                            <li><a class="dropdown-item" th:href="@{/propiedades/formulario-insertar-propiedad}">Añadir propiedad</a></li>
+                            <li><a class="dropdown-item" th:href="@{/propiedades/formulario-insertar-publicacion/__${idPerfil}__}">Añadir publicacion</a></li>
 
                         </ul>
                     </li>

@@ -21,11 +21,11 @@ public class Provincia {
     @Column(name = "id_provincia")
     private Long id;
 
-    @Column(name = "nombre_provincia", length = 60, unique = true, nullable = false)
+    @Column(name = "nombre_provincia", length = 60, nullable = false)
     private String nombre;
 
     @Column(name = "eliminado_provincia", nullable = false)
-    private Boolean eliminado=false;
+    private Boolean eliminado;
 }
 /*
 * "Buenos Aires",

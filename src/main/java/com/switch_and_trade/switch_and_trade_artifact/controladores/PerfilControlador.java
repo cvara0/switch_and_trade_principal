@@ -2,6 +2,7 @@ package com.switch_and_trade.switch_and_trade_artifact.controladores;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +23,12 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PerfilControlador {
     private final PerfilServicio perfilServicio;
-    private final ListaProvincia listaProvincia;
+    private final ProvinciaServicio provinciaServicio;
+
 
 //como acceder al id de perfil una vez logueado
-    @GetMapping("/formulario-iniciar-sesion-o-insertar-perfil")
-    public ModelAndView formularioIniciarSesionOInsertarPerfil(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal, HttpServletRequest request) {
+    @GetMapping("/formulario-iniciar-sesion-o-insertar")
+    public ModelAndView formularioIniciarSesionOInsertar(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, Principal principal, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("formulario-iniciar-sesion-o-insertar-perfil.html");
         //parte de formulario iniciar sesion
         //if (error != null) mav.addObject("mensajeError", "Email o clave incorrectos");
@@ -41,7 +43,6 @@ public class PerfilControlador {
          //   mav.addObject("user", inputFlashMap.get("atributoFlashUsuario"));
         //} else {
 
-        mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
         mav.addObject("objetoPerfil", new Perfil());
       //  }
 
@@ -50,8 +51,8 @@ public class PerfilControlador {
 
     //si principal es distinto de null cuando se esta logueado,
     // entonces si principal!=null me redirige a otra pag, esto es para no iniciar sesion de nuevo
-    @PostMapping("/insertar-perfil")
-    public RedirectView insertarPerfil(Perfil dto, HttpServletRequest request, RedirectAttributes attribute) {
+    @PostMapping("/insertar")
+    public RedirectView insertar(Perfil dto, HttpServletRequest request, RedirectAttributes attribute) {
         RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion");
         //si principal es distinto de null la sesion esta iniciada,
         //principal o http sesion para que no vuelva al index
@@ -68,19 +69,19 @@ public class PerfilControlador {
         return redirect;
     }
 
-    @GetMapping("/formulario-actualizar-perfil/{id}")
-    public ModelAndView formularioActualizarPerfil(@PathVariable Long id,HttpSession session) {//@PathVariable Long id
+    @GetMapping("/formulario-actualizar/{id}")
+    public ModelAndView formularioActualizar(@PathVariable Long id,HttpSession session) {//@PathVariable Long id
         ModelAndView mav = new ModelAndView("formulario-actualizar-perfil.html");
 //TODO el id del perfil se conserva en toda la sesion, hacerlo para cada metodo
         if(!session.getAttribute("id").equals(id))
             return new ModelAndView("redirect:/");
         Perfil perfil=perfilServicio.traerPorId(id);
         mav.addObject("objetoPerfil", perfil);
-        mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
+        //mav.addObject("listaProvincia", listaProvincia.getListaProvincia());
         return mav;
     }
 
-    @GetMapping("/tabla-perfil")
+    @GetMapping("/tabla-perfil/{id}")
     public ModelAndView tablaPerfil(HttpSession session) {
         ModelAndView mav = new ModelAndView("tabla-perfil.html");
         Perfil perfil=perfilServicio.traerPorId((Long)session.getAttribute("id"));

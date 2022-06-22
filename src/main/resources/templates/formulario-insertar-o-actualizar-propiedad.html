@@ -17,7 +17,7 @@ deseados 2 select
 <html>
 <body>
 <div class="portada text-center mt-4">
-    <h2 class="mt-5 mb-5">Publica tu propiedad inmueble y lo que buscas a cambio</h2>
+    <h2 class="mt-5 mb-5">Publica tu publicacion inmueble y lo que buscas a cambio</h2>
 </div>
 <div class="match">
     <div class="row mt-5">
@@ -28,12 +28,12 @@ deseados 2 select
                     <h4 class="text-center">Inserte Datos de Propiedad</h4>
                 </div>
                 <div class="card-body">
-                    <form th:action="@{/propiedades/__${accion}__}" th:object="${objetoPropiedad}" method="post" autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate><!-- th:action="@{/propiedades/insertar-propiedad}" method="post"  th:object="${objetoPropiedadVacio}"-->
+                    <form th:action="@{/propiedades/__${accion}__}" th:object="${objetoPropiedad}" method="post" autocomplete="off" class="needs-validation" enctype="multipart/form-data" novalidate><!-- th:action="@{/propiedades/insertar-publicacion}" method="post"  th:object="${objetoPropiedadVacio}"-->
                         <input type="hidden" th:field="*{id}">
                         <input type="hidden" th:field="*{perfil}">
                         <input type="hidden" th:field="*{eliminado}">
 
-                        <div th:if="${accion.equals('actualizar-propiedad')}" class="col-4">
+                        <div th:if="${accion.equals('actualizar-publicacion')}" class="col-4">
                             <img class="rounded mx-auto d-block"
                                  th:src="${objetoPropiedad.foto} ? @{/uploads/__${objetoPropiedad.foto}__} : @{/uploads/fotodefault.jpg}"
                                  alt="🖤 Thymeleaf 🖤">
@@ -43,14 +43,14 @@ deseados 2 select
                             <input class="form-control mt-2" type="file" name="propiedadfotoname" accept="image/*">
                             </div>
                         <div class="form-floating mb-3">
-                            <select th:field="*{tipoPropiedad}" class="form-select" id="floatingSelect" aria-label="Floating label select example"> <!---->
+                            <select th:field="*{tipo}" class="form-select" id="floatingSelect" aria-label="Floating label select example"> <!---->
                                 <option selected value="">
-                                    Selecciona el tipo de propiedad
+                                    Selecciona el tipo de publicacion
                                 </option >
-                                <option th:each="tipoPropiedad : ${listaTipoPropiedad}" th:text="${tipoPropiedad.nombre}" th:value="${tipoPropiedad.id}">
+                                <option th:each="tipo : ${listaTipoPropiedad}" th:text="${tipo.nombre}" th:value="${tipo.id}">
                                 </option>
                             </select>
-                            <label for="floatingSelect">Tipo de propiedad</label>
+                            <label for="floatingSelect">Tipo de publicacion</label>
                         </div>
                         <div class="form-floating mb-3">
                             <div class="mb-3 text-center">
@@ -64,7 +64,7 @@ deseados 2 select
                                       </textarea>
                             </div>
                         </div>
-                        <label for="basic-url" class="form-label">Ingrese superficie de la propiedad</label>
+                        <label for="basic-url" class="form-label">Ingrese superficie de la publicacion</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon3">Metros cuadrados (m2):</span>
                             <input th:field="*{superficie}" type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3">
@@ -77,7 +77,7 @@ deseados 2 select
                                 th:field="*{provincia}" th:value="${objetoPropiedad.provincia}"
                         >
                             <option selected value="">
-                                Selecciona la provincia donde se ubica la propiedad
+                                Selecciona la provincia donde se ubica la publicacion
                             </option>
                             <option th:each="i : ${listaProvincia}" th:text="${i}"
                                     th:value="${i}"></option>
@@ -107,9 +107,9 @@ deseados 2 select
                             <select  class="form-select"
                                      id="floatingSelect1"
                                      aria-label="Floating label select example"
-                                     th:field="*{tipoDeseado1}" th:value="${objetoPropiedad.tipoDeseado1}"> <!--th:field="*{tipoPropiedad}"-->
+                                     th:field="*{tipoDeseado1}" th:value="${objetoPropiedad.tipoDeseado1}"> <!--th:field="*{tipo}"-->
                                 <option selected value="">
-                                    tipo de propiedad o vehiculo que quieres a cambio
+                                    tipo de publicacion o vehiculo que quieres a cambio
                                 </option>
                                 <option th:each="i : ${listaTipoPropiedad}" th:text="${i.nombre}"
                                         th:value="${i.nombre}"></option>
@@ -121,9 +121,9 @@ deseados 2 select
                             <select  class="form-select"
                                      id="floatingSelect2"
                                      aria-label="Floating label select example"
-                                     th:field="*{tipoDeseado2}" th:value="${objetoPropiedad.tipoDeseado2}"> <!--th:field="*{tipoPropiedad}"-->
+                                     th:field="*{tipoDeseado2}" th:value="${objetoPropiedad.tipoDeseado2}"> <!--th:field="*{tipo}"-->
                                 <option selected value="">
-                                    tipo de propiedad o vehiculo que quieres a cambio
+                                    tipo de publicacion o vehiculo que quieres a cambio
                                 </option>
                                 <option th:each="i : ${listaTipoPropiedad}" th:text="${i.nombre}"
                                         th:value="${i.nombre}"></option>

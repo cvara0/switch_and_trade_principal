@@ -43,8 +43,6 @@ public class PerfilServicio implements UserDetailsService {
             perfil.setRol(Rol.ADMINISTRADOR);
         else
             perfil.setRol(Rol.USUARIO);
-        perfil.setProvincia(dto.getProvincia());
-        perfil.setLocalidad(dto.getLocalidad());
         perfil.setNombre(dto.getNombre());
         perfil.setApellido(dto.getApellido());
         perfil.setTelefono(dto.getTelefono());
@@ -61,14 +59,10 @@ public class PerfilServicio implements UserDetailsService {
         perfil.setEmail(dto.getEmail());
         //perfil.setClave(encriptador.encode(dto.getClave()));//se encripta la constrasenia
         //perfil.setRol(dto.getRol());
-        perfil.setProvincia(dto.getProvincia());
-        perfil.setLocalidad(dto.getLocalidad());
         if (!foto.isEmpty()) perfil.setFoto(fotoServicio.copy(foto));
         perfil.setNombre(dto.getNombre());
         perfil.setApellido(dto.getApellido());
         perfil.setTelefono(dto.getTelefono());
-        //perfil.setEliminado(dto.getEliminado());
-
         perfilRepositorio.save(perfil);
     }
 

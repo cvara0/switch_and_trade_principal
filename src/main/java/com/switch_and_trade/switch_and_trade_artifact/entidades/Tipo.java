@@ -12,19 +12,19 @@ import static javax.persistence.GenerationType.IDENTITY;
 @RequiredArgsConstructor
 @Setter
 @Getter
-@Table(name="tipo_propiedad")
-@SQLDelete(sql = "UPDATE tipo_propiedad SET eliminado_tipo_propiedad = true WHERE id_tipo_propiedad = ?")
-public class TipoPropiedad {
+@Table(name="tipo")
+@SQLDelete(sql = "UPDATE tipo SET eliminado_tipo = true WHERE id_tipo = ?")
+public class Tipo {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name="id_tipo_propiedad")
+    @Column(name="id_tipo")
     private Long id;
 
-    @Column(name="nombre_tipo_propiedad")
+    @Column(name="nombre_tipo")
     private String nombre;
 
-    @Column(name = "eliminado_tipo_propiedad", nullable = false)
+    @Column(name = "eliminado_tipo", nullable = false)
     private Boolean eliminado;
 
 }

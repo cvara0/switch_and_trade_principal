@@ -34,12 +34,6 @@ public class Perfil {
     @Column(name = "rol_perfil", nullable = false)
     private Rol rol;
 
-    @Column(name = "provincia_perfil",length = 60,nullable = false)
-    private String provincia;
-
-    @Column(name = "localidad_perfil",length = 60,nullable = false)
-    private String localidad;
-
     @Column(name="foto_perfil")
     private String foto;
 
@@ -53,7 +47,6 @@ public class Perfil {
     private Long telefono;
 
     @Column(name = "eliminado_perfil", nullable = false)
-    private Boolean eliminado=false;
-
+    private Boolean eliminado;
 
 }

@@ -1,6 +1,6 @@
 package com.switch_and_trade.switch_and_trade_artifact.repositorios;
 
-import com.switch_and_trade.switch_and_trade_artifact.entidades.Propiedad;
+import com.switch_and_trade.switch_and_trade_artifact.entidades.Publicacion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,41 +8,21 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PropiedadRepositorio extends JpaRepository<Propiedad, Long> {
+public interface PublicacionRepositorio extends JpaRepository<Publicacion, Long> {
 
     // inicio trae todo y ordena
-    @Query(value = "SELECT * FROM propiedad ORDER BY provincia_propiedad ASC", nativeQuery = true)
-    List<Propiedad> traerTodoOrdenProvinciaAsc();
 
-    @Query(value = "SELECT * FROM propiedad JOIN propiedad ON propiedad.id_provincia_propiedad=provincia.id_provincia JOIN localidad ON provincia.id_provincia=localidad.id_provincia_localidad ORDER BY localidad.nombre_localidad ASC", nativeQuery = true)
-    List<Propiedad> traerTodoOrdenLocalidadAsc();
+    @Query(value = "SELECT * FROM publicacion WHERE eliminado_publicacion=1", nativeQuery = true)
+    List<Publicacion> traerTodoEliminado();
 
-    @Query(value = "SELECT * FROM propiedad ORDER BY superficie_propiedad ASC", nativeQuery = true)
-    List<Propiedad> traerTodoOrdenSuperficieAsc();
+    @Query(value = "SELECT * FROM publicacion WHERE eliminado_publicacion=0", nativeQuery = true)
+    List<Publicacion> traerTodoNoEliminado();
 
-    @Query(value = "SELECT * FROM propiedad ORDER BY superficie_propiedad DESC", nativeQuery = true)
-    List<Propiedad> traerTodoOrdenSuperficieDesc();
-
-    @Query(value = "SELECT * FROM propiedad JOIN tipo_propiedad ON propiedad.id_tipo_propiedad_propiedad=tipo_propiedad.id_tipo_propiedad ORDER BY tipo_propiedad.nombre ASC", nativeQuery = true)
-    List<Propiedad> traerTodoOrdenTipoAsc();
-
-
-    @Query(value = "SELECT * FROM propiedad WHERE deseado_propiedad=1", nativeQuery = true)
-    List<Propiedad> traerTodoDeseado();
-
-    @Query(value = "SELECT * FROM propiedad WHERE deseado_propiedad=0", nativeQuery = true)
-    List<Propiedad> traerTodoOfrecido();
-
-    @Query(value = "SELECT * FROM propiedad WHERE eliminado_propiedad=1", nativeQuery = true)
-    List<Propiedad> traerTodoEliminado();
-
-    @Query(value = "SELECT * FROM propiedad WHERE eliminado_propiedad=0", nativeQuery = true)
-    List<Propiedad> traerTodoNoEliminado();
-
-    // fin trae todo y ordena
+    @Query(value = "SELECT * FROM publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil WHERE perfil.id_perfil=?1 AND publicacion.eliminado_publicacion=0", nativeQuery = true)
+    List<Publicacion> traerTodoNoEliminadoPorIdPerfil(Long idPerfil);
 
     // inicio trae todo por un parametro
-
+/*
     @Query(value = "SELECT * FROM propiedad JOIN provincia ON propiedad.id_provincia_propiedad=provincia.id_provincia WHERE provincia.nombre LIKE ?1", nativeQuery = true)
     List<Propiedad> traerTodoPorProvincia(String provincia);
 
@@ -61,8 +41,7 @@ public interface PropiedadRepositorio extends JpaRepository<Propiedad, Long> {
     @Query(value = "SELECT * FROM propiedad JOIN perfil ON propiedad.id_perfil_propiedad=perfil.id_perfil WHERE perfil.id_perfil=?1", nativeQuery = true)
     List<Propiedad> traerTodoPorIdPerfil(Long idPerfil);
 
-    @Query(value = "SELECT * FROM propiedad JOIN perfil ON propiedad.id_perfil_propiedad=perfil.id_perfil WHERE perfil.id_perfil=?1 AND propiedad.eliminado_propiedad=0", nativeQuery = true)
-    List<Propiedad> traerTodoNoEliminadoPorIdPerfil(Long idPerfil);
+
 
     @Query(value = "SELECT * FROM propiedad JOIN perfil ON propiedad.id_perfil_propiedad=perfil.id_perfil WHERE propiedad.deseado_propiedad=1 AND perfil.id_perfil=?1", nativeQuery = true)
     List<Propiedad> traerTodoDeseadoPorIdPerfil(Long idPerfil);
@@ -70,7 +49,7 @@ public interface PropiedadRepositorio extends JpaRepository<Propiedad, Long> {
     @Query(value = "SELECT * FROM propiedad JOIN perfil ON propiedad.id_perfil_propiedad=perfil.id_perfil WHERE propiedad.deseado_propiedad=0 AND perfil.id_perfil=?1", nativeQuery = true)
     List<Propiedad> traerTodoOfrecidoPorIdPerfil(Long idPerfil);
     // fin trae todo por un parametro
-
+*/
     /*
 
 

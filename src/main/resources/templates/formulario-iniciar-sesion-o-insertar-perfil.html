@@ -83,8 +83,8 @@
                                 <option selected value="">
                                     Selecciona la provincia de donde usted es
                                 </option>
-                                <option th:each="provincia : ${listaProvincia}" th:text="${provincia}"
-                                        th:value="${provincia}"></option>
+                                <option th:each="provincia : ${listaProvincia}" th:text="${provincia.nombre}"
+                                        th:value="${provincia.id}"></option>
                             </select>
                             <label for="floatingSelect2">Provincia</label>
                             <div class="invalid-feedback">Provincia requerida</div>
