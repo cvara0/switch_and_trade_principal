@@ -9,19 +9,12 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-perfil}">Mis publicaciones</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle ms-xxl-auto px-lg-5" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Perfil
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" th:href="@{/perfiles/tabla-perfil}">Mi Perfil</a></li>
-                            <li><a class="dropdown-item" th:href="@{/publicaciones/formulario-insertar/__${idPerfil}__}">Agregar publicacion</a></li>
-
-
-                        </ul>
-                    </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/publicaciones/formulario-insertar/__${idPerfil}__}">Agregar publicacion</a></li>
                 </ul>
+
                 <ul class="navbar-nav ms-5 mb-lg-0 ms-auto btn  btn-sm">
+                    <li class="nav-nav"><a class="nav-link" role="button" th:href="@{/perfiles/tabla-perfil}">Mi Perfil</a></li>
                     <li class="nav-nav"><a class="nav-link" role="button" href="/logout">Cerrar Sesión</a></li>
                 </ul>
             </div>

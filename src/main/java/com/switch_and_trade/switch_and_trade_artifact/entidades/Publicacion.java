@@ -51,7 +51,7 @@ public class Publicacion {
     @Column(name = "tipo_deseado_1_publicacion", nullable = false)
     private String tipoDeseado1;
 
-    @Column(name = "tipo_deseado_2_publicacion")
+    @Column(name = "tipo_deseado_2_publicacion", nullable = false)
     private String tipoDeseado2;
 
     @Column(name = "eliminado_publicacion", nullable = false)

@@ -5,7 +5,7 @@
 
 <body>
 <div class="portada text-center mt-4 mb-5" style="color:white;">
-    <h2 class="mt-5 ">Coincidencias</h2>
+    <h2 class="mt-5 ">Quienes buscan lo que ofrezco</h2>
 </div>
 <div class="match mt-5">
     <div class="card">
@@ -26,16 +26,21 @@
 <div class="nido">
     <div class="tarjeta" th:each="publicacion : ${listaPublicaionMachOfertaPerfil}">
         <div class="face front">
-            <img th:src="${publicacion.perfil.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 Thymeleaf 🖤">
+            <img th:src="${publicacion.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 Thymeleaf 🖤">
+            <p>Lo cambio por</p>-->
+            <p th:text="${publicacion.tipoDeseado1}"></p>
+            <p th:text="${publicacion.tipoDeseado2}"></p>
             <h3 th:text="${publicacion.tipo.nombre}"></h3>
-            <h5 th:text="${publicacion.descripcionCorta}"></h5>
+            <p th:text="${publicacion.descripcionCorta}"></p>
 
         </div>
+
+
+        <h5 th:text="${publicacion.tipoDeseado2}"></h5>
         <div class="face back">
             <h4 th:text="|${publicacion.perfil.nombre} ${publicacion.perfil.apellido}|"></h4>
             <img th:src="${publicacion.perfil.foto} ? @{/uploads/__${publicacion.perfil.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 Thymeleaf 🖤">
-            <p th:text="${publicacion.descripcion}">
-            </p>
+            <p th:text="${publicacion.descripcion}"></p>
             <a th:href="|https://wa.me/${publicacion.perfil.telefono}|" target="_blank"><i class="fa-brands fa-whatsapp" ></i></a>
         </div>
     </div>
