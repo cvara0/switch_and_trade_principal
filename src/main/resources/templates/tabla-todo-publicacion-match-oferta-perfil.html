@@ -9,79 +9,37 @@
 </div>
 <div class="match mt-5">
     <div class="card">
-        <img src="/img/partner.jpg" class="card-img-top" alt="Mi match">
+        <img th:src="${PublicacionPerfil.foto} ? @{/uploads/__${PublicacionPerfil.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 Thymeleaf 🖤">
         <div class="card-body">
-            <h5 class="card-title">Partner</h5>
-            <p class="card-text">Partner en excelentes condiciones.</p>
+            <h5 class="card-title" th:text="${PublicacionPerfil.tipo.nombre}"></h5>
+            <p class="card-text" th:text="${PublicacionPerfil.descripcionCorta}"></p>
+            <p class="card-text" th:text="${PublicacionPerfil.descripcion}"></p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center" style="font-style: oblique ;" >Me interesa</li>
-            <li class="list-group-item">terreno urbano</li>
-            <li class="list-group-item">motocicleta</li>
-            <li class="list-group-item">helicoptero apache</li>
+            <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por</li>
+            <li class="list-group-item" th:text="${PublicacionPerfil.tipoDeseado1}"></li>
+            <li class="list-group-item" th:text="${PublicacionPerfil.tipoDeseado2}"></li>
         </ul>
     </div>
 </div>
 
 <div class="nido">
-    <div class="tarjeta">
+    <div class="tarjeta" th:each="publicacion : ${listaPublicaionMachOfertaPerfil}">
         <div class="face front">
-            <img src="/img/partner.jpg" alt="">
-            <h3> partner</h3>
+            <img th:src="${publicacion.perfil.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 Thymeleaf 🖤">
+            <h3 th:text="${publicacion.tipo.nombre}"></h3>
+            <h5 th:text="${publicacion.descripcionCorta}"></h5>
 
         </div>
         <div class="face back">
-            <h4>Arnold chuarseneger</h4>
-            <img src="/img/arnold1.jpg" alt="">
-            <p>La partner esta en wenas condiciones pero yo, estoy en mejores condiciones que la partner.
+            <h4 th:text="|${publicacion.perfil.nombre} ${publicacion.perfil.apellido}|"></h4>
+            <img th:src="${publicacion.perfil.foto} ? @{/uploads/__${publicacion.perfil.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 Thymeleaf 🖤">
+            <p th:text="${publicacion.descripcion}">
             </p>
-            <a href="https://wa.me/1233222222" target="_blank"><i class="fa-brands fa-whatsapp" ></i></a>
+            <a th:href="|https://wa.me/${publicacion.perfil.telefono}|" target="_blank"><i class="fa-brands fa-whatsapp" ></i></a>
         </div>
     </div>
-    <div class="tarjeta">
-        <div class="face front">
-            <img src="/img/partner.jpg" alt="">
-            <h3> partner</h3>
 
-        </div>
-        <div class="face back">
-            <h4>Alfredo caseros</h4>
-            <img src="/img/casero.jpg" alt="">
-            <p>La partner esta en wenas condiciones pero yo, estoy en mejores condiciones que la partner.
-            </p>
-            <a href="https://wa.me/1233222222" target="_blank"><i class="fa-brands fa-whatsapp" ></i></a>
-
-        </div>
-    </div>
-    <div class="tarjeta">
-        <div class="face front">
-            <img src="/img/partner.jpg" alt="">
-            <h3> partner</h3>
-
-        </div>
-        <div class="face back">
-            <h4>Arnold chuarseneger</h4>
-            <img src="/img/arnold1.jpg" alt="">
-            <p>La partner esta en wenas condiciones pero yo, estoy en mejores condiciones que la partner.
-            </p>
-            <a href="https://wa.me/1233222222" target="_blank"><i class="fa-brands fa-whatsapp" ></i></a>
-        </div>
-    </div>
-    <div class="tarjeta">
-        <div class="face front">
-            <img src="/img/gol.jpg" alt="">
-            <h3> partner</h3>
-
-        </div>
-        <div class="face back">
-            <h4>Alfredo caseros</h4>
-            <img src="/img/casero.jpg" alt="">
-            <p>La partner esta en wenas condiciones pero yo, estoy en mejores condiciones que la partner.
-            </p>
-            <a href="https://wa.me/1233222222" target="_blank"><i class="fa-brands fa-whatsapp" ></i></a>
-
-        </div>
-    </div>
 </div>
 <footer th:replace="fragments/footer :: footer"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>

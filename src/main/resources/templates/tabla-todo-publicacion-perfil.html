@@ -22,7 +22,7 @@
                 No hay ningúna publicacion cargate una rata.
             </div>
 
-            <div th:unless="${listaPublicacionPerfil.isEmpty()}" class="col-lg-4 col-xxl-4" th:each="publicacion : ${listaPublicacionPerfil}">
+            <div th:unless="${listaPublicacionPerfil.isEmpty()}" th:each="publicacion : ${listaPublicacionPerfil}" class="col-lg-4 col-xxl-4" >
                 <div class="card text-bg-warning mb-3">
                     <div class="col text-center">
                         <a
