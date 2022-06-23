@@ -26,7 +26,7 @@ h2 {
     font-style: italic;
 }
 body{
-background-image: url("/img/fondazo2.jpg");
+background-image: url("/img/fondo-negro-oro.jpg");
 background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -108,8 +108,17 @@ border-radius: 5px;
 .tarjeta{
     position: relative;
     width: 435px;
-    height: 700px;
+    height: 500px;
     margin: 40px;
+
+}
+.back .card-img-top{
+    border-radius: 150px;
+    width: 145px;
+    height: 250px;
+    margin: 5px auto auto auto;
+    align-items: center;
+    display: flex;
 }
 .tarjeta .face{
    position: absolute;
@@ -128,6 +137,9 @@ border-radius: 5px;
    -moz-transition: .5s;
    -ms-transition: .5s;
    -o-transition: .5s;
+   background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
+   background-size: 500%;
+   animation: fanimado 10s ;
 }
 .tarjeta .front{
     transform: perspective(600px) rotateY(0deg);
@@ -136,12 +148,17 @@ border-radius: 5px;
     -ms-transform: perspective(600px) rotateY(0deg);
     -o-transform: perspective(600px) rotateY(0deg);
     box-shadow: 0 5px 10px #000;
+        color: #f3f3f3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
 
 }
 .tarjeta .front img{
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 50%;
     object-fit: cover;
 
 }
@@ -159,10 +176,10 @@ border-radius: 5px;
 padding-left:8px;
 padding-right:8px;
     position: absolute;
-    bottom: 0;
+    bottom: 10;
     width: 100%;
-    height: 80px;
-    line-height: 26px;
+    height: 200px;
+    line-height: 45px;
     color: antiquewhite;
     background: rgba(0,0,0,.5);
 }
@@ -190,18 +207,7 @@ padding-right:8px;
 
 }
 
-.tarjeta .back img{
-    border-radius: 20%;
-    width: 200px;
-    height: 200px;
-    margin: 5px auto auto auto;
-    align-items: center;
-    display: flex;
-    -webkit-border-radius: 20%;
-    -moz-border-radius: 20%;
-    -ms-border-radius: 20%;
-    -o-border-radius: 20%;
-}
+
 .tarjeta:hover .front{
     transform: perspective(600px) rotateY(180deg);
     -webkit-transform: perspective(600px) rotateY(180deg);
@@ -218,4 +224,15 @@ padding-right:8px;
 }
 .input-group{
 width:400px;
+}
+.deseo-front{
+ position: absolute;
+   bottom:80;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: antiquewhite;
+    text-align: center;
+    justify-content: center;
+padding-left:18px;
 }

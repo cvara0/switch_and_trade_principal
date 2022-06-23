@@ -1,23 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap');
 *{
     margin: 0;
     padding:0;
     box-sizing: border-box;
-    font-family: Poppins, sans-serif;
+ font-family: 'Quicksand', sans-serif;
+
 }
 .navbar {
-  background-color: #55545459;
+  background-color: rgb(0,0,0,0.1);
 }
 .container a{
 color:gold;
 }
 .bienvenida{
+font-width:500;
 font-style: oblique;
-color: white;
+color: #D8B70D;
+text-shadow: black 0.1em 0.1em 0.2em;
 }
 body{
-background-image: url("/img/fondazo.jpg");
+background-image: url("/img/fondo-negro-oro.jpg");
 background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -29,6 +32,11 @@ padding: auto;
 text-align: center;
 justify-content: center;
 display:flex;
+}
+.img-portada img{
+   border-width: 2px;
+  border-style: solid;
+  border-color: gold;
 }
 .nido{
     display: flex;
@@ -44,7 +52,8 @@ display:flex;
     width: 300px;
     height: 350px;
     margin: 20px;
-     background:rgba(0,0,0,0);;
+     background:rgba(0,0,0,0);
+
 }
 .card .face{
    position: absolute;
@@ -71,6 +80,9 @@ display:flex;
     -ms-transform: perspective(600px) rotateY(0deg);
     -o-transform: perspective(600px) rotateY(0deg);
     box-shadow: 0 5px 10px #000;
+      border-width: 1px;
+           border-style: solid;
+           border-color: gold;
 
 }
 .card .front img{
@@ -89,6 +101,7 @@ display:flex;
     color: antiquewhite;
     background: rgba(0,0,0,.5);
     text-align: center;
+ text-shadow: black 0.1em 0.1em 0.2em;
 }
 .card .back {
     transform: perspective(600px) rotateY(180deg);
@@ -98,7 +111,7 @@ display:flex;
     -o-transform: perspective(600px) rotateY(180deg);
    background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
        background-size: 500%;
-       animation: fanimado 20s infinite;
+       animation: fanimado 50s infinite;
     padding: 15px;
     color: #f3f3f3;
     display: flex;
@@ -106,6 +119,9 @@ display:flex;
     justify-content: space-between;
     text-align: center;
     box-shadow: 0 5px 10px #000;
+      border-width: 1px;
+           border-style: solid;
+           border-color: gold;
 }
 @keyframes fanimado {
     0% {
@@ -129,7 +145,7 @@ display:flex;
 .card .back p{
 
     letter-spacing: 1px;
-
+ text-shadow: black 0.1em 0.1em 0.2em;
 }
 .card:hover .front{
     transform: perspective(600px) rotateY(180deg);

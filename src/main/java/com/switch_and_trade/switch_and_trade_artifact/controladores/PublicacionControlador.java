@@ -60,7 +60,7 @@ public class PublicacionControlador {
 
         if(!session.getAttribute("id").equals(perfilServicio.traerIdPorIdPublicacion(id)))
             return new ModelAndView("redirect:/publicaciones/tabla-todo-publicacion-perfil");
-
+        mav.addObject("idPerfil",session.getAttribute("id"));
         mav.addObject("PublicacionPerfil", publicacionServicio.traerPorId(id));
         mav.addObject("listaPublicaionMachOfertaPerfil",publicacionServicio.traerTodoPorOfertaIdPublicacion(id));
         return mav;
@@ -109,17 +109,16 @@ public class PublicacionControlador {
 
         try {
             publicacionServicio.insertar(dto,publicacionFotoName);
-        } catch (IllegalArgumentException e) {
-            redirect.setUrl("/propiedades/formulario-insertar-propiedad");
+        } catch (Exception e) {
+            redirect.setUrl("/publicaciones/tabla-todo-publicacion-perfil");
         }
         return redirect;
     }
 
     @PostMapping("/actualizar")
-    public RedirectView actualizar(Publicacion dto, @RequestParam(required = false) MultipartFile propiedadfotoname) {
+    public RedirectView actualizar(Publicacion dto, @RequestParam(required = false) MultipartFile publicacionFotoName) {
         RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
-
-        publicacionServicio.actualizar(dto,propiedadfotoname);
+        publicacionServicio.actualizar(dto,publicacionFotoName);
         return redirect;
     }
 

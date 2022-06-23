@@ -23,10 +23,9 @@
 
                         <div class="col-4">
                             <img class="rounded mx-auto d-block"
-                                 th:src="${objetoPublicacion.foto} ? @{/uploads/__${objetoPublicacion.foto}__} : @{/uploads/fotodefecto.jpg}"
+                                 th:src="${objetoPublicacion.foto} ? @{/uploads/__${objetoPublicacion.foto}__} : @{/uploads/fotodefault.jpg}"
                                  alt="🖤 Thymeleaf 🖤">
                         </div>
-
                         <div class="form-floating mb-3">
                             <input class="form-control mt-2" type="file" name="publicacionFotoName" accept="image/*">
                         </div>

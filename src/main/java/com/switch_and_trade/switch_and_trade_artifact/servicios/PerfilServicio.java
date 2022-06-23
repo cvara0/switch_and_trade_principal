@@ -84,6 +84,17 @@ public class PerfilServicio implements UserDetailsService {
     public void eliminarPorId(Long id) {
         perfilRepositorio.deleteById(id);
     }
+
+    @Transactional
+    public void restablecerPorId(Long id) {
+        perfilRepositorio.restablecerPorId(id);
+    }
+
+
+
+
+
+
     /*
     sirve para saber si alguien existe o no existe en la bd cuando me quiera logear
     pregunta a la bd si existe una instancia con el email que le estoy pasando

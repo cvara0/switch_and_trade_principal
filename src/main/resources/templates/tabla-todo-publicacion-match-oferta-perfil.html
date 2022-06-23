@@ -9,7 +9,8 @@
 </div>
 <div class="match mt-5">
     <div class="card">
-        <img th:src="${PublicacionPerfil.foto} ? @{/uploads/__${PublicacionPerfil.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 ERROR AL CARGAR IMAGEN 🖤">
+        <img th:src="${PublicacionPerfil.foto} ? @{/uploads/__${PublicacionPerfil.foto}__} : @{/uploads/fotodefault.jpg}"
+             class="card-img-top" alt="🖤 ERROR AL CARGAR IMAGEN 🖤">
         <div class="card-body">
             <h5 th:text="${PublicacionPerfil.tipo.nombre}" class="card-title text-center"></h5>
             <p th:text="${PublicacionPerfil.descripcionCorta}" class="card-text"></p>
@@ -21,40 +22,53 @@
 <div class="nido">
     <div th:each="publicacion : ${listaPublicaionMachOfertaPerfil}" class="tarjeta">
         <div class="face front">
-            <img th:src="${publicacion.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 ERROR AL CARGAR IMAGEN 🖤">
+            <img th:src="${publicacion.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefault.jpg}"
+                 class="card-img-top" alt="🖤 ERROR AL CARGAR IMAGEN 🖤">
             <h3 th:text="${publicacion.tipo.nombre}"></h3>
+
             <h4 th:text="${publicacion.descripcionCorta}"></h4>
+            <div class="deseo-front">
+                <div class="input-group mb-3 ">
+                    <span class="input-group-text" id="basic-add1n3">Deseo 1:</span>
+                    <input disabled th:value="${publicacion.tipoDeseado1}" type="text" class="form-control"
+                           id="basic-ur1" aria-describedby="basic-addon3">
+                </div>
+                <div class="input-group mb-3 ">
+                    <span class="input-group-text" id="basic-addaon3">Deseo 2:</span>
+                    <input disabled th:value="${publicacion.tipoDeseado2}" type="text" class="form-control"
+                           id="basac-url" aria-describedby="basic-addon3">
+                </div>
+            </div>
         </div>
         <div class="face back">
             <h4 th:text="|${publicacion.perfil.nombre} ${publicacion.perfil.apellido}|"></h4>
-            <img th:src="${publicacion.perfil.foto} ? @{/uploads/__${publicacion.perfil.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 ERROR AL CARGAR IMAGEN 🖤">
+            <img th:src="${publicacion.perfil.foto} ? @{/uploads/__${publicacion.perfil.foto}__} : @{/uploads/fotodefault.jpg}"
+                 class="card-img-top" alt="🖤 ERROR AL CARGAR IMAGEN 🖤">
 
             <div class="input-group mb-3 mt-3 ">
                 <span class="input-group-text" id="basic-addon3">Provincia:</span>
-                <input disabled th:value="${publicacion.provincia.nombre}" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input disabled th:value="${publicacion.provincia.nombre}" type="text" class="form-control"
+                       id="basic-url" aria-describedby="basic-addon3">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Departamento:</span>
-                <input disabled th:value="${publicacion.localidad}" type="text" class="form-control" id="basic-url1" aria-describedby="basic-addon3">
+                <input disabled th:value="${publicacion.localidad}" type="text" class="form-control" id="basic-url1"
+                       aria-describedby="basic-addon3">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon2">Teléfono:</span>
-                <input disabled th:value="${publicacion.perfil.telefono}" type="text" class="form-control" id="basic-url2" aria-describedby="basic-addon3">
+                <input disabled th:value="${publicacion.perfil.telefono}" type="text" class="form-control"
+                       id="basic-url2" aria-describedby="basic-addon3">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon11">Descripción:</span>
-                <input disabled th:value="${publicacion.descripcion}" type="text" class="form-control" id="basic-url11" aria-describedby="basic-addon3">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-add1n3">Deseo 1:</span>
-                <input disabled th:value="${publicacion.tipoDeseado1}" type="text" class="form-control" id="basic-ur1" aria-describedby="basic-addon3">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addaon3">Deseo 2:</span>
-                <input disabled th:value="${publicacion.tipoDeseado2}" type="text" class="form-control" id="basac-url" aria-describedby="basic-addon3">
+               <textarea disabled th:text="${publicacion.descripcion}" type="text" class="form-control" id="basic-url11"
+                       aria-describedby="basic-addon3"></textarea>
             </div>
 
-            <a th:href="|https://wa.me/${publicacion.perfil.telefono}|" target="_blank"><i class="fa-brands fa-whatsapp" ></i></a>
+
+            <a th:href="|https://wa.me/${publicacion.perfil.telefono}|" target="_blank"><i
+                    class="fa-brands fa-whatsapp"></i></a>
         </div>
     </div>
 

@@ -1,5 +1,6 @@
 package com.switch_and_trade.switch_and_trade_artifact.servicios;
 
+import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Provincia;
 import com.switch_and_trade.switch_and_trade_artifact.repositorios.ProvinciaRepositorio;
 import lombok.RequiredArgsConstructor;
@@ -40,9 +41,15 @@ public class ProvinciaServicio {
         return provinciaRepositorio.findAll();
     }
 
+
     @Transactional
     public void eliminarPorId(Long id) {
         provinciaRepositorio.deleteById(id);
+    }
+
+    @Transactional
+    public void restablecerPorId(Long id) {
+        provinciaRepositorio.restablecerPorId(id);
     }
 //fin metodos basicos
 

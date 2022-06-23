@@ -12,39 +12,43 @@
     </div>
     <div class="container px-lg-5 mt-5" >
         <!-- Page Features-->
+        <div class="d-grid gap-2 col-4 mx-auto">
+            <button type="button" class="btn btn-outline-warning" style=" color:white;ext-shadow: black 0.1em 0.1em 0.2em;" ><a class="nav-link" th:href="@{/publicaciones/formulario-insertar/__${idPerfil}__}" style="text-decoration:none;">Agregar publicacion</a></button>
+        </div>
         <div class="row gx-lg-5">
-
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="button">crear publicacion</button>
-                <button class="btn btn-primary" type="button">crear publicacion</button>
-            </div>
             <div th:if="${listaPublicacionPerfil.isEmpty()}" class="alert alert-info alert-dismissible fade show" role="alert">
                 No hay ningúna publicacion cargate una rata.
             </div>
 
             <div th:unless="${listaPublicacionPerfil.isEmpty()}" th:each="publicacion : ${listaPublicacionPerfil}" class="col-lg-4 col-xxl-4" >
-                <div class="card text-bg-warning mb-3">
-                    <div class="col text-center">
-                        <a
-                                th:href="@{/publicaciones/formulario-actualizar/__${publicacion.id}__}"
-                                class="btn btn-primary tooltips"
-                                data-placement="top"
-                                data-toggle="tooltip"
-                                data-original-title="Edit"
-                        ><i class="fa fa-pencil"></i>
-                        </a>
-                        <form th:action="@{/publicaciones/eliminar/__${publicacion.id}__}"
-                              method="post">
-                            <button
-                                    class="btn btn-secondary tooltips"
+                <div class="card text-bg-warning">
+                    <div class="contenedor">
+                        <div class="A">
+                            <a
+                                    th:href="@{/publicaciones/formulario-actualizar/__${publicacion.id}__}"
+                                    class="btn btn-primary tooltips"
                                     data-placement="top"
                                     data-toggle="tooltip"
-                                    data-original-title="Delete"
-                                    type="submit"><i class="fa fa-times"></i>
-                            </button>
-                        </form>
+                                    data-original-title="Edit"
+                            ><i class="fa fa-pencil"></i>
+                            </a>
+                        </div>
+                        <div class="B">
+                            <form th:action="@{/publicaciones/eliminar/__${publicacion.id}__}"
+                                  method="post">
+                                <button
+                                        class="btn btn-secondary tooltips"
+                                        data-placement="top"
+                                        data-toggle="tooltip"
+                                        data-original-title="Delete"
+                                        type="submit"><i class="fa fa-times"></i>
+                                </button>
+                            </form>
+                        </div>
+
 
                     </div>
+
                     <img th:src="${publicacion.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefault.jpg}" class="card-img-top" alt="🖤 Thymeleaf 🖤">
                     <div class="card-body">
                         <h5 class="card-title text-center" th:text="${publicacion.tipo.nombre}"> </h5><!---->
@@ -55,7 +59,7 @@
                         <li class="list-group-item text-center" style="font-style: oblique ;" >Lo cambio por:</li>
                         <li class="list-group-item" th:text="${publicacion.tipoDeseado1}"></li>
                         <li class="list-group-item" th:text="${publicacion.tipoDeseado2}"></li>
-                        <li class="list-group-item"><a th:href="@{/publicaciones/tabla-todo-publicacion-match-oferta-perfil/__${publicacion.id}__}"  class="btn btn-light">Ver quienes la buscan</a></li><!--class="btn btn-primary stretched-link"-->
+                        <li class="list-group-item coincidencia "><a th:href="@{/publicaciones/tabla-todo-publicacion-match-oferta-perfil/__${publicacion.id}__}" class="btn btn-light text-center" style="color:black; width: 220px;">Ver quienes la buscan</a></li><!--class="btn btn-primary stretched-link"-->
                     </ul>
                 </div>
             </div>

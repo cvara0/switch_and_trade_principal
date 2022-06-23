@@ -1,42 +1,32 @@
 <header th:fragment="header">
     <nav class="navbar sticky-top navbar-expand-md border-3 border-primary " >
         <div class="container px-lg-5" >
-            <a class="navbar-brand" href="/publicaciones/tabla-todo-publicacion">PermutAr</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    
+                    <li  class="nav-item">
+                        <a class="nav-link" href="/publicaciones/tabla-todo-publicacion">PermutAr</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/publicaciones/tabla-todo-publicacion-perfil}">Mis publicaciones</a></li>
-                    <li class="nav-item dropdown">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/publicaciones/formulario-insertar/__${idPerfil}__}">Agregar publicacion</a></li>
                     <li class="nav-item">
-
-                        <form th:action="@{/publicaciones/tabla-todo-publicacion-palabra-clave-tipo}"
-                              method="GET">
-                            <div class="form-group row mb-2">
-                                <label for="buscar" class="col-2">buscar:</label>
-                                <div class="col-8">
-                                    <input type="search" class="form-control" th:name="palabra">
-                                </div>
+                        <form th:action="@{/publicaciones/tabla-todo-publicacion-palabra-clave-tipo}" method="GET" class="row">
+                            <div class="col-auto">
+                                <label for="inputPassword2" class="visually-hidden">Buscar</label>
+                                <input th:name="palabra" type="search" class="form-control" id="inputPassword2" placeholder="Buscar">
                             </div>
-                            <button
-                                    class="btn btn-secondary tooltips"
-                                    data-placement="top"
-                                    data-toggle="tooltip"
-                                    data-original-title="Search"
-                                    type="submit"> buscar
-                            </button>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">🔍</button>
+                            </div>
                         </form>
-
                     </li>
+                    <li class="nav-item"><a class="nav-link" role="button" th:href="@{/perfiles/tabla-perfil}">Mi Perfil</a></li>
+                    <li sec:authorize="hasRole('ADMINISTRADOR')"  class="nav-item"><a class="nav-link" role="button" th:href="@{/perfiles/tabla-administrar-perfil}">Administrar perfiles</a></li>
+                    <li sec:authorize="hasRole('ADMINISTRADOR')"  class="nav-item"><a class="nav-link" role="button" th:href="@{/provincias/tabla}">Administrar provincias</a></li>
+                    <li class="nav-item"><a class="nav-link" role="button" href="/logout">Cerrar Sesión</a></li>
                 </ul>
 
-                <ul class="navbar-nav ms-5 mb-lg-0 ms-auto btn  btn-sm">
-                    <li class="nav-nav"><a class="nav-link" role="button" th:href="@{/perfiles/tabla-perfil}">Mi Perfil</a></li>
-                    <li class="nav-nav"><a class="nav-link" role="button" href="/logout">Cerrar Sesión</a></li>
-                </ul>
             </div>
         </div>
     </nav>

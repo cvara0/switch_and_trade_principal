@@ -4,6 +4,7 @@
 color:gold;
 }
 * {
+
   font-family: "Poppins", sans-serif;
 }
 .navbar {
@@ -13,7 +14,8 @@ h2 {
     font-style: italic;
 }
 body{
-background-image: url("/img/fondazo.jpg");
+z-index: -1;
+background-image: url("/img/fondo-negro-oro.jpg");
 background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -37,7 +39,7 @@ background-repeat: no-repeat;
 .card {
  background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
     background-size: 500%;
-    animation: fanimado 20s infinite;
+    animation: fanimado 50s infinite;
   color: #000000;
   margin-bottom: 20px;
   width: 100%;
@@ -48,7 +50,7 @@ background-repeat: no-repeat;
   -o-border-radius: 6px;
   overflow: hidden;
   box-shadow: 0px 1px 10px rgba(0, 0, 0,0.2);
-  cursor: pointer;
+
   transition: all 400ms ease;
   -webkit-transition: all 400ms ease;
   -moz-transition: all 400ms ease;
@@ -89,6 +91,15 @@ justify-content: center;
 display:flex;
 background-image: linear-gradient(135deg, #000000, gold, rgba(94, 91, 91, 0.651), rgb(196, 152, 7), rgb(255, 187, 0));
 background-size: 500%;
-animation: fanimado 10s infinite;
+animation: fanimado 50s infinite;
 border-radius: 5px;
+}
+.btn-light{
+margin:auto;
+padding:auto;
+display:flex;
+}
+.contenedor{
+display:flex;
+justify-content: center;
 }

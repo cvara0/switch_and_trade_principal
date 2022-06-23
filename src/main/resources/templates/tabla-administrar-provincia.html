@@ -1,0 +1,50 @@
+<head th:replace="fragments/head :: head"></head>
+
+<header th:replace="fragments/navbar-logueado :: header"></header>
+
+<html>
+<body>
+
+<main>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col">
+
+        <div th:if="${listaTodoProvincia.isEmpty()}">
+          <h4>Aun no hay provincias registradas</h4>
+        </div>
+        <a class="nav-link" role="button" th:href="@{/provincias/formulario-insertar}">Insertar provincia</a>
+        <div th:unless="${listaTodoProvincia.isEmpty()}" class="table-responsive">
+          <table class="table table-hover table-bordered table-dark">
+            <thead>
+            <tr class="table-purple">
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="provincia:${listaTodoProvincia}">
+              <td th:text="${provincia.id}"></td>
+              <td th:text="${provincia.nombre}"></td>
+              <td>
+                <form th:action="${provincia.eliminado} ? @{/provincias/restablecer/__${provincia.id}__} : @{/provincias/eliminar/__${provincia.id}__}" method="POST">
+                  <button type="submit" class="btn btn-danger" th:text="${provincia.eliminado} ? 'Restablecer' : 'Eliminar'"></button>
+                </form>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://kit.fontawesome.com/c9ab963329.js" crossorigin="anonymous"></script>
+</body>
+</html>
+

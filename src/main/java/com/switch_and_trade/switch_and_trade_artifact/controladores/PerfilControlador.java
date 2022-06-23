@@ -4,6 +4,7 @@ import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -91,15 +92,46 @@ public class PerfilControlador {
         mav.addObject("objetoPerfil", perfil);
         return mav;
     }
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    @GetMapping("/tabla-administrar-perfil")
+    public ModelAndView tablaAdministrarPerfil(HttpSession session) {
+        ModelAndView mav = new ModelAndView("tabla-administrar-perfil.html");
+        mav.addObject("idPerfil",session.getAttribute("id"));
+        //Perfil perfil=perfilServicio.traerPorId((Long)session.getAttribute("id"));
+        //mav.addObject("idPerfil",session.getAttribute("id"));
+        mav.addObject("listaTodoPerfil", perfilServicio.traerTodo());
+        return mav;
+    }
 
 
-    //@PreAuthorize("hasRole('ADMIN')")
+
    @PostMapping("/actualizar")
     public RedirectView actualizarPerfil(Perfil dto, @RequestParam(required = false) MultipartFile fotoPerfilName) {
         RedirectView redirect = new RedirectView("/perfiles/tabla-perfil");
         perfilServicio.actualizar(dto,fotoPerfilName);
         return redirect;
     }
+
+
+
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    @PostMapping("/eliminar/{id}")
+    public RedirectView eliminar(@PathVariable Long id) {
+        RedirectView redirect = new RedirectView("/perfiles/tabla-administrar-perfil");
+        perfilServicio.eliminarPorId(id);
+        return redirect;
+    }
+
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    @PostMapping("/restablecer/{id}")
+    public RedirectView restablecer(@PathVariable Long id) {
+        perfilServicio.restablecerPorId(id);
+        return new RedirectView("/perfiles/tabla-administrar-perfil");
+    }
+
+
+
+}
 
 /*
     @PreAuthorize("hasRole('ADMIN')")
@@ -153,4 +185,3 @@ public class PerfilControlador {
         provinciaServicio.eliminarPorId(id);
         return redirect;
     }*/
-}
