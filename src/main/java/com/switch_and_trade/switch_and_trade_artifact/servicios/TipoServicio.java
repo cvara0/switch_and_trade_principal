@@ -1,6 +1,8 @@
 package com.switch_and_trade.switch_and_trade_artifact.servicios;
 
+import com.switch_and_trade.switch_and_trade_artifact.entidades.Provincia;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Tipo;
+import com.switch_and_trade.switch_and_trade_artifact.repositorios.ProvinciaRepositorio;
 import com.switch_and_trade.switch_and_trade_artifact.repositorios.TipoRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,19 +18,18 @@ public class TipoServicio {
 
     //inicio metodos basicos
     @Transactional
-    public void crear(Tipo dto) {
+    public void insertar(Tipo dto) {
         Tipo tipo = new Tipo();
-        tipo.setEliminado(false);
         tipo.setNombre(dto.getNombre());
+        tipo.setEliminado(false);
         tipoRepositorio.save(tipo);
     }
 
     @Transactional
     public void actualizar(Tipo dto) {
-        Tipo tipo = tipoRepositorio.findById(dto.getId()).get();
-
-        tipo.setEliminado(false);
+        Tipo tipo= tipoRepositorio.findById(dto.getId()).get();
         tipo.setNombre(dto.getNombre());
+        tipo.setEliminado(dto.getEliminado());
         tipoRepositorio.save(tipo);
     }
 
@@ -42,9 +43,15 @@ public class TipoServicio {
         return tipoRepositorio.findAll();
     }
 
+
     @Transactional
     public void eliminarPorId(Long id) {
         tipoRepositorio.deleteById(id);
+    }
+
+    @Transactional
+    public void restablecerPorId(Long id) {
+        tipoRepositorio.restablecerPorId(id);
     }
 //fin metodos basicos
 }

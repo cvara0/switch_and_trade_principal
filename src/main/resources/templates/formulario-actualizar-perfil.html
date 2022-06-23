@@ -12,8 +12,6 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link active" id="usuario-tab" data-bs-toggle="tab" data-bs-target="#usuario-tab-pane" type="button" role="tab" aria-controls="usuario-tab-pane" aria-selected="true">Datos del Usuario</button>
         </li>
-
-
       </ul>
 
       <form th:action="@{/perfiles/actualizar}" th:object="${objetoPerfil}" method="post" autocomplete="off"
@@ -32,27 +30,27 @@
 
             <div class="col-8">
 
-              <div class="form-group row mb-2">
-                <label for="email" class="col-2">Email:</label>
+              <div class="form-group row mb-2 " style="color:white;">
+                <label for="email" class="col-2" style="color:white;">Email:</label>
                 <div class="col-8">
                   <input type="email" class="form-control" th:value="${objetoPerfil.email}" disabled>
                 </div>
               </div>
               <div class="form-group row mb-2">
-                <label for="nombre" class="col-2">Nombre:</label>
+                <label for="nombre" class="col-2" style="color:white;">Nombre:</label>
                 <div class="col-8">
                   <input type="text" class="form-control" th:field="*{nombre}" th:value="${objetoPerfil.nombre}">
                 </div>
               </div>
               <div class="form-group row mb-2">
-                <label for="apellido" class="col-2">Apellido:</label>
+                <label for="apellido" class="col-2" style="color:white;">Apellido:</label>
                 <div class="col-8">
                   <input type="text" class="form-control" th:field="*{apellido}" th:value="${objetoPerfil.apellido}">
                 </div>
               </div>
 
               <div class="form-group row mb-2">
-                <label for="telefono" class="col-2">Telefono:</label>
+                <label for="telefono" class="col-2" style="color:white;">Telefono:</label>
                 <div class="col-8">
                   <input type="number" class="form-control" th:field="*{telefono}" th:value="${objetoPerfil.telefono}">
                 </div>

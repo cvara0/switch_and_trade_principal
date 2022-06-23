@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family-Poppins:100,200,300,400,500,600,700,800,900');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+body {
+    background: linear-gradient(45deg, #e6ff06, #000000);
+    height: 100vh;
+}
+
+#container {
+    position: absolute;
+    top: 10%;
+    Left: 10%;
+    right: 10%;
+    bottom: 10%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('homer.jpg'), #ffffff;
+    background-repeat: no-repeat;
+    box-shadow: 015px 30px rgba(0, 0, 0, .5);
+}
+
+#container .content {
+    max-width: 600px;
+    text-align: center;
+}
+
+#container .content h2 {
+    font-size: 18vw;
+    color: black;
+    line-height: 1em;
+}
+
+#container .content h4 {
+    position: relative;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+    font-weight: 300;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+#container .content p
+{
+    color:rgb(0, 0, 0);
+    font-size:1.2em;
+}
+#container .content a
+{
+    position: relative;
+    display: inline-block;
+    padding: 10px 25px;
+    background:#000000;
+    color:#fff;
+    text-decoration: none;
+    margin-top: 25px;
+    border-radius: 25px;
+    border-bottom: 4px solid #000000;
+}

@@ -3,6 +3,7 @@ package com.switch_and_trade.switch_and_trade_artifact.controladores;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.PublicacionServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import java.util.Map;
 public class PerfilControlador {
     private final PerfilServicio perfilServicio;
     private final ProvinciaServicio provinciaServicio;
+    private final PublicacionServicio publicacionServicio;
 
 
 //como acceder al id de perfil una vez logueado
@@ -119,6 +121,7 @@ public class PerfilControlador {
     public RedirectView eliminar(@PathVariable Long id) {
         RedirectView redirect = new RedirectView("/perfiles/tabla-administrar-perfil");
         perfilServicio.eliminarPorId(id);
+        publicacionServicio.eliminarTodoPorIdPerfil(id);
         return redirect;
     }
 
@@ -126,6 +129,7 @@ public class PerfilControlador {
     @PostMapping("/restablecer/{id}")
     public RedirectView restablecer(@PathVariable Long id) {
         perfilServicio.restablecerPorId(id);
+        publicacionServicio.restablecerTodoPorIdPerfil(id);
         return new RedirectView("/perfiles/tabla-administrar-perfil");
     }
 

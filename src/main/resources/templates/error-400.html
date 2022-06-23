@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>400 Petición Incorrecta</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estiloss.css}">
+</head>
+
+<body>
+    <div id="container">
+        <div class="content">
+            <h2>400</h2>
+            <h4>Petición Incorrecta</h4>
+            <p>El servidor no pudo entender la solicitud debido a una sintaxis incorrecta. El cliente no debe repetir la solicitud sin modificaciones.</p>
+            <a href="http://localhost:8080/publicaciones/tabla-todo-publicacion">Volver a la página de inicio</a>
+        </div>
+        <script type="text/javascript">
+            var container = document.getElementById('container');
+            window.onmousemove = function(e){
+                var x = - e.clientX/5,
+                    y = - e.clientY/5;
+                container.style.backgroundPositionX = x + 'px';
+                container.style.backgroundPositionY = y + 'px';
+            }
+        </script>
+    </div>
+    
+</body>
+
+</html>

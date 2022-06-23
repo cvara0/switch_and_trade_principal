@@ -91,6 +91,17 @@ public class PublicacionServicio {
     public List<Publicacion> traerTodoPorPalabraClaveTipoPublicacion(String palabra) {
         return publicacionRepositorio.traerTodoPorPalabraClaveTipoPublicacion(palabra);
     }
+
+    @Transactional
+    public void eliminarTodoPorIdPerfil(Long id) {
+        publicacionRepositorio.eliminarTodoPorIdPerfil(id);
+    }
+
+    @Transactional
+    public void restablecerTodoPorIdPerfil(Long id) {
+        publicacionRepositorio.restablecerTodoPorIdPerfil(id);
+    }
+
     // fin metodos personalizados
 
 }

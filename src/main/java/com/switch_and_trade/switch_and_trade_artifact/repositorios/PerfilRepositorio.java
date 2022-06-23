@@ -18,7 +18,7 @@ public interface PerfilRepositorio extends JpaRepository<Perfil, Long> {
 
     List<Perfil> findByEliminado(Boolean eliminado);
 
-    @Query(value = "SELECT perfil.id_perfil FROM publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil WHERE publicacion.id_publicacion=?", nativeQuery = true)
+    @Query(value = "SELECT perfil.id_perfil FROM publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil WHERE publicacion.id_publicacion=?1", nativeQuery = true)
     Long traerIdPorIdPublicacion(Long id);
 
     @Modifying

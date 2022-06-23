@@ -1,0 +1,37 @@
+<head th:replace="fragments/head :: head"></head>
+
+<header th:replace="fragments/navbar-logueado :: header"></header>
+
+<html>
+<body>
+
+<main>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-6">
+        <form th:action="@{/tipos/__${accion}__}" th:object="${objetoTipo}" method="post" autocomplete="off"
+              class="needs-validation">
+          <input type="hidden" th:field="*{id}">
+
+          <div class="form-floating mb-3">
+            <input type="text" th:field="*{nombre}" id="name" class="form-control" placeholder="Nombre"
+                   required>
+            <label for="name">Nombre</label>
+            <div class="invalid-feedback">Campo obligatorio</div>
+          </div>
+
+          <button th:text="${accion == 'insertar' ? 'Insertar' : 'Actualizar'}" type="submit"
+                  class="btn btn-primary"></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="https://kit.fontawesome.com/c9ab963329.js" crossorigin="anonymous"></script>
+</body>
+</html>
+

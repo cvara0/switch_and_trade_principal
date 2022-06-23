@@ -15,12 +15,12 @@
                   aria-selected="true">Datos del Usuario
           </button>
         </li>
-        <li class="nav-item">
-          <button class="btn btn-primary">
-            <a class="nav-link" th:object="${objetoPerfil}" th:href="@{/perfiles/formulario-actualizar/__${objetoPerfil.id}__}" style="color: #fff"
-            >Editar</a
+        <li >
+
+            <a class="nav-link ml-5" th:object="${objetoPerfil}" th:href="@{/perfiles/formulario-actualizar/__${objetoPerfil.id}__}" style="color: #fff;"
+            > <button class="btn btn-primary"> Editar</button></a
             >
-          </button>
+
         </li>
       </ul>
       <div class="tab-content mt-5" id="myTabContent">
@@ -32,9 +32,9 @@
                    th:src="${objetoPerfil.foto} ? @{/uploads/__${objetoPerfil.foto}__} : @{/uploads/fotodefecto.jpg}" alt="🖤 🖤 🖤 🖤 🖤 Thymeleaf🖤 🖤 🖤 🖤 🖤">
             </div>
 
-            <div class="col-8">
-              <div class="form-group row mb-2">
-                <label for="email" class="col-2">Email:</label>
+            <div class="col-8" style="color:white;">
+              <div class="form-group row mb-2" >
+                <label for="email" class="col-2" style="color:white;">Email:</label>
                 <div class="col-8">
                   <input type="email" class="form-control" th:value="${objetoPerfil.email}" disabled>
                 </div>

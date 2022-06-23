@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Error de página 403</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/estiloo.css}">
+</head>
+
+<body>
+    <div id="container">
+        <div class="content">
+            <h2>403</h2>
+            <h4>¡Opps!Página no encontrada</h4>
+            <p>La página que estabas buscando no existe. Es posible que hayas escrito mal la dirección o que la página se haya movido.</p>
+            <a href="http://localhost:8080/publicaciones/tabla-todo-publicacion">Volver a la página de inicio</a>
+        </div>
+        <script type="text/javascript">
+            var container = document.getElementById('container');
+            window.onmousemove = function(e){
+                var x = - e.clientX/5,
+                    y = - e.clientY/5;
+                container.style.backgroundPositionX = x + 'px';
+                container.style.backgroundPositionY = y + 'px';
+            }
+        </script>
+    </div>
+    
+</body>
+
+</html>

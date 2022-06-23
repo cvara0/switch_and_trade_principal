@@ -2,6 +2,7 @@ package com.switch_and_trade.switch_and_trade_artifact.repositorios;
 
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Publicacion;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +26,21 @@ public interface PublicacionRepositorio extends JpaRepository<Publicacion, Long>
     List<Publicacion> traerTodoPorOfertaIdPublicacion(Long idPublicacion);
     @Query(value = "SELECT * FROM publicacion JOIN tipo ON publicacion.id_tipo_publicacion=tipo.id_tipo WHERE tipo.nombre_tipo LIKE %?1% AND eliminado_publicacion=0", nativeQuery = true)
     List<Publicacion> traerTodoPorPalabraClaveTipoPublicacion(String palabra);
+
+    @Modifying
+    @Query(value = "UPDATE publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil SET eliminado_publicacion = 1 WHERE perfil.id_perfil = ?1", nativeQuery = true)
+    void eliminarTodoPorIdPerfil(Long id);
+
+    /*
+    * UPDATE P
+   SET P.UnitPrice = P.UnitPrice * 1.1
+  FROM Product P
+  JOIN OrderItem I ON P.Id = I.ProductId
+    * */
+
+    @Modifying
+    @Query(value = "UPDATE publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil SET eliminado_publicacion = 0 WHERE perfil.id_perfil = ?1", nativeQuery = true)
+    void restablecerTodoPorIdPerfil(Long id);
 
     // inicio trae todo por un parametro
 /*
