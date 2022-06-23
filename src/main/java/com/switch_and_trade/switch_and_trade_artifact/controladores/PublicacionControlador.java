@@ -33,6 +33,18 @@ public class PublicacionControlador {
         mav.addObject("listaPublicacion", publicacionServicio.traerTodoNoEliminado());
         return mav;
     }
+
+    @GetMapping("/tabla-todo-publicacion-palabra-clave-tipo")
+    public ModelAndView tablaTodoPublicacionPalabraClaveTipo(HttpSession session,@RequestParam(value="palabra", required = false)String palabra) {//llaman al mismo html con vehiculo pero le mandan cosas diferentes
+        ModelAndView mav = new ModelAndView("tabla-todo-publicacion.html");
+        mav.addObject("idPerfil",session.getAttribute("id"));
+
+        mav.addObject("listaPublicacion", publicacionServicio.traerTodoPorPalabraClaveTipoPublicacion(palabra));
+        System.out.println(palabra);
+        System.out.println(publicacionServicio.traerTodoPorPalabraClaveTipoPublicacion(palabra));
+
+        return mav;
+    }
     @GetMapping("/tabla-todo-publicacion-perfil")
     public ModelAndView tablaTodoPublicacionPerfil(HttpSession session) {
         ModelAndView mav = new ModelAndView("tabla-todo-publicacion-perfil.html");

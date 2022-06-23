@@ -11,6 +11,26 @@
                     <li class="nav-item dropdown">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/publicaciones/formulario-insertar/__${idPerfil}__}">Agregar publicacion</a></li>
+                    <li class="nav-item">
+
+                        <form th:action="@{/publicaciones/tabla-todo-publicacion-palabra-clave-tipo}"
+                              method="GET">
+                            <div class="form-group row mb-2">
+                                <label for="buscar" class="col-2">buscar:</label>
+                                <div class="col-8">
+                                    <input type="search" class="form-control" th:name="palabra">
+                                </div>
+                            </div>
+                            <button
+                                    class="btn btn-secondary tooltips"
+                                    data-placement="top"
+                                    data-toggle="tooltip"
+                                    data-original-title="Search"
+                                    type="submit"> buscar
+                            </button>
+                        </form>
+
+                    </li>
                 </ul>
 
                 <ul class="navbar-nav ms-5 mb-lg-0 ms-auto btn  btn-sm">

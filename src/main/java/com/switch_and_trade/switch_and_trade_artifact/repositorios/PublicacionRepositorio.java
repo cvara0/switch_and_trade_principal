@@ -23,7 +23,8 @@ public interface PublicacionRepositorio extends JpaRepository<Publicacion, Long>
 
     @Query(value = "SELECT * FROM publicacion WHERE ((publicacion.tipo_deseado_1_publicacion IN (SELECT tipo.nombre_tipo FROM publicacion JOIN tipo ON publicacion.id_tipo_publicacion=tipo.id_tipo WHERE publicacion.id_publicacion=?1 AND publicacion.eliminado_publicacion=0)) OR (publicacion.tipo_deseado_2_publicacion IN (SELECT tipo.nombre_tipo FROM publicacion JOIN tipo ON publicacion.id_tipo_publicacion=tipo.id_tipo WHERE publicacion.id_publicacion=?1 AND publicacion.eliminado_publicacion=0))) AND publicacion.eliminado_publicacion=0", nativeQuery = true)
     List<Publicacion> traerTodoPorOfertaIdPublicacion(Long idPublicacion);
-
+    @Query(value = "SELECT * FROM publicacion JOIN tipo ON publicacion.id_tipo_publicacion=tipo.id_tipo WHERE tipo.nombre_tipo LIKE %?1% AND eliminado_publicacion=0", nativeQuery = true)
+    List<Publicacion> traerTodoPorPalabraClaveTipoPublicacion(String palabra);
 
     // inicio trae todo por un parametro
 /*

@@ -87,6 +87,10 @@ public class PublicacionServicio {
         return publicacionRepositorio.traerTodoPorOfertaIdPublicacion(idPublicacion);
     }
 
+    @Transactional(readOnly = true)
+    public List<Publicacion> traerTodoPorPalabraClaveTipoPublicacion(String palabra) {
+        return publicacionRepositorio.traerTodoPorPalabraClaveTipoPublicacion(palabra);
+    }
     // fin metodos personalizados
 
 }
