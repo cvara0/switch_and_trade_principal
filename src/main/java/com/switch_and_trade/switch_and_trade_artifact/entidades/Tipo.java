@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @RequiredArgsConstructor
 @Setter
 @Getter
-@Table(name="tipo")
+@Table(name="tipo",indexes = {@Index(name = "idx_nombre_tipo", columnList = "nombre_tipo")})
 @SQLDelete(sql = "UPDATE tipo SET eliminado_tipo = true WHERE id_tipo = ?")
 public class Tipo {
 
@@ -21,7 +21,7 @@ public class Tipo {
     @Column(name="id_tipo")
     private Long id;
 
-    @Column(name="nombre_tipo")
+    @Column(name="nombre_tipo", length = 60, nullable = false)
     private String nombre;
 
     @Column(name = "eliminado_tipo", nullable = false)

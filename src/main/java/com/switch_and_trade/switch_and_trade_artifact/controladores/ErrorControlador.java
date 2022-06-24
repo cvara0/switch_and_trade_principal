@@ -11,24 +11,26 @@ import static javax.servlet.RequestDispatcher.ERROR_STATUS_CODE;
 
 @Controller
 public class ErrorControlador implements ErrorController {
-    @RequestMapping("/error")
+ /*   @RequestMapping("/error")
     public ModelAndView handleError(HttpServletRequest request) {
 
-        Integer status = (int) request.getAttribute(ERROR_STATUS_CODE);
+        int status = (int) request.getAttribute(ERROR_STATUS_CODE);
 
         String message;
 
         switch (status) {
             case 403:
-                return new ModelAndView("error-403.html");
+                return new ModelAndView("error403.html");
 
             case 404:
-                return new ModelAndView("error-404.html");
+                return new ModelAndView("error404.html");
 
             case 500:
-                return new ModelAndView("error-500.html");
+                return new ModelAndView("error500.html");
+            default:
+                return new ModelAndView("error500.html");
         }
-        return new ModelAndView("error-inesperado.html");
+        //return new ModelAndView("error-inesperado.html");
 
-    }
+    }*/
 }

@@ -15,7 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "publicacion", indexes = {@Index(name = "idx_id_tipo_publicacion", columnList = "id_tipo_publicacion")})
+@Table(name = "publicacion", indexes = {@Index(name = "idx_localidad_publicacion", columnList = "localidad_publicacion")})
 @SQLDelete(sql = "UPDATE publicacion SET eliminado_publicacion = true WHERE id_publicacion = ?")
 public class Publicacion {
 
@@ -25,7 +25,7 @@ public class Publicacion {
     private Long id;
 
     @ManyToOne(fetch = EAGER)
-    @JoinColumn(name="id_tipo_publicacion", referencedColumnName = "id_tipo",nullable = false)
+    @JoinColumn(name="id_tipo_publicacion", referencedColumnName = "id_tipo")
     private Tipo tipo;
 
     @ManyToOne(fetch = EAGER)

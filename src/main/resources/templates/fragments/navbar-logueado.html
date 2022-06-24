@@ -24,7 +24,6 @@
                     <li class="nav-item"><a class="nav-link" role="button" th:href="@{/perfiles/tabla-perfil}">Mi Perfil</a></li>
                     <li sec:authorize="hasRole('ADMINISTRADOR')"  class="nav-item"><a class="nav-link" role="button" th:href="@{/perfiles/tabla-administrar-perfil}">Administrar perfiles</a></li>
                     <li sec:authorize="hasRole('ADMINISTRADOR')"  class="nav-item"><a class="nav-link" role="button" th:href="@{/provincias/tabla}">Administrar provincias</a></li>
-                    <li sec:authorize="hasRole('ADMINISTRADOR')"  class="nav-item"><a class="nav-link" role="button" th:href="@{/tipos/tabla}">Administrar tipologias</a></li>
                     <li class="nav-item"><a class="nav-link" role="button" href="/logout">Cerrar Sesión</a></li>
                 </ul>
 

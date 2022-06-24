@@ -29,16 +29,18 @@ public class ProvinciaControlador {
 
     @PreAuthorize("hasRole('ADMINISTRADOR')")
     @GetMapping("/tabla")
-    public ModelAndView tabla() {
+    public ModelAndView tabla(HttpSession session) {
         ModelAndView mav = new ModelAndView("tabla-administrar-provincia.html");
+        mav.addObject("idPerfil",session.getAttribute("id"));
         mav.addObject("listaTodoProvincia", provinciaServicio.traerTodo());
         return mav;
     }
 
 @PreAuthorize("hasRole('ADMINISTRADOR')")
 @GetMapping("/formulario-insertar")
-public ModelAndView formularioInsertar() {
+public ModelAndView formularioInsertar(HttpSession session) {
     ModelAndView mav = new ModelAndView("formulario-administrar-provincia.html");
+    mav.addObject("idPerfil",session.getAttribute("id"));
     mav.addObject("accion", "insertar");
     mav.addObject("objetoProvincia", new Provincia());
     return mav;
@@ -46,8 +48,9 @@ public ModelAndView formularioInsertar() {
 
     @PreAuthorize("hasRole('ADMINISTRADOR')")
     @GetMapping("/formulario-actualizar/{id}")
-    public ModelAndView formularioActualizar(@PathVariable Long id) {
+    public ModelAndView formularioActualizar(@PathVariable Long id,HttpSession session) {
         ModelAndView mav = new ModelAndView("formulario-administrar-provincia.html");//continuar aca
+        mav.addObject("idPerfil",session.getAttribute("id"));/*TODO agragar esto a todos lo mav*/
         mav.addObject("accion", "actualizar");
         mav.addObject("objetoProvincia", provinciaServicio.traerPorId(id));
         return mav;
@@ -57,6 +60,7 @@ public ModelAndView formularioInsertar() {
     @PostMapping("/insertar")
     public RedirectView insertar(Provincia dto) {
         RedirectView redirect = new RedirectView("/provincias/tabla");
+
         try {
             provinciaServicio.insertar(dto);
         } catch (IllegalArgumentException e) {

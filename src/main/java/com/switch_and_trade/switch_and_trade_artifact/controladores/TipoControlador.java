@@ -33,7 +33,7 @@ public class TipoControlador {
 public ModelAndView formularioInsertar() {
     ModelAndView mav = new ModelAndView("formulario-administrar-tipo.html");
     mav.addObject("accion", "insertar");
-    mav.addObject("objetotipo", new Tipo());
+    mav.addObject("objetoTipo", new Tipo());
     return mav;
 }
 

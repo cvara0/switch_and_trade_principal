@@ -9,27 +9,34 @@
   <div class="container">
     <div class="row mt-5">
       <div class="col">
-
-        <div th:if="${listaTodoTipo.isEmpty()}">
-          <h4>Aun no hay tipos de vehiculos o propiedades registradas</h4>
+        <div th:if="${listaTodoPerfil.isEmpty()}">
+          <h4>Aun no hay perfiles registrados</h4>
         </div>
-        <a class="nav-link" role="button" th:href="@{/tipos/formulario-insertar}">Insertar tipologia</a>
-        <div th:unless="${listaTodoTipo.isEmpty()}" class="table-responsive">
+
+        <div th:unless="${listaTodoPerfil.isEmpty()}" class="table-responsive">
           <table class="table table-hover table-bordered table-dark">
             <thead>
             <tr class="table-purple">
               <th>Id</th>
               <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Telefono</th>
+              <th>Rol</th>
               <th>Eliminar</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="tipo:${listaTodoTipo}">
-              <td th:text="${tipo.id}"></td>
-              <td th:text="${tipo.nombre}"></td>
+            <tr th:each="perfil:${listaTodoPerfil}">
+              <td th:text="${perfil.id}"></td>
+              <td th:text="${perfil.nombre}"></td>
+              <td th:text="${perfil.apellido}"></td>
+              <td th:text="${perfil.email}"></td>
+              <td th:text="${perfil.telefono}"></td>
+              <td th:text="${perfil.rol}"></td>
               <td>
-                <form th:action="${tipo.eliminado} ? @{/tipos/restablecer/__${tipo.id}__} : @{/tipos/eliminar/__${tipo.id}__}" method="POST">
-                  <button type="submit" class="btn btn-danger" th:text="${tipo.eliminado} ? 'Restablecer' : 'Eliminar'"></button>
+                <form th:action="${perfil.eliminado} ? @{/perfiles/restablecer/__${perfil.id}__} : @{/perfiles/eliminar/__${perfil.id}__}" method="POST">
+                  <button type="submit" class="btn btn-danger" th:text="${perfil.eliminado} ? 'Restablecer' : 'Eliminar'"></button>
                 </form>
               </td>
             </tr>
