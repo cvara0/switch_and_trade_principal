@@ -28,19 +28,28 @@ public interface PublicacionRepositorio extends JpaRepository<Publicacion, Long>
     List<Publicacion> traerTodoPorPalabraClaveTipoPublicacion(String palabra);
 
     @Modifying
-    @Query(value = "UPDATE publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil SET eliminado_publicacion = 1 WHERE perfil.id_perfil = ?1", nativeQuery = true)
+    @Query(value = "UPDATE publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil SET publicacion.eliminado_publicacion = 1 WHERE perfil.id_perfil = ?1", nativeQuery = true)
     void eliminarTodoPorIdPerfil(Long id);
 
-    /*
-    * UPDATE P
-   SET P.UnitPrice = P.UnitPrice * 1.1
-  FROM Product P
-  JOIN OrderItem I ON P.Id = I.ProductId
-    * */
+    @Modifying
+    @Query(value = "UPDATE publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil SET publicacion.eliminado_publicacion = 0 WHERE perfil.id_perfil = ?1", nativeQuery = true)
+    void restablecerTodoPorIdPerfil(Long id);
 
     @Modifying
-    @Query(value = "UPDATE publicacion JOIN perfil ON publicacion.id_perfil_publicacion=perfil.id_perfil SET eliminado_publicacion = 0 WHERE perfil.id_perfil = ?1", nativeQuery = true)
-    void restablecerTodoPorIdPerfil(Long id);
+    @Query(value = "UPDATE publicacion JOIN provincia ON publicacion.id_provincia_publicacion=provincia.id_provincia SET publicacion.eliminado_publicacion = 1 WHERE provincia.id_provincia = ?1", nativeQuery = true)
+    void eliminarTodoPorIdProvincia(Long id);
+
+    @Modifying
+    @Query(value = "UPDATE publicacion JOIN provincia ON publicacion.id_provincia_publicacion=provincia.id_provincia SET publicacion.eliminado_publicacion = 0 WHERE provincia.id_provincia = ?1", nativeQuery = true)
+    void restablecerTodoPorIdProvincia(Long id);
+
+    @Modifying
+    @Query(value = "UPDATE publicacion JOIN tipo ON publicacion.id_tipo_publicacion=tipo.id_tipo SET publicacion.eliminado_publicacion = 1 WHERE tipo.id_tipo = ?1", nativeQuery = true)
+    void eliminarTodoPorIdTipo(Long id);
+
+    @Modifying
+    @Query(value = "UPDATE publicacion JOIN tipo ON publicacion.id_tipo_publicacion=tipo.id_tipo SET publicacion.eliminado_publicacion = 0 WHERE tipo.id_tipo = ?1", nativeQuery = true)
+    void restablecerTodoPorIdTipo(Long id);
 
     // inicio trae todo por un parametro
 /*

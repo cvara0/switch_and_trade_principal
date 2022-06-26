@@ -4,6 +4,7 @@ import com.switch_and_trade.switch_and_trade_artifact.entidades.Perfil;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Provincia;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.PublicacionServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ProvinciaControlador {
     private final ProvinciaServicio provinciaServicio;
+    private final PublicacionServicio publicacionServicio;
 
 
     @PreAuthorize("hasRole('ADMINISTRADOR')")
@@ -82,6 +84,7 @@ public ModelAndView formularioInsertar(HttpSession session) {
     @PostMapping("/restablecer/{id}")
     public RedirectView restablecer(@PathVariable Long id) {
         provinciaServicio.restablecerPorId(id);
+        publicacionServicio.restablecerTodoPorIdProvincia(id);
         return new RedirectView("/provincias/tabla");
     }
 
@@ -90,6 +93,7 @@ public ModelAndView formularioInsertar(HttpSession session) {
     public RedirectView eliminar(@PathVariable Long id) {
         RedirectView redirect = new RedirectView("/provincias/tabla");
         provinciaServicio.eliminarPorId(id);
+        publicacionServicio.eliminarTodoPorIdProvincia(id);
         return redirect;
     }
 

@@ -102,6 +102,26 @@ public class PublicacionServicio {
         publicacionRepositorio.restablecerTodoPorIdPerfil(id);
     }
 
+    @Transactional
+    public void eliminarTodoPorIdProvincia(Long id) {
+        publicacionRepositorio.eliminarTodoPorIdProvincia(id);
+    }
+
+    @Transactional
+    public void restablecerTodoPorIdProvincia(Long id) {
+        publicacionRepositorio.restablecerTodoPorIdProvincia(id);
+    }
+
+    @Transactional
+    public void eliminarTodoPorIdTipo(Long id) {
+        publicacionRepositorio.eliminarTodoPorIdTipo(id);
+    }
+
+    @Transactional
+    public void restablecerTodoPorIdTipo(Long id) {
+        publicacionRepositorio.restablecerTodoPorIdTipo(id);
+    }
+
     // fin metodos personalizados
 
 }

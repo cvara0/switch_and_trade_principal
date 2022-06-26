@@ -3,6 +3,7 @@ package com.switch_and_trade.switch_and_trade_artifact.controladores;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Provincia;
 import com.switch_and_trade.switch_and_trade_artifact.entidades.Tipo;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
+import com.switch_and_trade.switch_and_trade_artifact.servicios.PublicacionServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.TipoServicio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,24 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/tipos")
 @RequiredArgsConstructor
 public class TipoControlador {
     private final TipoServicio tipoServicio;
+    private final PublicacionServicio publicacionServicio;
 
     @PreAuthorize("hasRole('ADMINISTRADOR')")
     @GetMapping("/tabla")
-    public ModelAndView tabla() {
+    public ModelAndView tabla(HttpSession session) {
         ModelAndView mav = new ModelAndView("tabla-administrar-tipo.html");
-        mav.addObject("listaTodotipo", tipoServicio.traerTodo());
+        mav.addObject("idPerfil",session.getAttribute("id"));
+        mav.addObject("listaTodoTipo", tipoServicio.traerTodo());
         return mav;
     }
-
+/*TODO administrar tipos, tocar la base de datos para dar de baja segun se elimine cada cosa*/
 @PreAuthorize("hasRole('ADMINISTRADOR')")
 @GetMapping("/formulario-insertar")
-public ModelAndView formularioInsertar() {
+public ModelAndView formularioInsertar(HttpSession session) {
     ModelAndView mav = new ModelAndView("formulario-administrar-tipo.html");
+    mav.addObject("idPerfil",session.getAttribute("id"));
     mav.addObject("accion", "insertar");
     mav.addObject("objetoTipo", new Tipo());
     return mav;
@@ -39,8 +45,9 @@ public ModelAndView formularioInsertar() {
 
     @PreAuthorize("hasRole('ADMINISTRADOR')")
     @GetMapping("/formulario-actualizar/{id}")
-    public ModelAndView formularioActualizar(@PathVariable Long id) {
+    public ModelAndView formularioActualizar(@PathVariable Long id, HttpSession session) {
         ModelAndView mav = new ModelAndView("formulario-administrar-tipo.html");//continuar aca
+        mav.addObject("idPerfil",session.getAttribute("id"));
         mav.addObject("accion", "actualizar");
         mav.addObject("objetoTipo", tipoServicio.traerPorId(id));
         return mav;
@@ -70,7 +77,8 @@ public ModelAndView formularioInsertar() {
     @PreAuthorize("hasRole('ADMINISTRADOR')")
     @PostMapping("/restablecer/{id}")
     public RedirectView restablecer(@PathVariable Long id) {
-        tipoServicio.restablecerPorId(id);
+        tipoServicio.restablecerPorId(id);/*TODO ver el tema de eliminaciones*/
+        publicacionServicio.restablecerTodoPorIdTipo(id);
         return new RedirectView("/tipos/tabla");
     }
 
@@ -79,6 +87,7 @@ public ModelAndView formularioInsertar() {
     public RedirectView eliminar(@PathVariable Long id) {
         RedirectView redirect = new RedirectView("/tipos/tabla");
         tipoServicio.eliminarPorId(id);
+        publicacionServicio.eliminarTodoPorIdTipo(id);
         return redirect;
     }
 
