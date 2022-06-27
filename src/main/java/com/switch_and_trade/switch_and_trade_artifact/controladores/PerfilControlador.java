@@ -27,7 +27,9 @@ public class PerfilControlador {
     private final PerfilServicio perfilServicio;
     private final ProvinciaServicio provinciaServicio;
     private final PublicacionServicio publicacionServicio;
-
+private ProvinciaControlador provinciaControlador;
+private TipoControlador tipoControlador;
+    private Boolean eliminadoPorPerfil=false;
 
 //como acceder al id de perfil una vez logueado
     @GetMapping("/formulario-iniciar-sesion-o-insertar")
@@ -122,6 +124,7 @@ public class PerfilControlador {
         RedirectView redirect = new RedirectView("/perfiles/tabla-administrar-perfil");
         perfilServicio.eliminarPorId(id);
         publicacionServicio.eliminarTodoPorIdPerfil(id);
+        eliminadoPorPerfil=true;
         return redirect;
     }
 
@@ -130,6 +133,7 @@ public class PerfilControlador {
     public RedirectView restablecer(@PathVariable Long id) {
         perfilServicio.restablecerPorId(id);
         publicacionServicio.restablecerTodoPorIdPerfil(id);
+
         return new RedirectView("/perfiles/tabla-administrar-perfil");
     }
 

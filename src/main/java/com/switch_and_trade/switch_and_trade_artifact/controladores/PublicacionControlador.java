@@ -102,7 +102,6 @@ public class PublicacionControlador {
         return mav;
     }
 
-
     @PostMapping("/insertar")
     public RedirectView insertar(Publicacion dto, @RequestParam(required = false) MultipartFile publicacionFotoName) {
         RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
@@ -122,13 +121,16 @@ public class PublicacionControlador {
         return redirect;
     }
 
-
     @PostMapping("/eliminar/{id}")
-    public RedirectView eliminar(@PathVariable Long id) {
+    public RedirectView eliminar(@PathVariable Long id,HttpSession session) {
         RedirectView redirect = new RedirectView("/publicaciones/tabla-todo-publicacion-perfil");
+        if(session.getAttribute("rol").equals("ADMINISTRADOR"))
+            redirect = new RedirectView("/publicaciones/tabla-todo-publicacion");
         publicacionServicio.eliminarPorId(id);
         return redirect;
     }
+
+
 
 
 }

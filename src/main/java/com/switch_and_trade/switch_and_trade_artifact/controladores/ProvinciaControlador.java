@@ -5,6 +5,7 @@ import com.switch_and_trade.switch_and_trade_artifact.entidades.Provincia;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PerfilServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PublicacionServicio;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/provincias")
 @RequiredArgsConstructor
+@Getter
 public class ProvinciaControlador {
     private final ProvinciaServicio provinciaServicio;
     private final PublicacionServicio publicacionServicio;

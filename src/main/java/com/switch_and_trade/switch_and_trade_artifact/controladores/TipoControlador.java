@@ -5,6 +5,7 @@ import com.switch_and_trade.switch_and_trade_artifact.entidades.Tipo;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.ProvinciaServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.PublicacionServicio;
 import com.switch_and_trade.switch_and_trade_artifact.servicios.TipoServicio;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/tipos")
 @RequiredArgsConstructor
+@Getter
 public class TipoControlador {
     private final TipoServicio tipoServicio;
     private final PublicacionServicio publicacionServicio;
+
 
     @PreAuthorize("hasRole('ADMINISTRADOR')")
     @GetMapping("/tabla")

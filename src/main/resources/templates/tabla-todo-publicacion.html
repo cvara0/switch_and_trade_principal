@@ -21,6 +21,20 @@
 
             <div th:unless="${listaPublicacion.isEmpty()}" class="col-lg-4 col-xxl-4" th:each="publicacion : ${listaPublicacion}">
                 <div class="card text-bg-warning mb-3">
+
+                    <div sec:authorize="hasRole('ADMINISTRADOR')" class="B">
+                        <form th:action="@{/publicaciones/eliminar/__${publicacion.id}__}"
+                              method="post">
+                            <button
+                                    class="btn btn-secondary tooltips"
+                                    data-placement="top"
+                                    data-toggle="tooltip"
+                                    data-original-title="Delete"
+                                    type="submit"><i class="fa fa-times"></i>
+                            </button>
+                        </form>
+                    </div>
+
                     <img th:src="${publicacion.foto} ? @{/uploads/__${publicacion.foto}__} : @{/uploads/fotodefecto.jpg}" class="card-img-top" alt="para que queres ver la imagen si ya la subiste">
                     <div class="card-body">
                         <h5 class="card-title text-center" th:text="|${publicacion.perfil.nombre} tiene|"> </h5>
